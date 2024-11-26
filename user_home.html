@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/styles.css">
+  <!--bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!--Font awesome CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <title>Home</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
+    <div class="container-fluid">
+
+      <div class="logo d-flex flex-row justify-content-center align-items-center gap-3">
+        <div><a href="#"><img src="img/DPPAMLOGO.png" alt="DPPAM Logo" height="auto" width="60"></a></div>
+        <div><a href="#"><img src="img/PPCRVLOGO.png" alt="PPCRV Logo" height="auto" width="60"></a></div>
+        <div><a class="navbar-brand" href="#">(Company Name)</a></div>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> 
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav d-flex flex-lg-row flex-column justify-content-center align-content-center gap-4">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="user_home.html">Home</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="aboutWhoAreWe.html">Who Are We?</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="aboutMissionVision.html">Mission / Vision</a></li>
+
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="volunteers.html">Volunteers</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link btn btn-danger px-5 text-white" href="#">Sign in</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!--MAIN CONTENT-->
+
+  <!--SECTION 1-->
+<!--
+  <section class="section1 py-5">
+    
+    <h3 class="text-center text-white mt-4 mb-5 fw-bolder dioceseTxt">Diocese of Kalookan - Public and Political Affairs
+      Ministry</h3>
+
+
+    <div class="containerOfImgAndTxt d-flex flex-lg-row flex-column justify-content-center align-items-center gap-5">
+
+      <div><img class="_2logo me-3" src="img/logo.png" alt="Logo" width="300" height="300"></div>
+
+      <div class="d-flex flex-column justify-content-center align-items-start">
+        <div>
+          <h1 class="text-white bayanihan">BAYANIHAN PARA SA MALINIS NA HALALAN</h1>
+        </div>
+        <div>
+          <p class="text-white fs-3 mb-5">since 2000</p>
+        </div>
+        <div><a href="#" class="btn exploreBtn px-5 text-white">Explore</a></div>
+      </div>
+
+    </div>
+
+  </section>
+-->
+
+
+
+<div id="carouselExampleControls" class="carousel slide carousel-fade mt-2" data-bs-ride="carousel">
+  
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="d-block w-100 carouselActive" style="height: 100vh;">
+        <div class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+          <div>
+            <h1 style="font-size: 3rem;" class="text-white">BAYANIHAN PARA SA MALINIS NA HALALAN</h1>
+          </div>
+          <div>
+            <p class="fs-3 mb-5 text-white">since 2000</p>
+          </div>
+          <div><a href="#" class="btn exploreBtn px-5 text-white">Explore</a></div>
+        </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <img src="img/Sample pic (PEP_Volunteers).jpg" class="d-block w-100" alt="..." height="630px">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Sample pic (UPCE_Volunteers).jpg" class="d-block w-100" alt="..." height="630px">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Sample pic (SWOT_Volunteers).jpg" class="d-block w-100" alt="..." height="630px">
+    </div>
+    <div class="carousel-item">
+      <img src="img/Sample pic (AMVATT_Volunteers).jpg" class="d-block w-100" alt="..." height="630px">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
+
+  <!--SECTION 2-->
+
+  <section class="container section2 p-5 mt-5 d-flex flex-row justify-content-around align-content-center">
+    <div class="row row-cols-auto">
+      <div class="col m-3"><img src="img/samplepic1.jpg" alt="" class="samplepic samplepic1"></div>
+      <div class="col m-3"><img src="img/samplepic2.jpg" alt="" class="samplepic samplepic2"></div>
+      <div class="col m-3"> <img src="img/samplepic3.jpg" alt="" class="samplepic samplepic3"></div>
+    </div>
+  </section>
+
+
+  <!--SECTION 3 - Features-->
+
+  <section
+    class="section3 text-center p-5 mt-5 m-auto d-flex flex-column justify-content-center align-items-center gap-5">
+    <h1 class="mb-5">Features</h1>
+    <div class="d-flex flex-lg-row flex-column justify-content-center align-items-center gap-5">
+      <div><img src="img/featuresPic.jpg" class="featuresPic" alt="" width="450" height="auto"></div>
+      <div class="featuresTxt">
+        <p>Resoundingly, the most important characteristic is MAKA-DIYOS, being God-loving and God-Fearing.
+          A Model Filipino should also be MATAPAT, MAGALANG, MASIPAG, MATULUNGIN, MAKABAYAN. PPCRV created 1 book for
+          each of these characteristics,
+          with MAKA-DIYOS prefacing each of the books. Quoting de Villa-Singson “…God cannot be contained in one book
+          because He is the beginning and
+          end of “all things visible and the evidence of things unseen” (Hebrews)…As such, a chapter on God and our
+          faith prefaces each and every Tibok Pinoy book.”</p>
+      </div>
+    </div>
+
+    <div class="d-flex flex-lg-row-reverse flex-column justify-content-center align-items-center gap-5 mb-5">
+      <div><img src="img/featuresPic.jpg" class="featuresPic" alt="" width="450" height="auto"></div>
+      <div>
+        <p>CBCP PRESIDENT H.E. ARCHBISHOP AMBO DAVID'S TALK AT THE PPCRV LAUNCH OF TIBOK PINOY on September 10 at the
+          Dusit Thani Hotel. Archbishop David
+          enjoined everyone present to participate in Voters Empowerment by promoting Tibok Pinoy's books. He said that
+          PPCRV's TIBOK PINOY, a values development
+          program of 6 books and 11 podcasts which focus on values to develop the Model Filipino is a testament to the
+          2nd Plenary Council of the Philippines which
+          invited lay people and organizations to serve society as members of the Church. Please click to hear his
+          entire speech.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!--SECTION 4 - Latest Posts and News-->
+
+  <section class="section4 p-5">
+    <h1 class="text-center py-5">Latest Posts and News</h1>
+
+    <div class="py-3 mb-5">
+      <ul class="navbar-nav d-flex flex-row justify-content-center align-items-center gap-5">
+        <li class="nav-item"><a href="#" class="btn btn-primary">All Posts</a></li>
+        <li class="nav-item"><a href="#" class="">News</a></li>
+        <li class="nav-item"><a href="#" class="">Uncategorized</a></li>
+        <li class="nav-item"><a href="#" class="">Videos</a></li>
+      </ul>
+    </div>
+
+    <section class="container p-5 mt-5 d-flex flex-row justify-content-center align-content-center">
+      <div class="row row-cols-auto">
+        <div class="col m-3"><img src="img/samplepic1.jpg" alt="" class="newsPic"></div>
+        <div class="col m-3"><img src="img/samplepic2.jpg" alt="" class="newsPic"></div>
+        <div class="col m-3"> <img src="img/samplepic3.jpg" alt="" class="newsPic"></div>
+      </div>
+    </section>
+
+    <div class="d-flex flex-row justify-content-center align-items-center">
+      <button class="btn border-primary text-primary px-4">Read more</button>
+    </div>
+
+  </section>
+
+
+  
+
+  <!--FOOTER SECTION-->
+  <footer class="container-fluid p-5 text-white">
+
+    <div class="container pb-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+
+        <!-- Logo Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center mb-4 mb-lg-0">
+          <div>
+            <img src="img/logo.png" alt="Logo" width="100%" height="auto" class="_2logo" class="img-fluid">
+          </div>
+        </div>
+
+        <!-- Our Mandate Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center mb-4 mb-md-0">
+          <div class="d-flex flex-column justify-content-center align-items-center align-items-md-start">
+            <div>
+              <h4 class="fw-bolder mb-3">Our Mandate</h4>
+            </div>
+            <div>
+              <p>Voter's Education</p>
+            </div>
+            <div>
+              <p>Volunteers</p>
+            </div>
+            <div>
+              <p>Command Center</p>
+            </div>
+            <div>
+              <p>Unofficial Parallel Count</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PPCRV National Office Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center">
+          <div class="d-flex flex-column justify-content-center align-items-center align-items-md-start">
+            <div>
+              <h4 class="fw-bolder mb-3">PPCRV National Office</h4>
+            </div>
+            <div>
+              <p>PPCRV National Office Room 301,</p>
+            </div>
+            <div>
+              <p>Pius XII Catholic Center,</p>
+            </div>
+            <div>
+              <p>United Nations Avenue, Manila, Philippines</p>
+            </div>
+            <div>
+              <p>Tel.# (02) 8807 6283</p>
+            </div>
+            <div>
+              <p>email: hello@ppcrv.org</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <hr class="text-white">
+
+
+    <div class="container">
+      <div class="row row-cols-1 row-cols-lg-3">
+
+        <!-- Social Media Icons Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center mb-4 mb-lg-0">
+          <div class="d-flex flex-row justify-content-center align-items-center gap-3 p-4">
+            <div><a href="" class="text-white"><i class="fa-brands fa-facebook fs-4"></i></a></div>
+            <div><a href="" class="text-white"><i class="fa-brands fa-youtube fs-4"></i></a></div>
+            <div><a href="" class="text-white"><i class="fa-brands fa-square-x-twitter fs-4"></i></a></div>
+          </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center order-2 order-lg-1 mb-4 mb-lg-0">
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <div><a href="" class="text-white">&#169; Copyright 2024</a></div>
+          </div>
+        </div>
+
+        <!-- Privacy and Terms Section -->
+        <div class="col d-flex flex-column justify-content-center align-items-center order-3 order-lg-2">
+          <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+            <div><a href="" class="text-white col">Privacy Policy</a></div>
+            <div><a href="" class="text-white col">Terms and Conditions</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </footer>
+
+
+
+
+
+
+
+  <!--bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
