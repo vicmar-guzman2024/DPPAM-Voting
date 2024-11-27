@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* Importing both Poppins and Abhaya Libre fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Abhaya+Libre:wght@400;500;600;700&display=swap');
 
+/* Global reset */
 *,
 ::after,
 ::before {
@@ -7,43 +9,58 @@
 }
 
 body {
-    font-family: "Open Sans", serif;
+    font-family: 'Poppins', sans-serif !important; 
     margin: 0 !important;
-    background-color: #f5f5f5 !important;
-}
-
-h3 {
-    font-size: 1.2375rem;
-}
-
-a {
-    cursor: pointer;
-    text-decoration: none;
-}
-
-
-li {
-    list-style: none;
-}
-
-p {
-    text-align: justify;
+    background-color: #f0f0f0 !important;
 }
 
 .profileImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border-radius: 50%;
-    padding: 8px;
-    border: 1px solid #000000;
+    margin-right: 10px;
+    aspect-ratio: 1/1;
+    border: 1px solid #000000 !important; 
+
 }
+
 
 .editProfile {
     border: 1px solid #000000 !important; 
     outline: none !important; 
-    background-color: #f3f3f3; 
-    padding: 12px;
-    border-radius: 50%;
-    margin-top: 50px;
-    margin-left: -15px;
+    background-color: #ffffff; 
+    padding: 8px; 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px; 
+    margin-top: 60px;
+    margin-left: -35px;
+}
+
+.editProfile i {
+    color: #000000; 
+    background-color: #ffffff;
+}
+
+.profile-name{
+    font-family: 'Abhaya Libre', serif; 
+    font-size: 25px;
+    font-weight: 800;
+    margin: 0;
+    text-align: center;
+}
+
+.profile-email{
+    font-family: 'Poppins', sans-serif; 
+    font-size: 13px; 
+    font-weight: 400;
+    color: #606060; 
+    margin: 0; 
+    text-align: center; 
 }
 
 /* Layout skeleton */
@@ -55,19 +72,21 @@ p {
 }
 
 #sidebar {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     padding: 10px;
-    max-width: 290px;
-    min-width: 290px;
+    max-width: 250px;
+    min-width: 250px;
     transition: all 0.35s ease-in-out;
-    box-shadow: 0 0 35px 0 rgba(49, 57, 66, 0.5);
+    box-shadow: 0 0 10px 0 rgba(49, 57, 66, 0.5);
     z-index: 1111;
 }
+
+
 
 /* Sidebar collapse */
 
 #sidebar.collapsed {
-    margin-left: -290px;
+    margin-left: -250px;
 }
 
 .main {
@@ -79,54 +98,67 @@ p {
     transition: all 0.35s ease-in-out;
 }
 
-.sidebar-logo {
-    padding: 1.15rem 1.5rem;
+.sidebar-item {
+    position: relative;
+    overflow: hidden;
+    display: block; 
+    transition: background-color 0.0s ease-in-out;
 }
 
-.sidebar-logo a {
-    font-size: 1.25rem;
-    font-weight: 600;
+.sidebar-item1 {
+    position: relative;
+    overflow: hidden;
+    display: block; 
+    background-color: #910200;
 }
 
-.logo {
-    border-radius: 50%;
+.sidebar-item1:hover {
+    background-color: #910200; 
+}
+
+.sidebar-item1 .sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #ffffff; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500; 
+    font-size: 15px; 
+    transition: color 0.0s ease-in-out; 
+    margin-left: 10px;
+}
+
+.sidebar-item:hover {
+    background-color: #910200; 
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #000; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 500; 
+    font-size: 15px; 
+    transition: color 0.0s ease-in-out; 
+    margin-left: 10px;
+}
+
+.sidebar-link:hover {
+    color: #ffffff; 
+}
+
+.sidebar-link i {
+    margin-right: 40px; 
+    font-size: 18px; 
+    margin-bottom: 5px;
 }
 
 .sidebar-nav {
     padding: 0;
-}
-
-.sidebar-header {
-    font-size: .75rem;
-    padding: 1.5rem 1.5rem .375rem;
-}
-
-a.sidebar-link {
-    padding: .625rem 1.625rem;
-    position: relative;
-    display: block;
-    font-size: 1rem;
-    text-decoration: none;
-    color: black;
-}
-
-
-.sidebar-link[data-bs-toggle="collapse"]::after {
-    border: solid;
-    border-width: 0 .075rem .075rem 0;
-    content: "";
-    display: inline-block;
-    padding: 2px;
-    position: absolute;
-    right: 1.5rem;
-    top: 1.4rem;
-    transform: rotate(-135deg);
-    transition: all .2s ease-out;
-}
-
-.sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-    transform: rotate(45deg);
-    transition: all .2s ease-out;
+    margin: 20px 0;
 }
 
 .content {
@@ -138,11 +170,24 @@ a.sidebar-link {
 .contentBox {
     background-color: #FFFFFF;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(49, 57, 66, 0.5);
+
 }
 
+.navbar{
+    background-color: #187cba;
+    box-shadow: 0 0 10px 0 rgba(49, 57, 66, 0.5);
+    /* border-bottom: 1px solid #000000 !important;  */
+
+}
+
+.navbar-title{
+    font-size: 17px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+}
 
 /** INPUT FILE CUSTOM DESIGN **/
-
 .custom-file-input {
     display: flex;
     flex-direction: row;
@@ -154,13 +199,16 @@ a.sidebar-link {
     cursor: pointer;
     width: fit-content;
 }
+
 .custom-file-input input[type="file"] {
     display: none;
 }
+
 .custom-file-input .icon {
     font-size: 1.2em;
     color: #6c757d;
 }
+
 .file-name {
     color: #6c757d;
     font-size: 0.9em;
@@ -179,16 +227,14 @@ input:focus,
     border-radius: 5px;
 }
 
-
 /** Table styles **/
 td, th {
     padding: 16px !important;
 }
 
-
 /* Responsive */
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
     .content {
         width: auto;
     }
