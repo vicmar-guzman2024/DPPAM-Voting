@@ -27,16 +27,6 @@ ul li a:hover {
     height: 100vh;
 }
 
-.carouselActive {
-    background: url('../img/ITO.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    height: 100vh;
-}
-
-
-
 .dioceseTxt {
     letter-spacing: 6px !important;
 }
@@ -63,13 +53,7 @@ ul li a:hover {
     font-weight: 700 !important;
 }
 
-.exploreBtn {
-    background-color: #00A1E4 !important;
-}
 
-.exploreBtn:hover {
-    background-color: blue !important;
-}
 
 .samplepic {
     width: 350px;
@@ -111,6 +95,35 @@ ul li a:hover {
     height: 300px;
 }
 
+
+/**CAROUSEL**/
+.c-item {
+    height: 640px;
+}
+
+.c-item.c-active {
+    height: 710px;
+}
+
+.c-img{
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.carousel-caption h1 {
+    font-size: clamp(35px, 5vw, 65px);
+    font-weight: 600;
+}
+
+.carousel-caption p {
+    font-size: 1.5rem;
+}
+
+
+
+
+/** FOOTER **/
 footer {
     background-color: #310405;
 }
