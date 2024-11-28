@@ -186,11 +186,11 @@ body {
     font-weight: bold;
     font-family: "Poppins", sans-serif;
     color: #fdfdfd;
-    padding-top: 15px; /* Padding on the top */
-    padding-right: 20px; /* Padding on the right */
-    padding-bottom: 5px; /* Padding on the bottom */
-    padding-left: 10px; /* Padding on the left */
-    text-align: center; /* Optional: Centers the text inside the container */
+    padding-top: 15px; 
+    padding-right: 20px; 
+    padding-bottom: 5px; 
+    padding-left: 10px; 
+    text-align: center; 
 }
 
 /** INPUT FILE CUSTOM DESIGN **/
@@ -221,45 +221,41 @@ body {
     margin-left: 10px;
 }
 
-/** Remove box shadows of btn and inputs **/
+
 input:focus,
 .btn:focus {
     box-shadow: none !important;
     outline: none !important;
 }
 
-/* Adjust the icon size */
+
 .btn-icon {
-    font-size: 24px; /* Adjust the icon size */
-    padding: 8px 10px; /* Adjust button padding */
-    border: none; /* Optional: Remove border */
-    color: #000000; /* Set default color for the icon */
+    font-size: 24px; 
+    padding: 8px 10px;
+    border: none; 
+    color: #000000;
     background-color: #ffffff;
     border-radius: 10px;
 }
 
-/* Adjust the button size */
 .btn {
-    font-size: 16px; /* Adjust button text size */
-    border-radius: 8px; /* Optional: Make the button rounded */
-    background-color: #ffffff; /* Optional: Button color */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    font-size: 16px;
+    border-radius: 8px; 
+    background-color: #ffffff; 
+    transition: background-color 0.3s ease;
 }
 
-/* Change the icon color on hover */
+
 .btn:hover .btn-icon {
-    color: #910200; /* Change icon color on hover */
+    color: #910200;
 }
 
-/* Optional: Change button background color on hover */
 
 
-/** Table styles **/
 td, th {
     padding: 16px !important;
 }
 
-/* Responsive */
 
 @media (min-width: 768px) {
     .content {
@@ -269,14 +265,13 @@ td, th {
 
 @media (max-width: 992px) {
     #sidebar {
-        margin-left: -290px; /* Hide the sidebar */
+        margin-left: -290px; 
     }
     #sidebar.collapsed {
-        margin-left: 0; /* Show the sidebar when collapsed class is toggled */
+        margin-left: 0; 
     }
 }
 
-/* Sidebar default hidden on small screens */
 @media (max-width: 768px) {
     #sidebar {
         position: fixed;
@@ -284,19 +279,18 @@ td, th {
         left: 0;
         height: 100%;
         width: 290px;
-        background-color: white; /* Adjust as needed */
-        margin-left: -290px; /* Hide by default */
-        z-index: 1111; /* Ensure it overlays content */
+        background-color: white; 
+        margin-left: -290px; 
+        z-index: 1111;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
 
-    /* Show sidebar when 'collapsed' class is toggled */
+
     #sidebar.collapsed {
         margin-left: 0;
     }
 
-    /* Darken the main content when sidebar is visible */
     .content.overlay-active {
-        background-color: rgba(0, 0, 0, 0.5); /* Dim the background */
+        background-color: rgba(0, 0, 0, 0.5); 
     }
 }
