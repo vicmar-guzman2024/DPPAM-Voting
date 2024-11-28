@@ -135,8 +135,43 @@ window.onload = function () {
 };
 
 
+var schoolOptions = [];
 
+// Capture all school options when the page loads
+document.querySelectorAll('#schoolSelect .school-option').forEach(function(option) {
+    schoolOptions.push(option);
+});
 
+// Handle Parish selection change
+document.getElementById('parishSelect').addEventListener('change', function() {
+    var selectedParishId = this.value; // Get selected parish ID
+    var schoolSelect = document.getElementById('schoolSelect'); // School dropdown
+
+    // Clear the school dropdown and reset it to default
+    schoolSelect.innerHTML = '<option value="">Select School</option>';
+
+    // If no parish is selected, show all schools (or keep it empty if desired)
+    if (!selectedParishId) {
+        schoolSelect.innerHTML = '<option value="">Select School</option>'; // Reset school options
+        schoolOptions.forEach(function(option) {
+            schoolSelect.appendChild(option); // Append all school options
+        });
+        return;
+    }
+
+    // Filter the schools based on selected parish
+    schoolOptions.forEach(function(option) {
+        if (option.getAttribute('data-parish-id') === selectedParishId) {
+            schoolSelect.appendChild(option); // Append matching school options
+        }
+    });
+});
+
+// Trigger filtering when parish is selected
+document.getElementById('parishSelect').addEventListener('change', filterSchools);
+
+// Initial call to populate schools based on any pre-selected parish
+filterSchools();
 
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
 
@@ -202,8 +237,6 @@ document.addEventListener("DOMContentLoaded", function () {
     handleDropdownSelection("prevExpAss", "selected-prevExpAss", "otherPrevExpAss");
     handleDropdownSelection("prefVolAss", "selected-prefVolAss", "otherPrefVolAss");
   });
+
+
   
-  
-
-
-

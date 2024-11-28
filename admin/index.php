@@ -318,15 +318,15 @@ include ("php/dashboard.php");
 
                           <!-- Parish Dropdown -->
                           <div class="col-md-3">
-                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="updateChart();">
+                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="updateChart(); filterSchools();">
                                   <option selected>Name of Parish</option>
                                   <?php while ($row = mysqli_fetch_assoc($sql_result2)) { ?>
-                                      <option class="parish-option" data-city="<?php echo $row['CITY']; ?>" value="<?php echo $row['PARISH_NAME']; ?>">
-                                          <?php echo $row['PARISH_NAME']; ?>
-                                      </option>
-                                  <?php } ?>
+                                    <option class="parish-option" data-city="<?php echo $row['CITY']; ?>" value="<?php echo $row['PARISH_NAME']; ?>">                                         
+                                         <?php echo $row['PARISH_NAME']; ?>
+                                    </option>
+                                  <?php } ?>    
                               </select>
-                          </div>
+                        </div>
                     </div>
 
                 <section class="mb-5 border py-3">
@@ -350,12 +350,16 @@ include ("php/dashboard.php");
 
                     <div class="row mb-5">
                       <div class="col-md-3">
-                        <select class="form-select" aria-label="parish">
+                      <select class="form-select" aria-label="school" id="schoolSelect">
                           <option selected>Name of School</option>
-                          <option value="1">...</option>
-                          <option value="2">...</option>
-                          <option value="3">...</option>
-                        </select>
+                          <?php while ($row = mysqli_fetch_assoc($sql_result6)) { ?>
+                              <option class="school-option" 
+                                      data-parish-id="<?php echo $row['parish_id']; ?>" 
+                                      value="<?php echo $row['assigned_school']; ?>">
+                                  <?php echo $row['assigned_school']; ?>
+                              </option>
+                          <?php } ?>
+                      </select>
                       </div>
                     </div>
 
