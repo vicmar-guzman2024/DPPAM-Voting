@@ -122,6 +122,26 @@ ul li a:hover {
 
 
 
+/**CHOOSE ROLE**/
+
+.card .card-img-top {
+    width: 150px;
+    height: auto;
+}
+
+.roleBox {
+    border-radius: 10px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roleBox:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+
+
+
 
 /** FOOTER **/
 footer {
@@ -145,6 +165,7 @@ footer {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+
 }
 
 
