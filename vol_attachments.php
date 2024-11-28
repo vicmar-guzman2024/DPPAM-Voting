@@ -49,7 +49,7 @@
                 </div>
 
                 <ul class="sidebar-nav mt-5">
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_dashboard.php" class="sidebar-link py-3">
                         <i class="fa-solid fa-house-user"></i>Dashboard
                         </a>
@@ -61,7 +61,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_attachments.php" class="sidebar-link py-3">
                         <i class="fa-solid fa-file"></i>My Attachments
                         </a>

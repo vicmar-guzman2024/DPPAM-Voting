@@ -151,7 +151,7 @@ body {
 }
 
 .sidebar-link i {
-    margin-right: 40px; 
+    margin-right: 20px; 
     font-size: 18px; 
     margin-bottom: 5px;
 }
@@ -182,9 +182,15 @@ body {
 }
 
 .navbar-title{
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
+    color: #fdfdfd;
+    padding-top: 15px; /* Padding on the top */
+    padding-right: 20px; /* Padding on the right */
+    padding-bottom: 5px; /* Padding on the bottom */
+    padding-left: 10px; /* Padding on the left */
+    text-align: center; /* Optional: Centers the text inside the container */
 }
 
 /** INPUT FILE CUSTOM DESIGN **/
@@ -222,10 +228,31 @@ input:focus,
     outline: none !important;
 }
 
-.btn:hover {
-    background-color: rgba(211, 211, 211, .5);
-    border-radius: 5px;
+/* Adjust the icon size */
+.btn-icon {
+    font-size: 24px; /* Adjust the icon size */
+    padding: 8px 10px; /* Adjust button padding */
+    border: none; /* Optional: Remove border */
+    color: #000000; /* Set default color for the icon */
+    background-color: #ffffff;
+    border-radius: 10px;
 }
+
+/* Adjust the button size */
+.btn {
+    font-size: 16px; /* Adjust button text size */
+    border-radius: 8px; /* Optional: Make the button rounded */
+    background-color: #ffffff; /* Optional: Button color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Change the icon color on hover */
+.btn:hover .btn-icon {
+    color: #910200; /* Change icon color on hover */
+}
+
+/* Optional: Change button background color on hover */
+
 
 /** Table styles **/
 td, th {
