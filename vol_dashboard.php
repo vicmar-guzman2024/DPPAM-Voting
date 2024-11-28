@@ -100,71 +100,80 @@
 
                 <div>
                     
-                    <h3 class="text-dark mb-1">Welcome back, Vicmar!</h3>
-                    <p class="text-muted mb-4">Volunteer since: 09/22/2020</p>
+                    <h3 class="message1">Welcome back, Vicmar!</h3>
+                    <p class="message2">Volunteer since: 09/22/2020</p>
 
                     <!--DASHBOARD CONTENT-->
  
-                    <section class="contentBox p-3">
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 dashboard">
+                    <section class="contentBox p-4">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 dashboard">
 
                             <div class="col">
-                                <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
+                                <div class="p-1 d-flex flex-column justify-content-center align-items-center border mb-2">
                                         <div>
-                                            <p class="text-muted">You are currently registered as a:</p>
+                                            <p class="text-muted title1">You are currently registered as a:</p>
                                         </div>
-                                        <div><h4>POLL WATCHER</h4></div>
+                                        <div><h4 class="title-1">POLL WATCHER</h4></div>
                                   </div>
 
-                                  <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
-                                    <div>
-                                        <img src="img/pollWatcher.png" alt="" style="width: 100%; height: auto;" class="img-fluid">
+                                  <div class="p-2 d-flex flex-row justify-content-between align-items-center border gap-3">
+                                        <!-- Image Section -->
+                                        <div style="flex-shrink: 0;">
+                                            <img src="img/1st.png" alt="" class="img-fluid" style="width: 120px; height: auto;">
+                                        </div>
+                                        
+                                        <!-- Text Section -->
+                                        <div>
+                                            <p class="m-0">As a <Strong style="font-size: 15px;">Poll Watcher</Strong>, you play a crucial role in ensuring fair and transparent elections. You’ll observe the voting process, report any irregularities, and help maintain a secure environment at the polling station.</p>
+                                        </div>
                                     </div>
-                                    <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
-                              </div>
+
                             </div>
 
                             <div class="col">
-                              <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
+                              <div class="p-1 d-flex flex-column justify-content-center align-items-center border mb-2">
                                       <div>
-                                          <p class="text-muted">You assigned school:</p>
+                                          <p class="text-muted title1">You assigned school:</p>
                                       </div>
-                                      <div><h4 class="text-center">Quezon Elementary School</h4></div>
+                                      <div><h4 class="text-center title-2">Quezon Elementary School</h4></div>
                                 </div>
 
                                 <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
                                   <div>
-                                      <img src="img/assignedSchool.png" alt="" style="width: 100%; height: auto;">
+                                      <img src="img/2nd.png" class="img-fluid" style="width: 200px; height: auto;">
                                   </div>
-                                  <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
+                                  <div><p>This is your designated location for Poll Watcher duties.
+                                            <br>Instructions:
+                                            <br><Strong style="font-size: 15px;">Arrive 30 minutes early.</Strong>
+                                            <br><strong style="font-size: 15px;">Check in with polling staff.</strong>
+                                            <br><strong style="font-size: 15px;">Observe voting, report issues, and stay neutral.</strong>
+                                            <br><strong style="font-size: 15px;">Submit reports after polls close.</strong>
+                                        </p></div>
                             </div>
                           </div>
 
                           <div class="col">
-                            <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
+                            <div class="p-1 d-flex flex-column justify-content-center align-items-center border mb-2">
                                     <div>
-                                        <p class="text-muted">Your upcoming scheduled event:</p>
+                                        <p class="text-muted title1">Your scheduled event:</p>
                                     </div>
-                                    <div><h4>Election Day Poll Watching</h4></div>
+                                    <div><h4 class="title-3">National Election Day</h4></div>
                               </div>
 
                               <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
                                 <div>
-                                    <img src="img/elecDay.png" alt="" style="width: 100%; height: auto;">
+                                    <img src="img/3rd.png" alt="" style="width: 120px; height: auto;">
                                 </div>
-                                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
+                                <div><p>Instructions:
+                                    <br><strong style="font-size: 15px;" >Date: March 25, 2025</strong>
+                                    <br><Strong style="font-size: 15px;">Time: 8:00 am (Arrive 30 minutes early)</Strong>
+                                    <br><strong style="font-size: 15px;">Check-in attendance when you arrive.</strong>
+                                    <br><strong style="font-size: 15px;">Follow your role (Poll Watcher, Voter Assistance, etc.).</strong></p></div>
                           </div>
                         </div>
 
-                            
-                            
-
                         </div>
                     </section>
-
-                    
-                      
-                    
                 </div>
             </main>
         </div>

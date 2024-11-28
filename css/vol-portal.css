@@ -1,5 +1,5 @@
 /* Importing both Poppins and Abhaya Libre fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Abhaya+Libre:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Abhaya+Libre:wght@400;500;600;700&display=swap');
 
 /* Global reset */
 *,
@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif !important; 
+    font-family: 'Roboto', sans-serif !important; 
     margin: 0 !important;
     background-color: #f0f0f0 !important;
 }
@@ -47,16 +47,16 @@ body {
 }
 
 .profile-name{
-    font-family: 'Abhaya Libre', serif; 
-    font-size: 25px;
+    font-family: 'Cambria', serif; 
+    font-size: 20px;
     font-weight: 800;
     margin: 0;
     text-align: center;
 }
 
 .profile-email{
-    font-family: 'Poppins', sans-serif; 
-    font-size: 13px; 
+    font-family: 'Cambria', sans-serif; 
+    font-size: 14px; 
     font-weight: 400;
     color: #606060; 
     margin: 0; 
@@ -109,11 +109,11 @@ body {
     position: relative;
     overflow: hidden;
     display: block; 
-    background-color: #910200;
+    background-color: #2d7ec9;
 }
 
 .sidebar-item1:hover {
-    background-color: #910200; 
+    background-color: #2d7ec9; 
 }
 
 .sidebar-item1 .sidebar-link {
@@ -122,15 +122,15 @@ body {
     padding: 10px 15px;
     color: #ffffff; 
     text-decoration: none; 
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Cambria', sans-serif; 
     font-weight: 500; 
-    font-size: 15px; 
+    font-size: 17px; 
     transition: color 0.0s ease-in-out; 
     margin-left: 10px;
 }
 
 .sidebar-item:hover {
-    background-color: #910200; 
+    background-color: #2d7ec9; 
 }
 
 .sidebar-link {
@@ -139,9 +139,9 @@ body {
     padding: 10px 15px;
     color: #000; 
     text-decoration: none; 
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Cambria', sans-serif; 
     font-weight: 500; 
-    font-size: 15px; 
+    font-size: 17px; 
     transition: color 0.0s ease-in-out; 
     margin-left: 10px;
 }
@@ -153,7 +153,6 @@ body {
 .sidebar-link i {
     margin-right: 20px; 
     font-size: 18px; 
-    margin-bottom: 5px;
 }
 
 .sidebar-nav {
@@ -171,20 +170,20 @@ body {
     background-color: #FFFFFF;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(49, 57, 66, 0.5);
-
 }
 
+
 .navbar{
-    background-color: #187cba;
+    background-color: #379BF6;
     box-shadow: 0 0 10px 0 rgba(49, 57, 66, 0.5);
-    /* border-bottom: 1px solid #000000 !important;  */
+    border-bottom: 2px solid #3185d4 !important; 
 
 }
 
 .navbar-title{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "Poppins", sans-serif;
+    font-size: 27px;
+    font-weight:500;
+    font-family: "Cambria", sans-serif;
     color: #fdfdfd;
     padding-top: 15px; 
     padding-right: 20px; 
@@ -192,6 +191,23 @@ body {
     padding-left: 10px; 
     text-align: center; 
 }
+
+.message1 {
+    font-family: 'Cambria', sans-serif; 
+    font-size: 30px; 
+    font-weight: normal; 
+    color: #333333; 
+    margin-bottom: 5px; 
+}
+
+.message2 {
+    font-family: "Roboto", serif; 
+    font-size: 16px; 
+    font-weight: normal;
+    color: #6c757d;
+    margin-bottom: 20px; 
+}
+
 
 /** INPUT FILE CUSTOM DESIGN **/
 .custom-file-input {
@@ -235,7 +251,7 @@ input:focus,
     border: none; 
     color: #000000;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 .btn {
@@ -245,16 +261,62 @@ input:focus,
     transition: background-color 0.3s ease;
 }
 
+.title1, .title-1, .title-2, .title-3 {
+    margin: 0px; /* Remove any margin */
+    padding: 0px; /* Remove any padding */
+}
 
-.btn:hover .btn-icon {
-    color: #910200;
+.title1{
+    font-family: "Cambria", sans-serif;
+    margin-bottom: 10px; /* Reduce space below the paragraph */
+    margin-top: 5px;
+}
+
+.title-1{
+    font-family: "Roboto", sans-serif;
+    color: #9541ad;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.title-2{
+    font-family: "Roboto", sans-serif;
+    color: #425bc8; 
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.title-3{
+    font-family: "Roboto", sans-serif;
+    color: #F38F2C; 
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 
 
+.p-2 div p {
+    font-family: 'Cambria', sans-serif; /* Make sure this matches the font family from Google Fonts */
+    margin: 0;  /* Removes the default margin of the paragraph */
+    max-width: 600px; /* Limit the width of the text */
+    word-wrap: break-word; /* Prevent text overflow */
+}
+
+.btn:hover .btn-icon {
+    color: #7b7b7b;
+}
+
+
+
+/* REGISTRATION INFO */
 td, th {
     padding: 16px !important;
 }
+
+
 
 
 @media (min-width: 768px) {
