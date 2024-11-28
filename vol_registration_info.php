@@ -78,55 +78,67 @@
     <!-- Main Content -->
     <div class="main">
       <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
-        <div class="d-flex flex-row justify-content-center align-items-center">
+          <div class="d-flex flex-row justify-content-center align-items-center">
             <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
-            <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
-        </div>
+                  <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
+          </div>
 
-        <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-        <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button> 
-        </div>
+          <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+            <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button> 
+          </div>
       </nav>
 
       <main class="container-fluid p-5">
         <div>
-          <h3 class="text-dark mb-4">Volunteer Form Information</h3>
+          <h3 class="message-1">Volunteer Registration Information</h3>
 
           <!-- Table -->
-          <section class="contentBox table-responsive p-3">
-            <table class="table align-middle">
-              <thead>
-                <tr>
-                  <th scope="col">Status</th>
-                  <th scope="col">Registration Process</th>
-                  <th scope="col">Activity Log</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
+          <section class="contentBox1 p-3">
+            <div class="row headers mb-3">
+                <div class="col-3 text-center"><strong>Status</strong></div>
+                <div class="col-3 text-center"><strong>Registration Process</strong></div>
+                <div class="col-3 text-center"><strong>Activity Log</strong></div>
+                <div class="col-3 text-center"><strong>Action</strong></div>
+            </div>
 
-              <tbody>
-                <tr>
-                  <th scope="row" class="p-3"><span class="bg-success text-white p-2 rounded">Complete</span></th>
-                  <td>Personal Details</td>
-                  <td><span class="text-muted">Modified at: </span><strong>10/22/2024</strong></td>
-                  <td><a href="personal_details.html"><i class="bi bi-pencil-square fs-5"></i></a></td>
-                </tr>
+            <div class="row rowBox">
+                <div class="col-3 text-center">
+                    <span class="bg-success text-white status rounded">Complete</span>
+                </div>
+                <div class="col-3 text-center pd1">Personal Details</div>
+                <div class="col-3 text-center">
+                    <span class="text-muted pd">Modified at:</span> <strong>10/22/2024</strong>
+                </div>
+                <div class="col-3 text-center">
+                    <a href="personal_details.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                </div>
+            </div>
 
-                <tr>
-                  <th scope="row" class="p-3"><span class="bg-danger text-white p-2 rounded">Incomplete</span></th>
-                  <td>Assignments</td>
-                  <td><span class="text-muted">Modified at: </span><strong>10/22/2024</strong></td>
-                  <td><a href="assignments.html"><i class="bi bi-pencil-square fs-5"></i></a></td>
-                </tr>
+            <div class="row rowBox">
+                <div class="col-3 text-center">
+                    <span class="bg-danger text-white status rounded">Incomplete</span>
+                </div>
+                <div class="col-3 text-center pd1">Assignments</div>
+                <div class="col-3 text-center">
+                    <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
+                </div>
+                <div class="col-3 text-center">
+                    <a href="assignments.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                </div>
+            </div>
 
-                <tr>
-                  <th scope="row" class="p-3"><span class="bg-success text-white p-2 rounded">Complete</span></th>
-                  <td>Attached Documents</td>
-                  <td><span class="text-muted">Modified at: </span><strong>10/22/2024</strong></td>
-                  <td><a href="attached_documents.html"><i class="bi bi-pencil-square fs-5"></i></a></td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="row rowBox">
+                <div class="col-3 text-center">
+                    <span class="bg-success text-white status rounded">Complete</span>
+                </div>
+                <div class="col-3 text-center pd1">Attached Documents</div>
+                <div class="col-3 text-center">
+                    <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
+                </div>
+                <div class="col-3 text-center">
+                    <a href="attached_documents.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                </div>
+            </div>
           </section>
         </div>
       </main>
