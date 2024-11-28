@@ -50,7 +50,7 @@
 
                 <div class="row mb-4">
                   <div class="col">
-                    <input type="radio" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Remember me</label>
                   </div>
                   <div class="col">
@@ -60,7 +60,17 @@
                   <div>
                     <button class="btn btn-primary w-100">Login</button>
                   </div>
+
+                  <hr class="text-dark mt-5">
+                  <div class="col d-flex flex-row justify-content-center align-items-center">
+                    
+                    <p>Don't have an account? <a href="volunteer_sign_up.html" class="text-primary">Sign Up</a></p>
+                  </div>
+
+
                 </form>
+
+
 
     </div>
 
