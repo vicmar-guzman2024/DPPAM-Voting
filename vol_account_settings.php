@@ -22,9 +22,9 @@
 
   
   
- 
 
-  <title>Volunteer's Portal</title>
+
+  <title>Account Settings</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@
                 </div>
 
                 <ul class="sidebar-nav mt-5">
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_dashboard.php" class="sidebar-link py-3">
                         <i class="fa-solid fa-house-user"></i>Dashboard
                         </a>
@@ -67,7 +67,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
                         <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
@@ -86,7 +86,7 @@
         <div class="main">
 
             <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
-                <div class="d-flex flex-row justify-content-center align-items-center">
+                 <div class="d-flex flex-row justify-content-center align-items-center">
                     <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
                     <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
                 </div>
@@ -96,64 +96,77 @@
                 </div>
             </nav>
 
-            <main class="container-fluid p-5">
+            <main class="container p-5">
 
                 <div>
                     
-                    <h3 class="text-dark mb-1">Welcome back, Vicmar!</h3>
-                    <p class="text-muted mb-4">Volunteer since: 09/22/2020</p>
+                    <h3 class="text-dark mb-4">Account Settings</h3>
 
                     <!--DASHBOARD CONTENT-->
- 
-                    <section class="contentBox p-3">
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-2 dashboard">
 
-                            <div class="col">
-                                <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
+                    <section class="mb-5 p-2 p-md-3 contentBox">
+
+                        <div class="row">
+                            <div class="col d-flex flex-column justify-content-center align-items-center gap-3 w-100">
+
+                                <!--Edit Profile-->
+                                <a href="edit_profile.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
+                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                         <div>
-                                            <p class="text-muted">You are currently registered as a:</p>
+                                            <i class="bi bi-person fs-5"></i>
                                         </div>
-                                        <div><h4>POLL WATCHER</h4></div>
-                                  </div>
-
-                                  <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
-                                    <div>
-                                        <img src="img/pollWatcher.png" alt="" style="width: 100%; height: auto;" class="img-fluid">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold text-start">Edit Profile</span>
+                                            <span class="text-muted">Change profile name, number, email.</span>
+                                        </div>
                                     </div>
-                                    <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
-                              </div>
-                            </div>
 
-                            <div class="col">
-                              <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
-                                      <div>
-                                          <p class="text-muted">You assigned school:</p>
-                                      </div>
-                                      <div><h4 class="text-center">Quezon Elementary School</h4></div>
+                                    <div>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </div>
+                                </a>
+
+                                <!--Change password-->
+                                <a href="change_pass.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
+                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                        <div>
+                                            <i class="bi bi-lock fs-5"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold text-start">Change Password</span>
+                                            <span class="text-muted">Update and strengthen account security.</span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </div>
+                                </a>
+
+                                <!--Notification-->
+                                <div class="d-flex flex-row justify-content-between align-items-center ps-3 w-100">
+                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                        <div>
+                                            <i class="bi bi-bell fs-5"></i>
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold text-start">Notification</span>
+                                            <span class="text-muted">Customize your notification preferences.</span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <!-- Toggle Button -->
+                                         <button type="button" class="btn" onclick="toggleOnOff()" id="toggleButton">
+                                            <i id="toggleIcon" class="bi bi-toggle-on"></i>
+                                        </button>
+                                    </div>
                                 </div>
 
-                                <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
-                                  <div>
-                                      <img src="img/assignedSchool.png" alt="" style="width: 100%; height: auto;">
-                                  </div>
-                                  <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
+                                
+
+                                
                             </div>
-                          </div>
-
-                          <div class="col">
-                            <div class="p-2 d-flex flex-column justify-content-center align-items-center border mb-2">
-                                    <div>
-                                        <p class="text-muted">Your upcoming scheduled event:</p>
-                                    </div>
-                                    <div><h4>Election Day Poll Watching</h4></div>
-                              </div>
-
-                              <div class="p-2 d-flex flex-row justify-content-center align-items-center border gap-2">
-                                <div>
-                                    <img src="img/elecDay.png" alt="" style="width: 100%; height: auto;">
-                                </div>
-                                <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis officiis excepturi iure veniam odio saepe sequi doloremque vero, veritatis et.</p></div>
-                          </div>
                         </div>
 
                             
