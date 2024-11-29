@@ -134,47 +134,42 @@ window.onload = function () {
     updateChart(); // Initialize chart
 };
 
+// Store all school options on page load
+const schoolOptions = Array.from(document.querySelectorAll('#schoolSelect .school-option'));
 
-var schoolOptions = [];
+// Function to filter schools based on selected parish
+function filterSchools() {
+    const parishSelect = document.getElementById('parishSelect'); // Parish dropdown
+    const selectedParishName = parishSelect.value; // Selected Parish Name
+    const schoolSelect = document.getElementById('schoolSelect'); // School dropdown
 
-// Capture all school options when the page loads
-document.querySelectorAll('#schoolSelect .school-option').forEach(function(option) {
-    schoolOptions.push(option);
-});
+    // Clear the school dropdown completely and reset it to the default placeholder
+    schoolSelect.innerHTML = ''; // Clear all options
+    const defaultOption = document.createElement('option');
+    defaultOption.selected = true;
+    defaultOption.value = '';
+    defaultOption.textContent = 'Name of School';
+    schoolSelect.appendChild(defaultOption); // Add the default option
 
-// Handle Parish selection change
-document.getElementById('parishSelect').addEventListener('change', function() {
-    var selectedParishId = this.value; // Get selected parish ID
-    var schoolSelect = document.getElementById('schoolSelect'); // School dropdown
-
-    // Clear the school dropdown and reset it to default
-    schoolSelect.innerHTML = '<option value="">Select School</option>';
-
-    // If no parish is selected, show all schools (or keep it empty if desired)
-    if (!selectedParishId) {
-        schoolSelect.innerHTML = '<option value="">Select School</option>'; // Reset school options
-        schoolOptions.forEach(function(option) {
-            schoolSelect.appendChild(option); // Append all school options
-        });
-        return;
+    // If no parish is selected, stop here
+    if (!selectedParishName) {
+        return; // Dropdown will only display "Name of School"
     }
 
-    // Filter the schools based on selected parish
-    schoolOptions.forEach(function(option) {
-        if (option.getAttribute('data-parish') === selectedParishId) {
-            schoolSelect.appendChild(option); // Append matching school options
+    // Filter and append schools linked to the selected parish
+    schoolOptions.forEach(option => {
+        if (option.getAttribute('data-parish') === selectedParishName) {
+            schoolSelect.appendChild(option.cloneNode(true)); // Append matching options
         }
     });
-});
+}
 
-// Trigger filtering when parish is selected
+// Attach filterSchools function to the parish dropdown's onchange event
 document.getElementById('parishSelect').addEventListener('change', filterSchools);
 
-// Initial call to populate schools based on any pre-selected parish
-filterSchools();
+
 
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
-
 document.addEventListener("DOMContentLoaded", function () {
     // Function to handle dropdown selection and display
     function handleDropdownSelection(dropdownId, displayContainerId, othersInputId) {
