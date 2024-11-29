@@ -161,7 +161,7 @@ document.getElementById('parishSelect').addEventListener('change', function() {
 
     // Filter the schools based on selected parish
     schoolOptions.forEach(function(option) {
-        if (option.getAttribute('data-parish-id') === selectedParishId) {
+        if (option.getAttribute('data-parish') === selectedParishId) {
             schoolSelect.appendChild(option); // Append matching school options
         }
     });

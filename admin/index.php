@@ -354,8 +354,8 @@ include ("php/dashboard.php");
                           <option selected>Name of School</option>
                           <?php while ($row = mysqli_fetch_assoc($sql_result6)) { ?>
                               <option class="school-option" 
-                                      data-parish-id="<?php echo $row['parish_id']; ?>" 
-                                      value="<?php echo $row['assigned_school']; ?>">
+                                      data-parish="<?php echo $row['parish_id']; ?>" 
+                                      value="<?php echo $row['parish_id']; ?>">
                                   <?php echo $row['assigned_school']; ?>
                               </option>
                           <?php } ?>
