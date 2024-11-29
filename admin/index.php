@@ -306,7 +306,7 @@ include ("php/dashboard.php");
 
                           <!-- City Dropdown -->
                           <div class="col-md-3 mb-3 mb-md-0">
-                              <select class="form-select" aria-label="city" id="citySelect" onchange="filterParishes(); updateChart();">
+                              <select class="form-select" aria-label="city" id="citySelect" onchange="filterParishes(); filterSchools(); updateChart();">
                                   <option selected>Select City</option>
                                   <?php while ($row = mysqli_fetch_assoc($sql_result)) { ?>
                                       <option value="<?php echo $row['CITY']; ?>">
@@ -318,7 +318,7 @@ include ("php/dashboard.php");
 
                           <!-- Parish Dropdown -->
                           <div class="col-md-3">
-                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="updateChart();">
+                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="filterSchools(); updateChart();">
                                   <option selected>Name of Parish</option>
                                   <?php while ($row = mysqli_fetch_assoc($sql_result2)) { ?>
                                     <option class="parish-option" data-city="<?php echo $row['CITY']; ?>" value="<?php echo $row['PARISH_NAME']; ?>">                                         
@@ -350,7 +350,7 @@ include ("php/dashboard.php");
 
                     <div class="row mb-5">
                       <div class="col-md-3">
-                      <select class="form-select" aria-label="school" id="schoolSelect">
+                      <select class="form-select" aria-label="school" id="schoolSelect" onchange="filterSchools();">
                           <option selected value="">Name of School</option>
                           <?php while ($row = mysqli_fetch_assoc($sql_result4)) { ?>
                               <option class="school-option" 

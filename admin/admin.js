@@ -53,6 +53,37 @@ function filterParishes() {
     }
 }
 
+// Capture all school options when the page loads
+const schoolOptions = Array.from(document.querySelectorAll('#schoolSelect .school-option'));
+
+// Function to filter schools based on selected parish
+function filterSchools() {
+    const parishSelect = document.getElementById('parishSelect'); // Parish dropdown
+    const selectedParishName = parishSelect.value; // Selected Parish Name
+    const citySelect = document.getElementById('citySelect'); // City dropdown
+    const selectedCityName = citySelect.value; // Selected City Name
+    const schoolSelect = document.getElementById('schoolSelect'); // School dropdown
+
+    // Clear the school dropdown and reset to default
+    schoolSelect.innerHTML = '<option selected>Name of School</option>';
+
+    // If a city is selected, filter the schools based on the selected parish
+    schoolOptions.forEach(option => {
+        // Only add schools that are linked to the selected parish
+        if (option.getAttribute('data-parish') === selectedParishName) {
+            schoolSelect.appendChild(option); // Add matching school options
+        }
+    });
+
+    // If no parish is selected or it's set to the default, show only the default school option
+    if (!selectedParishName || selectedParishName === "Name of Parish ") {
+        schoolSelect.innerHTML = '<option selected>Name of School</option>'; // Reset to default
+    }
+    if (!selectedCityName || selectedCityName === "Select City") {
+        schoolSelect.innerHTML = '<option selected>Name of School</option>'; // Reset to default
+    }
+}
+
 // Update Chart for city and parish dropdown
 function updateChart() {
     var selectedCity = document.getElementById('citySelect').value;
@@ -132,44 +163,11 @@ function updateChart() {
 window.onload = function () {
     filterParishes(); // Ensure Parish dropdown is properly set
     updateChart(); // Initialize chart
+    filterSchools();
 };
 
-// Store all school options on page load
-const schoolOptions = Array.from(document.querySelectorAll('#schoolSelect .school-option'));
-
-// Function to filter schools based on selected parish
-function filterSchools() {
-    const parishSelect = document.getElementById('parishSelect'); // Parish dropdown
-    const selectedParishName = parishSelect.value; // Selected Parish Name
-    const schoolSelect = document.getElementById('schoolSelect'); // School dropdown
-
-    // Clear the school dropdown completely and reset it to the default placeholder
-    schoolSelect.innerHTML = ''; // Clear all options
-    const defaultOption = document.createElement('option');
-    defaultOption.selected = true;
-    defaultOption.value = '';
-    defaultOption.textContent = 'Name of School';
-    schoolSelect.appendChild(defaultOption); // Add the default option
-
-    // If no parish is selected, stop here
-    if (!selectedParishName) {
-        return; // Dropdown will only display "Name of School"
-    }
-
-    // Filter and append schools linked to the selected parish
-    schoolOptions.forEach(option => {
-        if (option.getAttribute('data-parish') === selectedParishName) {
-            schoolSelect.appendChild(option.cloneNode(true)); // Append matching options
-        }
-    });
-}
-
-// Attach filterSchools function to the parish dropdown's onchange event
-document.getElementById('parishSelect').addEventListener('change', filterSchools);
-
-
-
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
+
 document.addEventListener("DOMContentLoaded", function () {
     // Function to handle dropdown selection and display
     function handleDropdownSelection(dropdownId, displayContainerId, othersInputId) {
