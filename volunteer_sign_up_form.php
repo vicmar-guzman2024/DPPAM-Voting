@@ -70,13 +70,13 @@
             </button>
         </div>
         <div id="password-match-message" class="mt-2"></div> <!-- Password match message -->
-      
-
+       
+                                
       
         <div class=" d-grid gap-2 mt-3">
           <button type="submit" class="btn btn-primary">Sign Up</button>
         </div>
-
+ 
         <div class="d-grid mt-3">
             <p class="text-center">Already have an account? <a href="vol_login.php" class="text-primary">Login</a></p>
         </div>
