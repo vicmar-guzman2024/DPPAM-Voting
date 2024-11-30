@@ -38,7 +38,7 @@ body {
     width: 40px; 
     height: 40px; 
     margin-top: 60px;
-    margin-left: -35px;
+    margin-left: -50px;
 }
 
 .editProfile i {
@@ -366,6 +366,7 @@ input:focus,
 .rowBox a i:hover {
     color: #0056b3;
 }
+
 
 
 
