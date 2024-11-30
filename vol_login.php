@@ -34,41 +34,38 @@
         
 
         
-            <form class="col-lg-5 col-12 p-4 rightContainer me-5"> 
+        <form class="col-lg-5 col-12 p-4 rightContainer me-5" action="php/sign_in_process.php" method="POST">
+    <h4 class="mb-4">Sign In</h4>
 
-                <h4 class="mb-4">Sign In</h4>
-                
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
 
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-                </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+    </div>
 
-                <div class="row mb-4">
-                  <div class="col">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                  </div>
-                  <div class="col">
-                    <a href="" class="float-end">Forgot Password?</a>
-                  </div>
-                </div>
-                  <div>
-                    <button class="btn btn-primary w-100">Login</button>
-                  </div>
+    <div class="row mb-4">
+        <div class="col">
+            <input type="checkbox" class="form-check-input" name="remember_me" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        </div>
+        <div class="col">
+            <a href="" class="float-end">Forgot Password?</a>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-primary w-100" type="submit">Login</button>
+    </div>
 
-                  <hr class="text-dark mt-5">
-                  <div class="col d-flex flex-row justify-content-center align-items-center">
-                    
-                    <p>Don't have an account? <a href="volunteer_sign_up_form.php" class="text-primary">Sign Up</a></p>
-                  </div>
+    <hr class="text-dark mt-5">
+    <div class="col d-flex flex-row justify-content-center align-items-center">
+        <p>Don't have an account? <a href="volunteer_sign_up_form.php" class="text-primary">Sign Up</a></p>
+    </div>
+</form>
 
-
-                </form>
 
 
     </div>
