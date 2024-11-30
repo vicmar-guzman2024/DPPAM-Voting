@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collect and sanitize form inputs
     $firstname = htmlspecialchars(trim($_POST['firstname']));
@@ -62,7 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssss", $firstname, $lastname, $email, $phone_num, $hashed_password, $role);
 
         if ($stmt->execute()) {
-            echo "Registration successful. Role: $role. <a href='../vol_login.php'>Login here</a>";
+            // Set success message in session and redirect
+            $_SESSION['success_message'] = "Account created successfully. You can now log in.";
+            header("Location: ../vol_login.php"); // Redirect to the login page
+            exit();
         } else {
             echo "Error: " . $stmt->error;
         }

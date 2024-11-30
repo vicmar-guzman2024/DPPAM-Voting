@@ -1,3 +1,20 @@
+<?php
+// Start the session
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: vol_login.php"); // Redirect to login page if not logged in
+    exit;
+}
+
+// Retrieve user details from the session
+$firstname = $_SESSION['firstname'];
+$lastname = $_SESSION['lastname'];
+$username = $_SESSION['username'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +60,8 @@
                 </div>
 
                 <div>
-                    <h4 class="profile-name">Vicmar M. Guzman</h4>
-                    <p class="profile-email">vicmarguzman@gmail.com</p>
+                <h4 class="profile-name"><?php echo htmlspecialchars($firstname . ' ' . $lastname); ?></h4>
+                <p class="profile-email"><?php echo htmlspecialchars($username); ?></p>
                 </div>
                 </div>
 
@@ -100,7 +117,7 @@
 
                 <div>
                     
-                    <h3 class="message1">Welcome back, Vicmar!</h3>
+                    <h3 class="message1">Welcome back, <?php echo htmlspecialchars($firstname); ?>!</h3>
                     <p class="message2">Volunteer since: 09/22/2020</p>
 
                     <!--DASHBOARD CONTENT-->
