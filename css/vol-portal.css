@@ -367,6 +367,29 @@ input:focus,
     color: #0056b3;
 }
 
+/** PROFILE IN MODAL **/
+#userProfileImageModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 0;
+}
+
+#userProfileImageModal img {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 0px;
+    width: 880px;
+}
+
+.profileImgModal {
+    max-width: 100%; 
+    max-height: 100%;
+    object-fit: contain;
+    margin: auto;
+}
+
 
 
 
