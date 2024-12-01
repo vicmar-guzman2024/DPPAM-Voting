@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Ensure the role is valid
-    $valid_roles = ['Volunteer', 'Coordinator']; // Define allowed roles
+    $valid_roles = ['Volunteer', 'Coordinator', 'Admin']; // Define allowed roles
     if (!in_array($role, $valid_roles)) {
         $errors[] = "Invalid role specified.";
     }
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->execute()) {
             // Set success message in session and redirect
             $_SESSION['success_message'] = "Account created successfully. You can now log in.";
-            header("Location: ../vol_login.php"); // Redirect to the login page
+            header("Location: ../user_login.php"); // Redirect to the login page
             exit();
         } else {
             echo "Error: " . $stmt->error;

@@ -29,59 +29,72 @@
   <section class="signInContainer p-5" style="height: 100%;">
     <h1 class="text-center">DPPAM Voting</h1>
 
-    <form class="container mt-5 py-5 px-4 shadow-lg rounded" style="max-width: 500px; background-color: #f9f9f9;">
-        <div class="d-flex flex-column justify-content-start align-items-center mb-3">
-            <div class="d-flex flex-row justify-content-center align-items-center gap-5 mb-3">
-                <img src="img/DPPAMLOGO.png" alt="" height="80px" width="80px">
-                <h2>Sign Up</h2>
+    <form action="php/sign_up_process.php" method="POST" 
+    class="container mt-5 py-5 px-4 shadow-lg rounded" 
+    style="max-width: 500px; background-color: #f9f9f9;">
+
+    <div class="d-flex flex-column justify-content-start align-items-center mb-3">
+        <div class="d-flex flex-row justify-content-center align-items-center gap-5 mb-3">
+            <img src="img/DPPAMLOGO.png" alt="" height="80px" width="80px">
+            <h2>Sign Up</h2>
             <img src="img/PPCRVLOGO.png" alt="" height="80px" width="80px">
-            
-            </div>
         </div>
-        
-        <div class="mb-3">
-          <input type="text" class="form-control" id="firstname" placeholder="Firstname">
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="lastname" placeholder="Lastname">
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" id="email" placeholder="Email address">
-        </div>
+    </div>
 
-        <div class="mb-3">
-            <input type="tel" class="form-control" id="phone" placeholder="Phone: (XXXX-XXX-YYYY)" 
-                   maxlength="13" pattern="{3}-\d{3}-\d{4}" inputmode="numeric" 
-                   oninput="validatePhoneInput(this)" />
-        </div>
+    <!-- Hidden Role Field -->
+    <input type="hidden" class="form-control" name="role" value="Coordinator">
 
-        <div class="mb-3 position-relative">
-            <input type="password" class="form-control" id="password" placeholder="Password" oninput="checkPasswordStrength()">
-            <button type="button" class="btn position-absolute top-50 start-100 translate-middle" style="margin-left: -25px;" onclick="togglePassword('password', 'currentIcon')">
-                <i id="currentIcon" class="bi bi-eye-slash"></i>
-            </button>
-        </div>
-        <div id="password-strength" class="mt-2 text-danger"></div> <!-- Password strength indicator -->
-        
-        <div class="mb-3 position-relative">
-            <input type="password" class="form-control py-2" id="confirmPass" placeholder="Confirm password" oninput="checkPasswordsMatch()">
-            <button type="button" class="btn position-absolute top-50 start-100 translate-middle" style="margin-left: -25px;" onclick="togglePassword('confirmPass', 'newIcon')">
-                <i id="newIcon" class="bi bi-eye-slash"></i>
-            </button>
-        </div>
-        <div id="password-match-message" class="mt-2"></div> <!-- Password match message -->
-      
-        
-      
-        <div class=" d-grid gap-2 mt-3">
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-        </div>
+    <!-- First Name Input -->
+    <div class="mb-3">
+        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Firstname" required>
+    </div>
 
-        <div class="d-grid mt-3">
-            <hr class="text-dark">
-            <p class="text-center">Already have an account? <a href="vol_login.php" class="text-primary">Login</a></p>
-        </div>
-      </form>
+    <!-- Last Name Input -->
+    <div class="mb-3">
+        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Lastname" required>
+    </div>
+
+    <!-- Phone Number Input -->
+    <div class="mb-3">
+        <input type="tel" class="form-control" name="phone_num" id="phone" placeholder="Phone: (XXXX-XXX-YYYY)" 
+               maxlength="13" pattern="\d{4}-\d{3}-\d{4}" inputmode="numeric" required 
+               oninput="validatePhoneInput(this)">
+    </div>
+
+    <!-- Email Input -->
+    <div class="mb-3">
+        <input type="email" class="form-control" name="email" id="email" placeholder="Email address" required>
+    </div>
+
+    <!-- Password Input -->
+    <div class="mb-3 position-relative">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" oninput="checkPasswordStrength()" required>
+        <button type="button" class="btn position-absolute top-50 start-100 translate-middle" style="margin-left: -25px;" onclick="togglePassword('password', 'currentIcon')">
+            <i id="currentIcon" class="bi bi-eye-slash"></i>
+        </button>
+    </div>
+    <div id="password-strength" class="text-danger"></div> <!-- Password strength indicator -->
+
+    <!-- Confirm Password Input -->
+    <div class="mb-3 position-relative">
+        <input type="password" class="form-control py-2" name="confirm_password" id="confirmPass" placeholder="Confirm password" oninput="checkPasswordsMatch()" required>
+        <button type="button" class="btn position-absolute top-50 start-100 translate-middle" style="margin-left: -25px;" onclick="togglePassword('confirmPass', 'newIcon')">
+            <i id="newIcon" class="bi bi-eye-slash"></i>
+        </button>
+    </div>
+    <div id="password-match-message" class="mt-2"></div> <!-- Password match message -->
+
+    <!-- Submit Button -->
+    <div class="d-grid gap-2 mt-3">
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+
+    <!-- Link to Login -->
+    <div class="d-grid mt-3">
+        <p class="text-center">Already have an account? <a href="user_login.php" class="text-primary">Login</a></p>
+    </div>
+</form>
+
 
       
       
@@ -180,7 +193,6 @@
     }
     
 </script>
-
   
 
 

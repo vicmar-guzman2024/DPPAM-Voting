@@ -6,6 +6,6 @@ session_unset();
 session_destroy();
 
 // Redirect to the login page
-header("Location: vol_login.php");
+header("Location: user_login.php");
 exit();
 ?>

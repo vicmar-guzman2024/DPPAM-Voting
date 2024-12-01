@@ -28,7 +28,7 @@ unset($_SESSION['success_message']); // Clear message after use
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-  <title>Volunteers - Sign In</title>
+  <title>Sign In</title>
 </head>
 
 <body>

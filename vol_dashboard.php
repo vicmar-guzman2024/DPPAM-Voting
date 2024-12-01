@@ -5,7 +5,7 @@ include('php/condb.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: vol_login.php"); // Redirect to login page if not logged in
+    header("Location: user_login.php"); // Redirect to login page if not logged in
     exit;
 }
 

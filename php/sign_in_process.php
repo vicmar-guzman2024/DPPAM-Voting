@@ -13,15 +13,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($password)) {
         $_SESSION['error_message'] = "Please fill in all required fields.";
         $_SESSION['username_input'] = $username; // Store the username
-        header("Location: ../vol_login.php");
+        header("Location: ../user_login.php");
         exit;
     }
 
     // Database credentials
     $servername = "localhost";
-    $username_db = "root"; 
-    $password_db = "";     
-    $dbname = "dppam";     
+    $username_db = "root";
+    $password_db = "";
+    $dbname = "dppam";
 
     // Create database connection
     $conn = new mysqli($servername, $username_db, $password_db, $dbname);
@@ -60,27 +60,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie("user_token", hash('sha256', $username), time() + (86400 * 30), "/");
             }
 
-            header("Location: ../vol_dashboard.php");
+            // Redirect based on role
+            switch ($role) {
+                case 'ADMIN':
+                    header("Location: ../admin/index.php");
+                    break;
+                case 'COORDINATOR':
+                    header("Location: ../coordinator_dashboard.php");
+                    break;
+                case 'VOLUNTEER':
+                    header("Location: ../vol_dashboard.php");
+                    break;
+                default:
+                    $_SESSION['error_message'] = "Invalid role specified.";
+                    header("Location: ../user_login.php");
+            }
             exit;
         } else {
             // Incorrect password
             $_SESSION['error_message'] = "Incorrect password.";
             $_SESSION['username_input'] = $username; // Preserve username input
-            header("Location: ../vol_login.php");
+            header("Location: ../user_login.php");
             exit;
         }
     } else {
         // User not found
         $_SESSION['error_message'] = "No user found with that username.";
-        header("Location: ../vol_login.php");
+        header("Location: ../user_login.php");
         exit;
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../vol_login.php");
+    header("Location: ../user_login.php");
     exit;
 }
-
-?>
