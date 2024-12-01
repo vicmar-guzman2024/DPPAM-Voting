@@ -54,6 +54,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
+    <!-- CROPPER JS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
 
 
 
@@ -79,7 +81,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                             <ul class="dropdown-menu">
                                 <!-- Dropdown menu links -->
                                 <li><a class="dropdown-item" href="#">See profile</a></li>
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editProfilePictureModal">Edit profile</a></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#editProfilePictureModal">Edit profile</a></li>
                             </ul>
                         </div>
 
@@ -88,7 +91,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     <!-- Modal for changing profile picture-->
                     <div class="modal fade" id="editProfilePictureModal" tabindex="-1"
                         aria-labelledby="editProfilePictureModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editProfilePictureModalLabel">Edit Profile Picture</h5>
@@ -99,8 +102,19 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     action="php/update_profile_picture.php">
                                     <div class="modal-body text-center">
                                         <!-- Current Profile Picture -->
-                                        <img src="<?php echo htmlspecialchars($image_path); ?> " class="img-thumbnail mb-3" alt="Profile Picture" width="150">
-                                        
+                                        <div id="profilePictureContainer" style="height: 300px; width: 100%;">
+                                            <img id="currentProfilePicture"
+                                                src="<?php echo htmlspecialchars($image_path); ?>"
+                                                class="img-thumbnail img-fluid mb-3" alt="Profile Picture" width="300"
+                                                style="cursor: move;">
+                                        </div>
+
+                                        <!-- Crop and Done Buttons -->
+                                        <div id="cropControls" style="display: none;" class="my-3">
+                                            <button type="button" id="cropButton" class="btn btn-primary">Crop</button>
+                                            <button type="button" id="doneButton" class="btn btn-success"
+                                                style="display: none;">Done</button>
+                                        </div>
 
                                         <!-- File Input -->
                                         <div class="mb-3">
@@ -109,16 +123,28 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                             <input type="file" class="form-control" id="profilePicture"
                                                 name="profile_picture" accept="image/*" required>
                                         </div>
-                                        <!-- Image Preview -->
-                                        <img id="previewProfilePicture" class="img-thumbnail mt-3" alt="Image Preview"
-                                            style="display: none;" width="150">
                                     </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        <button type="submit" class="btn btn-primary" id="saveChangesButton">Save
+                                            Changes</button>
                                     </div>
                                 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -288,28 +314,135 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
 
 
 
+    <!-- SCRIPT FOR UPDATING PROFILE PICTURE -->
     <script>
-  const profilePictureInput = document.getElementById('profilePicture');
-  const previewPicture = document.getElementById('previewProfilePicture');
 
-  profilePictureInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        previewPicture.src = e.target.result;
-        previewPicture.style.display = 'block'; // Show the preview
-      };
-      reader.readAsDataURL(file);
-    }
-  });
-</script>
+        const profilePictureContainer = document.getElementById('profilePictureContainer');
+        const profilePictureInput = document.getElementById('profilePicture');
+        const currentProfilePicture = document.getElementById('currentProfilePicture');
+        const cropControls = document.getElementById('cropControls');
+        const cropButton = document.getElementById('cropButton');
+        const doneButton = document.getElementById('doneButton');
+        const saveChangesButton = document.getElementById('saveChangesButton');
+        let cropper;
+        let croppedImage = null;
+        let originalImageDataURL = null; // Store the original image
+
+        // Handle file input change event
+        profilePictureInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    // Save the original image data URL
+                    originalImageDataURL = e.target.result;
+
+                    // Replace the current profile picture with the selected image
+                    currentProfilePicture.src = originalImageDataURL;
+                    cropControls.style.display = 'inline-block'; // Show crop controls
+                    doneButton.style.display = 'none'; // Hide the DONE button initially
+                    croppedImage = null; // Reset the cropped image
+
+                    // Destroy any previous cropper instance if it exists
+                    if (cropper) {
+                        cropper.destroy();
+                        cropper = null;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle CROP button click
+        cropButton.addEventListener('click', () => {
+            // Reset the image to the original image before initializing cropper
+            if (originalImageDataURL) {
+                currentProfilePicture.src = originalImageDataURL;
+            }
+
+            // Initialize the cropper
+            if (!cropper) {
+                cropper = new Cropper(currentProfilePicture, {
+                    aspectRatio: 1,
+                    viewMode: 2,
+                    autoCropArea: 1,
+                    responsive: true,
+                });
+            }
+
+            // Show the DONE button when cropper is active
+            doneButton.style.display = 'inline-block';
+            cropButton.style.display = 'none'; // Hide the CROP button after starting cropping
+        });
+
+        // Handle DONE button click
+        doneButton.addEventListener('click', () => {
+            // Get the cropped image and update the preview
+            const canvas = cropper.getCroppedCanvas({
+                width: 250, // Adjust the output image size if necessary
+                height: 250,
+            });
+
+            // Convert canvas to data URL
+            croppedImage = canvas.toDataURL();
+            currentProfilePicture.src = croppedImage;
+
+            // Destroy the cropper to stop further cropping unless reactivated
+            cropper.destroy();
+            cropper = null; // Reset cropper instance
+
+            // Show the CROP button again for re-cropping if needed
+            cropButton.style.display = 'inline-block';
+            doneButton.style.display = 'none'; // Hide DONE button
+        });
+
+        // Handle Save Changes (Submit the form)
+        saveChangesButton.addEventListener('click', () => {
+            if (croppedImage) {
+                // Submit the form with the cropped image
+                // Convert the cropped image (DataURL) to a Blob for form submission
+                const blob = dataURLToBlob(croppedImage);
+
+                // Create a new file from the Blob
+                const file = new File([blob], 'cropped_image.jpg', { type: 'image/jpeg' });
+
+                // Add the cropped file to the form input
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                profilePictureInput.files = dataTransfer.files;
+            }
+            // If no cropping was done, it will submit the original image
+        });
+
+        // Convert data URL to Blob
+        function dataURLToBlob(dataURL) {
+            const byteString = atob(dataURL.split(',')[1]);
+            const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+
+            const ab = new ArrayBuffer(byteString.length);
+            const ia = new Uint8Array(ab);
+
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
+            }
+
+            return new Blob([ab], { type: mimeString });
+        }
+
+
+
+    </script>
 
 
 
 
 
     <script src="vol-portal.js"></script>
+
+
+    <!-- CROPPER JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
 
 
     <!--bootstrap js-->
