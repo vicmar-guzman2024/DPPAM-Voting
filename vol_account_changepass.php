@@ -1,3 +1,29 @@
+<?php
+// Start the session
+session_start();
+include('php/condb.php');
+
+// Retrieve user details from the session
+$firstname = $_SESSION['firstname'];
+$lastname = $_SESSION['lastname'];
+$username = $_SESSION['username'];
+
+// Fetch user data
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT firstname, lastname, username, profile_picture FROM users WHERE user_id = ?";
+$stmt = $sql_connection->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($firstname, $lastname, $email, $profile_image);
+$stmt->fetch();
+$stmt->close();
+$sql_connection->close();
+
+// Determine profile image
+$image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profile_picture/default_profile.jpg";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

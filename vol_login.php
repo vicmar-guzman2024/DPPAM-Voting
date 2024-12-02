@@ -86,7 +86,7 @@ unset($_SESSION['success_message']); // Clear message after use
 
     <hr class="text-dark mt-5">
     <div class="col d-flex flex-row justify-content-center align-items-center">
-        <p>Don't have an account? <a href="volunteer_sign_up_form.php" class="text-primary">Sign Up</a></p>
+        <p>Don't have an account? <a href="vol_signup.php" class="text-primary">Sign Up</a></p>
     </div>
 </form>
 

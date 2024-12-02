@@ -76,7 +76,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <form id="profilePictureForm" method="POST" enctype="multipart/form-data" action="php/update_profile_picture.php">
-                    <div class="modal-body text-center">
+                                    <div class="modal-body text-center">
+                                        <!-- Current Profile Picture -->
                                         <div id="profilePictureContainer" style="height: 300px; width: 100%;">
                                             <img id="currentProfilePicture"
                                                 src="<?php echo htmlspecialchars($image_path); ?>"
@@ -248,7 +249,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         function logout() {
-                            window.location.href = "vol_logout.php";
+                          window.location.href = "vol_login.php";
                         }
                     </script>
         </ul>
@@ -290,7 +291,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     <span class="text-muted pd">Modified at:</span> <strong>10/22/2024</strong>
                 </div>
                 <div class="col-3 text-center">
-                    <a href="personal_details.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                    <a href="vol_registration1.php"><i class="bi bi-pencil-square fs-5"></i></a>
                 </div>
             </div>
 
@@ -303,7 +304,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
                 </div>
                 <div class="col-3 text-center">
-                    <a href="assignments.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                    <a href="vol_registration2.php"><i class="bi bi-pencil-square fs-5"></i></a>
                 </div>
             </div>
 
@@ -316,7 +317,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
                 </div>
                 <div class="col-3 text-center">
-                    <a href="attached_documents.html"><i class="bi bi-pencil-square fs-5"></i></a>
+                    <a href="vol_registration3.php"><i class="bi bi-pencil-square fs-5"></i></a>
                 </div>
             </div>
           </section>

@@ -287,8 +287,6 @@ input:focus,
     font-weight: bold;
 }
 
-
-
 .p-2 div p {
     margin: 0;
     max-width: 600px;
@@ -299,18 +297,13 @@ input:focus,
     color: #7b7b7b;
 }
 
-
 /* REGISTRATION INFO */
 .message-1 {
     font-size: 25px;
     font-weight: normal; 
     color: #333333;
-    margin-top: 20px; 
+    margin-top: 0px; 
     margin-bottom: 20px; 
-}
-
-.pd{
-    font-size: 15px;
 }
 
 .pd1{
@@ -365,6 +358,206 @@ input:focus,
 
 .rowBox a i:hover {
     color: #0056b3;
+}
+
+/* PROFILE SETTINGS */
+.box-container1 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 15px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.box-container1:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.box-containe1 .btn {
+    color: #333;
+    text-decoration: none;
+}
+
+.box-container1 .btn:hover {
+    color: #007bff;
+}
+
+.box-container1 i {
+    font-size: 1.5rem;
+}
+
+.box-container1 .d-flex {
+    gap: 0px;
+}
+
+.box-container1 .fw-bold {
+    font-size: 1rem;
+}
+
+.box-container1 .text-muted {
+    font-size: 0.875rem;
+}
+
+.box-container2 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 15px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.box-container2 .btn {
+    color: #333;
+    text-decoration: none;
+}
+
+.box-container2 .btn:hover {
+    color: #007bff;
+}
+
+.box-container2 i {
+    font-size: 1.5rem;
+}
+
+.box-container2 .d-flex {
+    gap: 0px;
+}
+
+.box-container2 .fw-bold {
+    font-size: 1rem;
+}
+
+.box-container2 .text-muted {
+    font-size: 0.875rem;
+}
+
+#toggleButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#toggleIcon {
+    color: #007bff;
+}
+
+.row1 {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 15px; 
+}
+
+.col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1.d-flex1 {
+    width: 100%;
+}
+
+/* EDIT PROFILE */
+.contentBox5 {
+    max-width: 700px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: #fcfcfc;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.contentBox5 img {
+    max-width: 100px; /* Resize the logo */
+    height: auto;
+}
+
+/* Custom file input styling */
+.custom-file-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+.custom-file-input input[type="file"] {
+    display: none; /* Hide the file input */
+}
+
+.custom-file-input .icon {
+    font-size: 18px;
+    color: #379BF6; /* Match theme */
+}
+
+/* Adjust form inputs */
+.contentBox5 .form-control {
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 4px;
+}
+
+/* Style the buttons */
+.contentBox5 .btn {
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+.contentBox5 .btn-light {
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+}
+
+.contentBox5 .btn-primary {
+    background-color: #2d7ec9;
+    border-color: #2d7ec9;
+    font-size: 16px;
+}
+
+/* Row spacing */
+.contentBox5 .row {
+    margin-bottom: 15px; /* Add space between rows */
+}
+
+/* CHEVRON */
+.btn-chevron {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background-color: #ffffff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    text-decoration: none;
+}
+
+.btn-chevron i {
+    font-size: 20px;
+    color: #2d7ec9; 
+}
+
+.chevron-container h3.pi{
+    margin: 0;
+    font-size: 18px; 
+    font-weight: 600; 
+    color: #333; 
 }
 
 /** PROFILE IN MODAL **/

@@ -50,7 +50,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
   
 
 
-  <title>Account Settings</title>
+  <title>Edit Profile</title>
 </head>
 
 <body>
@@ -149,6 +149,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         <p class="profile-email"><?php echo htmlspecialchars($username); ?></p>
                     </div>
                 </div>
+
                 <ul class="sidebar-nav mt-5">
                     <li class="sidebar-item">
                         <a href="vol_dashboard.php" class="sidebar-link py-3">
@@ -281,8 +282,6 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                             window.location.href = "vol_login.php";
                         }
                     </script>
-
-                    
                 </ul>
             </div>
         </aside>
@@ -291,7 +290,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
         <div class="main">
 
             <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
-                 <div class="d-flex flex-row justify-content-center align-items-center">
+                <div class="d-flex flex-row justify-content-center align-items-center">
                     <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
                     <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
                 </div>
@@ -301,93 +300,90 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                 </div>
             </nav>
 
+
+             <!--MAIN CONTENT-->
+
             <main class="container p-5">
+                
+                <div class="d-flex flex-row align-items-center mb-4 chevron-container">
+                    <div>
+                        <a href="vol_account_settings.php" class="btn-chevron">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <h3 class="pi">Profile Information</h3>
+                    </div>
+                </div>
 
-                <div>
-                    
-                    <h3 class="message-1">Account Settings</h3>
-
-                    <!--DASHBOARD CONTENT-->
-
-                    <section class="contentBox1 p-1">
-                        <div class="row1">
-                            <div class="col1 d-flex1 flex-column justify-content-center align-items-center gap-2">
-
-                                <!-- Edit Profile -->
-                                <div class="box-container1">
-                                    <a href="vol_account_editprofile.php" class="btn d-flex flex-row justify-content-between align-items-center w-100">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                                            <div>
-                                                <i class="bi bi-person fs-5"></i>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="fw-bold text-start">Edit Profile</span>
-                                                <span class="text-muted">Change profile name, number, email.</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </div>
-                                    </a>
+                    <section class="p-5 contentBox5">
+                        <form action="" class="needs-validation" novalidate>
+                            <div class="d-flex flex-md-row flex-column justify-content-start align-items-center mb-5">
+                                <div>
+                                    <img src="img/DPPAMLOGO.png" alt="Profile picture" class="img-fluid">
                                 </div>
-
-                                <!-- Change Password -->
-                                <div class="box-container1">
-                                    <a href="vol_account_changepass.php" class="btn d-flex flex-row justify-content-between align-items-center w-100">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                                            <div>
-                                                <i class="bi bi-lock fs-5"></i>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="fw-bold text-start">Change Password</span>
-                                                <span class="text-muted">Update and strengthen account security.</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <i class="fa-solid fa-chevron-right"></i>
-                                        </div>
-                                    </a>
-                                </div>
-
-                                <!-- Notification -->
-                                <div class="box-container2">
-                                    <div class="d-flex flex-row justify-content-between align-items-center ps-3 w-100">
-                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
-                                            <div>
-                                                <i class="bi bi-bell fs-5"></i>
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <span class="fw-bold text-start">Notification</span>
-                                                <span class="text-muted">Customize your notification preferences.</span>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <!-- Toggle Button -->
-                                            <button type="button" class="btn" onclick="toggleOnOff()" id="toggleButton">
-                                                <i id="toggleIcon" class="bi bi-toggle-on"></i>
-                                            </button>
-                                        </div>
+                                <div class="d-flex flex-row justify-content-center align-items-start gap-3">
+                                    <div>
+                                        <label class="custom-file-input form-label" for="uploadNewImg">
+                                            <i class="icon fas fa-upload"></i>
+                                            <input type="file" id="uploadNewImg">
+                                            <span class="file-name" id="uploadNewImgName">Upload new image</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-light">Remove</button>
                                     </div>
                                 </div>
-
                             </div>
-                        </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="displayName" class="form-label">Display Name:</label>
+                                    <input type="text" class="form-control" id="displayName" placeholder="Your name">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Example input placeholder">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="number" class="form-label">Cellphone Number:</label>
+                                    <input type="tel" class="form-control" id="number" placeholder="09999999999">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary px-5">Save</button>
+                                </div>
+                            </div>
+                        </form>
                     </section>
 
-                </div>
+
             </main>
         </div>
     </div>
 
+    
 
-    <script src="vol-portal.js"></script>
-    <!--bootstrap js-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous">
-    </script>
+
+
+
+
+
+<script src="vol-portal.js"></script>
+
+
+  <!--bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
