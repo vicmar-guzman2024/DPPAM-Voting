@@ -309,97 +309,85 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
 
                     <!--DASHBOARD CONTENT-->
 
-                    <section class="mb-5 p-2 p-md-3 contentBox">
+                    <section class="contentBox1 p-1">
+                        <div class="row1">
+                            <div class="col1 d-flex1 flex-column justify-content-center align-items-center gap-2">
 
-                        <div class="row">
-                            <div class="col d-flex flex-column justify-content-center align-items-center gap-3 w-100">
+                                <!-- Edit Profile -->
+                                <div class="box-container1">
+                                    <a href="edit_profile.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
+                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                            <div>
+                                                <i class="bi bi-person fs-5"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold text-start">Edit Profile</span>
+                                                <span class="text-muted">Change profile name, number, email.</span>
+                                            </div>
+                                        </div>
 
-                                <!--Edit Profile-->
-                                <a href="edit_profile.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
-                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                         <div>
-                                            <i class="bi bi-person fs-5"></i>
+                                            <i class="fa-solid fa-chevron-right"></i>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-bold text-start">Edit Profile</span>
-                                            <span class="text-muted">Change profile name, number, email.</span>
+                                    </a>
+                                </div>
+
+                                <!-- Change Password -->
+                                <div class="box-container1">
+                                    <a href="change_pass.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
+                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                            <div>
+                                                <i class="bi bi-lock fs-5"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold text-start">Change Password</span>
+                                                <span class="text-muted">Update and strengthen account security.</span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div>
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                    </div>
-                                </a>
-
-                                <!--Change password-->
-                                <a href="change_pass.html" class="btn d-flex flex-row justify-content-between align-items-center w-100">
-                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                         <div>
-                                            <i class="bi bi-lock fs-5"></i>
+                                            <i class="fa-solid fa-chevron-right"></i>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-bold text-start">Change Password</span>
-                                            <span class="text-muted">Update and strengthen account security.</span>
+                                    </a>
+                                </div>
+
+                                <!-- Notification -->
+                                <div class="box-container2">
+                                    <div class="d-flex flex-row justify-content-between align-items-center ps-3 w-100">
+                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                            <div>
+                                                <i class="bi bi-bell fs-5"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold text-start">Notification</span>
+                                                <span class="text-muted">Customize your notification preferences.</span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div>
-                                        <i class="fa-solid fa-chevron-right"></i>
-                                    </div>
-                                </a>
-
-                                <!--Notification-->
-                                <div class="d-flex flex-row justify-content-between align-items-center ps-3 w-100">
-                                    <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                         <div>
-                                            <i class="bi bi-bell fs-5"></i>
+                                            <!-- Toggle Button -->
+                                            <button type="button" class="btn" onclick="toggleOnOff()" id="toggleButton">
+                                                <i id="toggleIcon" class="bi bi-toggle-on"></i>
+                                            </button>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <span class="fw-bold text-start">Notification</span>
-                                            <span class="text-muted">Customize your notification preferences.</span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <!-- Toggle Button -->
-                                         <button type="button" class="btn" onclick="toggleOnOff()" id="toggleButton">
-                                            <i id="toggleIcon" class="bi bi-toggle-on"></i>
-                                        </button>
                                     </div>
                                 </div>
 
-                                
-
-                                
                             </div>
-                        </div>
-
-                            
-                            
-
                         </div>
                     </section>
 
-                    
-                      
-                    
                 </div>
             </main>
         </div>
     </div>
 
 
-
-
-
-
-<script src="vol-portal.js"></script>
-
-
-  <!--bootstrap js-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    <script src="vol-portal.js"></script>
+    <!--bootstrap js-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
 </body>
-
 </html>

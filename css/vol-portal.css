@@ -367,6 +367,117 @@ input:focus,
     color: #0056b3;
 }
 
+/* PROFILE SETTINGS */
+.box-container1 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 15px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.box-container1:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.box-containe1 .btn {
+    color: #333;
+    text-decoration: none;
+}
+
+.box-container1 .btn:hover {
+    color: #007bff;
+}
+
+.box-container1 i {
+    font-size: 1.5rem;
+}
+
+.box-container1 .d-flex {
+    gap: 0px;
+}
+
+.box-container1 .fw-bold {
+    font-size: 1rem;
+}
+
+.box-container1 .text-muted {
+    font-size: 0.875rem;
+}
+
+.box-container2 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    margin-bottom: 15px;
+    width: 100%; 
+    max-width: 1200px; 
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.box-container2 .btn {
+    color: #333;
+    text-decoration: none;
+}
+
+.box-container2 .btn:hover {
+    color: #007bff;
+}
+
+.box-container2 i {
+    font-size: 1.5rem;
+}
+
+.box-container2 .d-flex {
+    gap: 0px;
+}
+
+.box-container2 .fw-bold {
+    font-size: 1rem;
+}
+
+.box-container2 .text-muted {
+    font-size: 0.875rem;
+}
+
+#toggleButton {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#toggleIcon {
+    color: #007bff;
+}
+
+.row1 {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 15px; 
+}
+
+.col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.col1.d-flex1 {
+    width: 100%;
+}
+
 /** PROFILE IN MODAL **/
 #userProfileImageModal {
     display: flex;
