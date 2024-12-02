@@ -236,4 +236,25 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
+    // Get the search input element
+    const searchInput = document.getElementById("searchInput");
+
+    // Event listener to filter table based on input value
+    searchInput.addEventListener("keyup", function() {
+        const filter = searchInput.value.toLowerCase();
+        const rows = document.querySelectorAll("#tableBody .table-row");
+
+        rows.forEach(function(row) {
+            const name = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+            const date = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+
+            // Check if either the name or the date contains the search term
+            if (name.includes(filter) || date.includes(filter)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+
   

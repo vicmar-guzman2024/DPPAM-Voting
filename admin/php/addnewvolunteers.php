@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
 
     // Prepare the SQL statement
     $stmt = $sql_connection->prepare("INSERT INTO registration_infos 
-        (date, name, nickname, birthDate, gender, civil_status, citizenship, residence_address, telephone_no, 
+        (registration_date, name, nickname, birthDate, gender, civil_status, citizenship, residence_address, telephone_no, 
         occupation, cellphone_no, fox_no, company_name, company_telephone_no, ppcrv_org_membership, 
         prev_ppcrv_experience_date, prev_ppcrv_experience_assignment, preffered_volunteer_assignment, status)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -77,10 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
         $combined_pref_ppcrv_vol_ass,
         $status
     );
-    
+
     // Execute the statement
     if ($stmt->execute()) {
-        echo "Record saved successfully!";
+        header("location: submissions.html");
     } else {
         echo "Error: " . $stmt->error;
     }

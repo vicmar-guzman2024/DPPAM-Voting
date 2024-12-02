@@ -1,3 +1,9 @@
+<?php
+include("php/connection.php");
+include("php/dashboard.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +27,6 @@
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   
-  
-
-
   <title>Submission</title>
 </head>
 
@@ -232,97 +235,57 @@
 
                     <form action="" class="row">
 
-                        <!-- SEARCH BAR -->
-                        <div class="col-md-3 mb-3 position-relative">
-                            <span class="position-absolute top-0 start-0 mt-2 ms-4"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control ps-5" placeholder="Search here...">
-                          </div>
+                                <!-- SEARCH BAR -->
+                                <<div class="col-md-3 mb-3 position-relative">
+                                    <span class="position-absolute top-0 start-0 mt-2 ms-4"><i class="fa fa-search"></i></span>
+                                    <input type="text" class="form-control ps-5" id="searchInput" placeholder="Search here...">
+                                </div>
 
-                          
-                          <!--TABLE-->
-                          <section class="table-responsive p-3">
+                                <!--TABLE-->
+                                <section class="table-responsive p-3">
 
-                            <table class="table align-middle table-bordered border border-dark">
-                                <thead>
-                                  <tr class="bg-danger">
-                                    <th scope="col"><span class="text-white">Membership #</span></th>
-                                    <th scope="col"><span class="text-white">Name</span></th>
-                                    <th scope="col"><span class="text-white">Date Submitted</span></th>
-                                    <th scope="col"><span class="text-white">Action</span></th>
-                                  </tr>
-                                </thead>
-    
-                                <tbody>
-    
-                                  <tr>
-                                    <th scope="row"><span class="text-danger">M1234AB</span></th>
-                                    <td>Jordan Monderin Sotelo</td>
-                                    <td>10-22-2024</td>
-                                    <td>
-                                        <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
-                                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
-                                                <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
-                                            </a>
-                                            <a href="#" class="btn btn-outline-danger d-flex align-items-center">
-                                                <i class="bi bi-trash fs-6 me-1"></i> Delete
-                                            </a>
-                                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center">
-                                                <i class="bi bi-printer fs-6 me-1"></i> Print
-                                            </a>
-                                        </div>
-                                    </td>
-                                    
-                                  </tr>
+                                    <table class="table align-middle table-bordered border border-dark">
+                                        <thead>
+                                            <tr class="bg-danger">
+                                                <th scope="col"><span class="text-white">Membership #</span></th>
+                                                <th scope="col"><span class="text-white">Name</span></th>
+                                                <th scope="col"><span class="text-white">Date Submitted</span></th>
+                                                <th scope="col"><span class="text-white">Action</span></th>
+                                            </tr>
+                                        </thead>
 
-                                  <tr>
-                                    <th scope="row"><span class="text-danger">M1234AB</span></th>
-                                    <td>Jordan Monderin Sotelo</td>
-                                    <td>10-22-2024</td>
-                                    <td>
-                                        <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
-                                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
-                                                <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
-                                            </a>
-                                            <a href="#" class="btn btn-outline-danger d-flex align-items-center">
-                                                <i class="bi bi-trash fs-6 me-1"></i> Delete
-                                            </a>
-                                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center">
-                                                <i class="bi bi-printer fs-6 me-1"></i> Print
-                                            </a>
-                                        </div>
-                                    </td>
-                                    
-                                  </tr>
-
-                                  <tr>
-                                    <th scope="row"><span class="text-danger">M1234AB</span></th>
-                                    <td>Jordan Monderin Sotelo</td>
-                                    <td>10-22-2024</td>
-                                    <td>
-                                        <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
-                                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
-                                                <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
-                                            </a>
-                                            <a href="#" class="btn btn-outline-danger d-flex align-items-center">
-                                                <i class="bi bi-trash fs-6 me-1"></i> Delete
-                                            </a>
-                                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center">
-                                                <i class="bi bi-printer fs-6 me-1"></i> Print
-                                            </a>
-                                        </div>
-                                    </td>
-                                    
-                                  </tr>
-
-                                 
-                                  
+                                        <tbody id="tableBody"> <!-- Add ID to tbody -->
+                                            <?php  
+                                            while($row = mysqli_fetch_assoc($sql_result6)) { 
+                                                $date = new DateTime($row['REGISTRATION_DATE']);
+                                                $formatted_date = $date->format('m-d-Y'); // Format to mm-dd-yy
+                                            ?>
+                                                <tr class="table-row"> <!-- Add class to each row -->
+                                                    <th scope="row"><span class="text-danger">M1234AB</span></th>
+                                                    <td><?php echo $row['NAME']; ?></td>
+                                                    <td><?php echo $formatted_date; ?></td>
+                                                    <td class="">
+                                                        <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
+                                                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                                                <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
+                                                            </a>
+                                                            <a href="#" class="btn btn-outline-danger d-flex align-items-center">
+                                                                <i class="bi bi-trash fs-6 me-1"></i> Delete
+                                                            </a>
+                                                            <a href="#" class="btn btn-outline-secondary d-flex align-items-center">
+                                                                <i class="bi bi-printer fs-6 me-1"></i> Print
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </section>
                                 </tbody>
                               </table>
                         </section>
                     </form>
-
-
-                    
                 </div>
             </main>
         </div>
