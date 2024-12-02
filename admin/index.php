@@ -318,7 +318,7 @@ include ("php/dashboard.php");
 
                           <!-- Parish Dropdown -->
                           <div class="col-md-3">
-                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="updateChart();">
+                              <select class="form-select" aria-label="parish" id="parishSelect" onchange="filterSchools(); updateChart();">
                                   <option selected>Name of Parish</option>
                                   <?php while ($row = mysqli_fetch_assoc($sql_result2)) { ?>
                                     <option class="parish-option" data-city="<?php echo $row['CITY']; ?>" value="<?php echo $row['PARISH_NAME']; ?>">                                         
@@ -328,6 +328,7 @@ include ("php/dashboard.php");
                               </select>
                         </div>
                     </div>
+                    
 
                 <section class="mb-5 border py-3">
                         <div>
@@ -350,12 +351,16 @@ include ("php/dashboard.php");
 
                     <div class="row mb-5">
                       <div class="col-md-3">
-                        <select class="form-select" aria-label="parish">
-                          <option selected>Name of School</option>
-                          <option value="1">...</option>
-                          <option value="2">...</option>
-                          <option value="3">...</option>
-                        </select>
+                      <select class="form-select" aria-label="school" id="schoolSelect" onchange="filterSchools();">
+                          <option selected value="">Name of School</option>
+                          <?php while ($row = mysqli_fetch_assoc($sql_result4)) { ?>
+                              <option class="school-option" 
+                                      data-parish="<?php echo htmlspecialchars($row['PARISH_NAME']); ?>" 
+                                      value="<?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>">
+                                  <?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>
+                              </option>
+                          <?php } ?>
+                      </select>
                       </div>
                     </div>
 
