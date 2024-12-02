@@ -1,5 +1,6 @@
 <?php
 include("php/dashboard.php");
+include("php/addnewvolunteers.php");
 
 
 
@@ -10,7 +11,7 @@ include("php/dashboard.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/admin-style.css">
+  <link rel="stylesheet" href="..//admin-style.css">
   <!--bootstrap 5-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -229,7 +230,7 @@ include("php/dashboard.php");
                  <!--ADD NEW VOLUNTEERS FORM-->
                 <h1 class="text-dark mb-4">Add New Volunteer</h1>
 
-                <form action="" class="row mt-5">
+                <form action="addnewvolunteers.php" method="POST" class="row mt-5">
                     
                     <section class="contentBox p-5">
                         
@@ -292,7 +293,7 @@ include("php/dashboard.php");
                             <div class="mb-3 row">
                                 <label for="dateOfRegistration" class="col-sm-2 col-form-label">Date:</label>
                                 <div class="col-md-4">
-                                    <input type="date" class="form-control" id="dateOfRegistration" name="dateOfRegistration">
+                                    <input type="date" class="form-control" id="dateOfRegistration" name="dateOfRegistration" required>
                                 </div>
                             </div>
     
@@ -315,14 +316,14 @@ include("php/dashboard.php");
                                 </div>
                                 <div class="col-md-3 mb-4">
                                     <label for="sex" class="form-label">Sex</label>
-                                    <select id="sex" class="form-select">
+                                    <select id="sex" name="sex" class="form-select">
                                         <option selected>Male</option>
                                         <option>Female</option>
                                       </select>
                                 </div>
                                 <div class="col-md-3 mb-4">
                                     <label for="civilStatus" class="form-label">Civil Status</label>
-                                    <select id="civilStatus" class="form-select">
+                                    <select id="civilStatus" name="civilstatus" class="form-select">
                                         <option selected>Single</option>
                                         <option>Married</option>
                                         <option>Divored</option>
@@ -330,18 +331,19 @@ include("php/dashboard.php");
                                         <option>Separated</option>
                                       </select>
                                 </div>
+
                                 <div class="col-md-3 mb-4">
                                     <label for="citizenship" class="form-label">Citizenship</label>
                                     <input type="text" class="form-control" id="citizenship" name="citizenship"  placeholder="Filipino">
                                 </div>
-    
+
                                 <div class="col-md-9 mb-4">
                                     <label for="ResidenceAddress" class="form-label">Residence Address</label>
-                                    <input type="text" class="form-control" id="ResidenceAddress" name="ResidenceAddress">
+                                    <input type="text" class="form-control" id="residence_address" name="residence_address">
                                 </div>
                                 <div class="col-md-3 mb-4">
                                     <label for="tel" class="form-label">Telephone No.</label>
-                                    <input type="tel" class="form-control" id="tel" name="tel">
+                                    <input type="tel" class="form-control" id="tel" name="telephone_no">
                                 </div>
     
                                 <div class="col-md-4 mb-4">
@@ -350,12 +352,12 @@ include("php/dashboard.php");
                                 </div>
                                 <div class="col-md-4 mb-4">
                                     <label for="celNo" class="form-label">Cellphone No.</label>
-                                    <input type="tel" class="form-control" id="celNo" name="celNo">
+                                    <input type="tel" class="form-control" id="celNo" name="cel_no">
                                 </div>
                                 
                                 <div class="col-md-4 mb-4">
                                     <label for="foxNo" class="form-label">Fox No.</label>
-                                    <input type="text" class="form-control" id="foxNo" name="foxNo">
+                                    <input type="text" class="form-control" id="foxNo" name="fox_no">
                                 </div>
     
                                 <div class="col-md-9 mb-4">
@@ -364,7 +366,7 @@ include("php/dashboard.php");
                                 </div>
                                 <div class="col-md-3 mb-4">
                                     <label for="tel" class="form-label">Telephone No.</label>
-                                    <input type="tel" class="form-control" id="tel" name="tel">
+                                    <input type="tel" class="form-control" id="tel" name="company_telephone_no">
                                 </div>
                                 
                             </div>
@@ -372,25 +374,28 @@ include("php/dashboard.php");
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <label for="parishOrgMem" class="form-label">Parish Organization Membership</label>
-                                    <select id="parishOrgMem" class="form-select">
-                                        <option selected>...</option>
+                                    <select id="parishOrgMem" name="ppcrv_org_membership"class="form-select">
+                                        <option selected>Select Parish Organization Membership</option>
+                                        <option>Commitee</option>
+                                        <option>...</option>
                                         <option>...</option>
                                       </select>
                                 </div>
     
                                 <div class="col-md-6 mb-4">
                                     <label for="dateExp" class="form-label">Previous PPCRV Experience Date</label>
-                                    <input type="date" class="form-control" id="dateExp">
+                                    <input type="date" class="form-control" id="dateExp" name="prev_ppcrv_exp_date" required>
                                 </div>
     
                                 
                                 <div class="col-md-9 mb-4">
                                     <label for="prevExpAss" class="form-label">Previous PPCRV Experience Assignment</label>
-                                    <select id="prevExpAss" class="form-select">
+                                    <select id="prevExpAss" name="prev_ppcrv_exp_ass" class="form-select">
                                         <?php
                                         while ($row = $sql_result5->fetch_assoc()) {
                                             $role_name = $row['ROLE_NAME'];
-                                            $options .= "<option value=\"$role_name\">$role_name</option>";
+                                            $description = $row['DESCRIPTIONS'];
+                                            $options .= "<option value=\"$role_name\">$role_name $description</option>";
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?>
@@ -404,16 +409,17 @@ include("php/dashboard.php");
                                 
                                 <div class="col-md-3 mb-4">
                                     <label for="otherPrevExpAss" class="form-label">Others</label>
-                                    <input type="text" class="form-control" id="otherPrevExpAss" disabled>
+                                    <input type="text" class="form-control" id="otherPrevExpAss" name="others_prev_ppcrv_exp_ass" disabled>
                                 </div>
     
                                 <div class="col-md-9 mb-4">
                                     <label for="prefVolAss" class="form-label">Preferred Volunteer Assignments</label>
-                                    <select id="prefVolAss" class="form-select">
+                                    <select id="prefVolAss" name="pref_ppcrv_vol_ass" class="form-select">
                                         <?php
                                         while ($row = $sql_result5->fetch_assoc()) {
                                             $role_name = $row['ROLE_NAME'];
-                                            $options .= "<option value=\"$role_name\">$role_name</option>";
+                                            $description = $row['DESCRIPTIONS'];
+                                            $options .= "<option value=\"$role_name\">$role_name $description</option>";
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?> 
@@ -426,7 +432,7 @@ include("php/dashboard.php");
 
                                 <div class="col-md-3 mb-4">
                                     <label for="otherPrefVolAss" class="form-label">Others</label>
-                                    <input type="text" class="form-control" id="otherPrefVolAss" disabled>
+                                    <input type="text" class="form-control" id="otherPrefVolAss" name="others_pref_ppcrv_vol_ass" disabled>
                                 </div>
                             </div>
     
@@ -510,23 +516,13 @@ include("php/dashboard.php");
                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque assumenda vel reiciendis, odit modi aliquam.</p>
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn px-4" data-bs-dismiss="modal">Cancel</button>
-                              <button type="button" class="btn btn-primary px-5">Save</button>
+                              <button type="button" class="btn px-4" data-bs-dismiss="modal" name="cancel">Cancel</button>
+                              <button type="Submit" class="btn btn-primary px-5" id="save" name="save">Save</button>
                             </div>
                           </div>
                         </div>
                       </div>
-
-
-                        
-
-                        
-
-                        
-                        
-                    </form>
-                    
-           
+                </form>
             </main>
         </div>
     </div>
