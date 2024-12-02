@@ -166,6 +166,10 @@ window.onload = function () {
     filterSchools();
 };
 
+
+
+
+
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
 
 document.addEventListener("DOMContentLoaded", function () {
