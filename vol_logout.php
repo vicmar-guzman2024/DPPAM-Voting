@@ -5,7 +5,6 @@ session_start(); // Start the session
 session_unset();
 session_destroy();
 
-// Redirect to the login page
-header("Location: user_login.php");
+// Redirect to the login page with a query parameter
+header("Location: user_login.php?logout=true");
 exit();
-?>

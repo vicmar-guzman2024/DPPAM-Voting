@@ -175,10 +175,112 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="vol_logout.php" class="sidebar-link py-3">
-                        <i class="fa-solid fa-right-from-bracket"></i>Logout
+                        <a href="javascript:void(0);" class="sidebar-link py-3" onclick="showConfirmModal()">
+                            <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </a>
                     </li>
+
+                    <div id="logoutModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn" onclick="closeModal()">&times;</span>
+                            <h3 class="message">Are you sure you want to log out?</h3>
+                            <div class="animated-character">
+                                <img src="img/logout.gif" alt="Waving Character">
+                            </div>
+                            <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
+                        </div>
+                    </div>
+
+                    <style>
+                        .modal {
+                            display: none; 
+                            position: fixed;
+                            z-index: 1; 
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5); 
+                            overflow: auto;
+                            padding-top: 60px;
+                        }
+
+                        .message{
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        .modal-content {
+                            background-color: #fff;
+                            margin: 5% auto;
+                            padding: 20px;
+                            border: 1px solid #888;
+                            width: 70%;
+                            top: 50px;
+                            max-width: 400px;
+                            text-align: center;
+                        }
+
+                        .close-btn {
+                            color: #aaa;
+                            font-size: 28px;
+                            font-weight: bold;
+                            position: absolute;
+                            top: 10px;
+                            right: 20px;
+                        }
+
+                        .close-btn:hover,
+                        .close-btn:focus {
+                            color: black;
+                            text-decoration: none;
+                            cursor: pointer;
+                        }
+
+                        .confirm-btn,
+                        .cancel-btn {
+                            background-color: #4CAF50; 
+                            color: white;
+                            padding: 10px 20px;
+                            margin: 10px;
+                            border: none;
+                            cursor: pointer;
+                            border-radius: 5px;
+                            font-size: 16px;
+                        }
+
+                        .confirm-btn:hover {
+                            background-color: #45a049;
+                        }
+
+                        .cancel-btn {
+                            background-color: #f44336; 
+                        }
+
+                        .cancel-btn:hover {
+                            background-color: #da190b;
+                        }
+
+                        .animated-character img {
+                            width: 130px;
+                            animation: wave 1.5s ease-in-out infinite;
+                        }
+
+                    </style>
+
+                    <script>
+                        function showConfirmModal() {
+                            document.getElementById("logoutModal").style.display = "block";
+                        }
+
+                        function closeModal() {
+                            document.getElementById("logoutModal").style.display = "none";
+                        }
+
+                        function logout() {
+                            window.location.href = "vol_logout.php";
+                        }
+                    </script>
                 </ul>
             </div>
         </aside>

@@ -1,11 +1,14 @@
-<?php
-session_start(); // Start the session
+<!DOCTYPE html>
+<html lang="en">
 
-// Destroy all session data
-session_unset();
-session_destroy();
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/vol-portal.css">
+  <!--bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<<<<<<< HEAD:vol_account2.php
    <!--Font awesome CDN-->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -21,7 +24,7 @@ session_destroy();
   
 
 
-  <title>Change Password</title>
+  <title>Edit Profile</title>
 </head>
 
 <body>
@@ -96,66 +99,74 @@ session_destroy();
                 </div>
             </nav>
 
+
+             <!--MAIN CONTENT-->
+
             <main class="container p-5">
-
-                <div>
-
+                
                     <div class="d-flex flex-row align-items-center mb-4">
                         <div><a href="vol_account_settings.php" class="btn"><i class="bi bi-chevron-left"></i></a></div>
-                        <div><h3 class="text-dark">Change Password</h3></div>
+                        <div><h3 class="text-dark">Profile Information</h3></div>
                     </div>
 
-                    <!--DASHBOARD CONTENT-->
+                   
 
                     <section class="p-5 contentBox">
 
-                        <form action="" class="row">
+                        <form action="" class="needs-validation" novalidate>
 
-                            <!-- Current Password Field -->
-                             <div class="col-md-7 mb-4 position-relative"> 
-                                <input type="password" class="form-control py-2" id="currentPass" placeholder="Current password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('currentPass', 'currentIcon')">
-                                    <i id="currentIcon" class="bi bi-eye-slash"></i>
-                                </button>
+                            <div class="d-flex flex-md-row flex-column justify-content-start align-items-center mb-5">
+
+                                <div><img src="img/DPPAMLOGO.png" alt="Profile picture" class="img-fluid"></div>
+
+                                <div class="d-flex flex-row justify-content-center align-items-start gap-3">
+                                    <div>
+                                        <label class="custom-file-input form-label" for="uploadNewImg">
+                                            <i class="icon fas fa-upload"></i>
+                                            <input type="file" id="uploadNewImg">
+                                            <span class="file-name" id="uploadNewImgName">Upload new image</span>
+                                        </label>
+                                    </div>
+
+                                      <div>
+                                        <button type="button" class="btn btn-light">Remove</button>
+                                      </div>
+                                </div>
                             </div>
-                            
-                            <!-- New Password Field -->
-                             <div class="col-md-7 mb-4 position-relative"> 
-                                <input type="password" class="form-control py-2" id="newPass" placeholder="New password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('newPass', 'newIcon')">
-                                    <i id="newIcon" class="bi bi-eye-slash"></i>
-                                </button>
+
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="displayName" class="form-label">Display Name:</label>
+                                    <input type="text" class="form-control" id="displayName" placeholder="Your name">
+                                  </div>
                             </div>
-                            
-                            <!-- Confirm New Password Field -->
-                             <div class="col-md-7 mb-4 position-relative">
-                                <input type="password" class="form-control py-2" id="confirmNewPass" placeholder="Confirm new password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('confirmNewPass', 'confirmIcon')">
-                                    <i id="confirmIcon" class="bi bi-eye-slash"></i>
-                                </button>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Example input placeholder">
+                                  </div>
                             </div>
-                            
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="number" class="form-label">Cellphone Number:</label>
+                                    <input type="tel" class="form-control" id="number" placeholder="09999999999">
+                                  </div>
+                            </div>
+
+
                             <!-- Save button -->
-                             <div class="col-12 mb-4">
-                                <button type="submit" class="btn btn-primary px-5">Save</button>
-                            </div>  
-
-
+                             <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary px-5">Save</button>
+                                </div>
+                            </div>
 
                         </form>
-
-                        
                     </section>
 
-                    
-
-                    
-
-                    
-                    
-                      
-                    
-                </div>
             </main>
         </div>
     </div>
@@ -177,9 +188,3 @@ session_destroy();
 </body>
 
 </html>
-=======
-// Redirect to the login page
-header("Location: user_login.php");
-exit();
-?>
->>>>>>> 7e88c50a2d47f79dcdd2988e24838fbcf498309c:vol_logout.php
