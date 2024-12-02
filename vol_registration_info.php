@@ -76,7 +76,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <form id="profilePictureForm" method="POST" enctype="multipart/form-data" action="php/update_profile_picture.php">
-                    <div class="modal-body text-center">
+                                    <div class="modal-body text-center">
+                                        <!-- Current Profile Picture -->
                                         <div id="profilePictureContainer" style="height: 300px; width: 100%;">
                                             <img id="currentProfilePicture"
                                                 src="<?php echo htmlspecialchars($image_path); ?>"
@@ -248,7 +249,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         function logout() {
-                            window.location.href = "vol_logout.php";
+                            window.location.href = "user_login.php";
                         }
                     </script>
         </ul>
