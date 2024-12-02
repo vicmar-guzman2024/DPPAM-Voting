@@ -44,5 +44,10 @@ $stmt4->execute();
 $sql_result4 = $stmt4->get_result();
 $stmt4->close();
 
+$stmt5 = $sql_connection->prepare("SELECT ROLE_NAME FROM ROLES");
+$stmt5->execute();
+$sql_result5 = $stmt5->get_result();
+$stmt5->close();
+
 
 ?>
