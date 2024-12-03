@@ -1,3 +1,9 @@
+<?php
+include("php/dashboard.php");
+// include("php/connection.php");
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -309,184 +315,252 @@
                     
                     <section class="mb-4">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 mission">
-                            <div class="col">
-                                <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-person-chalkboard"></i></div>
+                        <?php 
+                            while ($row = mysqli_fetch_assoc($sql_result5)) {
+                                // Combine ROLE_NAME and DESCRIPTIONS into one string
+                                $role_name = $row['ROLE_NAME'];
+                                $descriptions = $row['DESCRIPTIONS'];
+                                $roles = $role_name . " " . $descriptions;
+
+                                // Check if the roles match the condition
+                                if ($roles === 'Voters Education (Speakers Bureau/training)') {
+                                // Only render the block if the condition is met
+                        ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+                                    
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-person-chalkboard"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
                                     </div>
-                                </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-circle-check"></i></div>
+                        </div>
+                        <?php } ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Voters List Cleansing & Verification ') {
+                                // Only render the block if the condition is met
+                        ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-circle-check"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-list-check"></i></div>
+                            </div>              
+                        </div>
+                        <?php } ?>
+                            
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Accountable Material Verifiable Audit Trail Team (AMVATT)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-list-check"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-clipboard-check"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Precincts Poll Monitoring (PPM)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-clipboard-check"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-user-group"></i></div>
+                        </div> 
+                        <?php }  ?>
+                        
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Voters Assistance Desk (VAD)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-user-group"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-file-pen"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Technical Witness of Truth (SWOT-Roving Team)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-file-pen"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-keyboard"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Election Monitoring System Encoders (EMS)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-keyboard"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-boxes-packing"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Logistics (Foods & Supplies)') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-keyboard"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-square-phone"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Transportation & Communications ') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-square-phone"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div
-                                    class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center"
-                                        style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        </div> 
+                        <?php }  ?>
+
+                        <?php 
+                                // Check if the roles match the condition
+                                if ($roles === 'Finance & Solicitation ') {
+                                // Only render the block if the condition is met
+                                ?>
+                        <div class="col">
+                            <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
+                                <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
+                                    <div>
+                                        <h1>20</h1>
                                     </div>
+
+                                    <div><span>Volunteers</span></div>
+                                    <div><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                                </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            Lorem ipsum dolor sit amet.
+                                            <?php echo $roles; ?>
                                         </p>
-                                    </div>
                                 </div>
                             </div>
+                        </div> 
+                        <?php } } ?>
+                        
                         </div>
                     </section>
                 </div>

@@ -44,5 +44,13 @@ $stmt4->execute();
 $sql_result4 = $stmt4->get_result();
 $stmt4->close();
 
+$stmt5 = $sql_connection->prepare("SELECT ROLE_NAME, DESCRIPTIONS FROM ROLES");
+$stmt5->execute();
+$sql_result5 = $stmt5->get_result();
+$stmt5->close();
 
+$stmt6 = $sql_connection->prepare("SELECT NAME, REGISTRATION_DATE FROM REGISTRATION_INFOS ");
+$stmt6->execute();
+$sql_result6 = $stmt6->get_result();
+$stmt6->close();
 ?>

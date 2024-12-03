@@ -161,7 +161,7 @@ include ("php/dashboard.php");
                                 <a href="missions.html" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="addNewVolunteers.html" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Add New Volunteers</a>
+                                <a href="addNewVolunteers.php" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Add New Volunteers</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="list_of_volunteers.php" class="sidebar-link"><i class="fa-solid fa-list-ul pe-2"></i>View Volunteers</a>
@@ -170,11 +170,11 @@ include ("php/dashboard.php");
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="submissions.html" class="sidebar-link">
+                        <a href="submissions.php" class="sidebar-link">
                             <i class="fa-solid fa-school-flag pe-2"></i>Submissions</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">
+                        <a href="#" class="sidebar-link"> 
                             <i class="fa-solid fa-school-flag pe-2"></i>Schools & Precincts</a>
                     </li>
                     <li class="sidebar-item">
