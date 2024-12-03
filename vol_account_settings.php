@@ -301,7 +301,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                 </div>
             </nav>
 
-            <main class="container p-5">
+            <main class="container p-5" style="max-width: 950px; margin-top: 10px;">
 
                 <div>
                     

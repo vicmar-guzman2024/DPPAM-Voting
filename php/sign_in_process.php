@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($password)) {
         $_SESSION['error_message'] = "Please fill in all required fields.";
         $_SESSION['username_input'] = $username; // Store the username
-        header("Location: ../vol_login.php");
+        header("Location: ../user_login.php");
         exit;
     }
 
@@ -73,26 +73,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     break;
                 default:
                     $_SESSION['error_message'] = "Invalid role specified.";
-                    header("Location: ../vol_login.php");
+                    header("Location: ../user_login.php");
             }
             exit;
         } else {
             // Incorrect password
             $_SESSION['error_message'] = "Incorrect password.";
             $_SESSION['username_input'] = $username; // Preserve username input
-            header("Location: ../vol_login.php");
+            header("Location: ../user_login.php");
             exit;
         }
     } else {
         // User not found
         $_SESSION['error_message'] = "No user found with that username.";
-        header("Location: ../vol_login.php");
+        header("Location: ../user_login.php");
         exit;
     }
 
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../vol_login.php");
+    header("Location: ../user_login.php");
     exit;
 }

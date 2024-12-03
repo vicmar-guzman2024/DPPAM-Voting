@@ -288,7 +288,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         function logout() {
-                            window.location.href = "vol_login.php";
+                            window.location.href = "user_login.php";
                         }
                     </script>
 
