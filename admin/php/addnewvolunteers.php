@@ -31,8 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
             $others_prev_ppcrv_exp_ass = $_POST['others_prev_ppcrv_exp_ass'];
             $combined_ppcrv_exp_ass = $prev_ppcrv_exp_ass . ", " . $others_prev_ppcrv_exp_ass;
         } else {
-            $others_prev_ppcrv_exp_ass = "";
-            $combined_ppcrv_exp_ass = $prev_ppcrv_exp_ass . ", " .  $others_prev_ppcrv_exp_ass;
+            $combined_ppcrv_exp_ass = $prev_ppcrv_exp_ass;
         }
 
     $pref_ppcrv_vol_ass = $_POST['pref_ppcrv_vol_ass'];
@@ -41,8 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
             $others_pref_ppcrv_vol_ass = $_POST['others_pref_ppcrv_vol_ass'];
             $combined_pref_ppcrv_vol_ass = $pref_ppcrv_vol_ass . ", " . $others_pref_ppcrv_vol_ass;
         } else {
-            $others_pref_ppcrv_vol_ass = "";
-            $combined_pref_ppcrv_vol_ass = $pref_ppcrv_vol_ass . ", ". $others_pref_ppcrv_vol_ass;
+            $combined_pref_ppcrv_vol_ass = $pref_ppcrv_vol_ass;
         }
 
     $status = "PENDING";
@@ -80,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
 
     // Execute the statement
     if ($stmt->execute()) {
-        header("location: submissions.html");
+        header("location: submissions.php");
     } else {
         echo "Error: " . $stmt->error;
     }
