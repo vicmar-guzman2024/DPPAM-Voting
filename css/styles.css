@@ -13,10 +13,11 @@ a {
     color: black !important;
 }
 
-
+/**
 ul li a:hover {
     color: #808080 !important;
 }
+**/
 
 
 .section1 {
@@ -49,7 +50,7 @@ ul li a:hover {
 
 .bayanihan,
 .aboutUs {
-    font-size: 70px !important;
+    font-size: 3.5rem !important;
     font-weight: 700 !important;
 }
 
@@ -98,7 +99,7 @@ ul li a:hover {
 
 /**CAROUSEL**/
 .c-item {
-    height: 640px;
+    height: 650px;
 }
 
 .c-item.c-active {
@@ -139,6 +140,12 @@ ul li a:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
+  .mission-logo, .vision-logo {
+    width: 60px;
+    height: auto;
+    background-color: #5E0000;
+    border: 8px solid red;
+  }
 
 
 
@@ -148,12 +155,12 @@ footer {
     background-color: #310405;
 }
 
+footer img {
+    width: 250px;
+    height: auto;
+}
 
 /** SIGN IN STYLES **/
-.missionLogo {
-    background-color: #5E0000;
-    border: 10px solid red;
-}
 
 .missionVision div p, article p, section ul li {
     text-align: justify;

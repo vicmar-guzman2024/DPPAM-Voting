@@ -20,49 +20,44 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
-    <div class="container-fluid">
-
-      <div class="logo d-flex flex-row justify-content-center align-items-center gap-3">
-        <div><a href="#"><img src="img/DPPAMLOGO.png" alt="DPPAM Logo" height="auto" width="60"></a></div>
-        <div><a href="#"><img src="img/PPCRVLOGO.png" alt="PPCRV Logo" height="auto" width="60"></a></div>
-        <div><a class="navbar-brand" href="#">(Company Name)</a></div>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo Section -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="img/DPPAMLOGO.png" alt="DPPAM Logo" width="50">
+        <img src="img/PPCRVLOGO.png" alt="PPCRV Logo" width="50">
+        <span class="fw-bold">(Company Name)</span>
+      </a>
+  
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+  
+      <!-- Navigation Links -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav d-flex flex-lg-row flex-column justify-content-center align-content-center gap-4">
+        <ul class="navbar-nav align-items-lg-center gap-lg-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="user_home.html">Home</a>
+            <a class="nav-link" aria-current="page" href="user_home.html">Home</a>
           </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">About Us</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="aboutWhoAreWe.html">Who Are We?</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="aboutMissionVision.html">Mission / Vision</a></li>
-
             </ul>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="volunteers.html">Volunteers</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link btn btn-danger px-5 text-white" href="choose_role.html">Sign in</a>
+            <a class="btn btn-danger px-4 py-2 text-white" href="choose_role.html">Sign In</a>
           </li>
         </ul>
       </div>
@@ -81,7 +76,7 @@
 
       <!-- Logo Image -->
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-        <img src="img/logo.png" alt="Company Logo" class="img-fluid" style="max-width: 100%; height: auto;" aria-label="Company Logo">
+        <img src="img/logo.png" alt="Company Logo" class="img-fluid" style="width: 500px; height: auto;" aria-label="Company Logo">
       </div>
 
       <!-- About Us Text -->
@@ -100,41 +95,43 @@
 
 
       <!--SECTION 2 PPCRV National Office.--> 
-      <h3 class="mb-5 fw-bolder container">PPCRV National Office</h3>
-      <section class="container p-5 row row-cols-lg-2 row-cols-1 justify-content-center align-items-center gap-5" style="width: 90%; margin: auto;">
+      
+      <section class="container p-5">
 
-            <div class="row-row-cols-md-2 row-cols-1">
-                <div class="col">
-                <ul class="d-flex flex-column gap-2 list-unstyled">
-                    <li><i class="fa-solid fa-phone m-3 text-primary fs-4"></i>(02) 8807 6283</li>
-                    <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-envelope m-3 text-primary fs-4"></i><a href="">hello@ppcrv.org</a></li>
-                    <li class="d-flex flex-row align-items-center"><i class="fa-brands fa-facebook m-3 text-primary fs-4"></i><a href="https://www.facebook.com/ppcrv">https://www.facebook.com/ppcrv</a></li>
-                    <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-location-dot m-3 text-primary fs-4"></i><a href="https://maps.app.goo.gl/fMe7rQok3FmeZwJY6" target="_blank">PPCRV National Office Room 301, Pius XII Catholic Center, United Nations Avenue, Manila, Philippines</a></li>
-                </ul>
-            </div>
-
-            <div class="col ratio ratio-4x3 mb-3">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            </div>
-    
-            <form class="col-lg-5 col-12 border p-4"> 
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                    <label for="floatingInput">Name</label>
-                  </div>
+          <h3 class="mb-5 fw-bolder">Contact Us</h3>
+            <div class="row row-cols-lg-2 row-cols-1 justify-content-center align-items-center gap-5">
+              <div class="row-row-cols-md-2 row-cols-1">
+                  <div class="col">
+                  <ul class="d-flex flex-column gap-2 list-unstyled">
+                      <li><i class="fa-solid fa-phone m-3 text-primary fs-4"></i>(02) 8807 6283</li>
+                      <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-envelope m-3 text-primary fs-4"></i><a href="">hello@ppcrv.org</a></li>
+                      <li class="d-flex flex-row align-items-center"><i class="fa-brands fa-facebook m-3 text-primary fs-4"></i><a href="https://www.facebook.com/ppcrv">https://www.facebook.com/ppcrv</a></li>
+                      <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-location-dot m-3 text-primary fs-4"></i><a href="https://maps.app.goo.gl/fMe7rQok3FmeZwJY6" target="_blank">PPCRV National Office Room 301, Pius XII Catholic Center, United Nations Avenue, Manila, Philippines</a></li>
+                  </ul>
+              </div>
+              <div class="col ratio ratio-4x3 mb-3">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </div>
+              </div>
+              
+              <form class="col-lg-5 col-12 border p-3">
                   <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" required>
-                    <label for="floatingEmail">Email</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;" required></textarea>
-                    <label for="floatingTextarea">Message</label>
-                  </div>
-                  <div>
-                    <button class="btn btn-primary w-100">Submit</button>
-                  </div>
-                </form>
+                      <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                      <label for="name">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="Email" required>
+                      <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <textarea class="form-control" name="message" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;" required></textarea>
+                      <label for="message">Message</label>
+                    </div>
+                    <div>
+                      <button class="btn btn-primary w-100">Submit</button>
+                    </div>
+                  </form>
+            </div>
       </section>
 
      

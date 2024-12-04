@@ -15,53 +15,49 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-  <title>Home</title>
+  <title>DPPAM</title>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
-    <div class="container-fluid">
-
-      <div class="logo d-flex flex-row justify-content-center align-items-center gap-3">
-        <div><a href="#"><img src="img/DPPAMLOGO.png" alt="DPPAM Logo" height="auto" width="60"></a></div>
-        <div><a href="#"><img src="img/PPCRVLOGO.png" alt="PPCRV Logo" height="auto" width="60"></a></div>
-        <div><a class="navbar-brand" href="#">(Company Name)</a></div>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo Section -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="img/DPPAMLOGO.png" alt="DPPAM Logo" width="50">
+        <img src="img/PPCRVLOGO.png" alt="PPCRV Logo" width="50">
+        <span class="fw-bold">(Company Name)</span>
+      </a>
+  
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button> 
-
+      </button>
+  
+      <!-- Navigation Links -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav d-flex flex-lg-row flex-column justify-content-center align-content-center gap-4">
+        <ul class="navbar-nav align-items-lg-center gap-lg-3">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="user_home.html">Home</a>
           </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="aboutWhoAreWe.html">Who Are We?</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="aboutMissionVision.html">Mission / Vision</a></li>
-
             </ul>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="volunteers.html">Volunteers</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link btn btn-danger px-5 text-white" href="choose_role.html">Sign in</a>
+            <a class="btn btn-danger px-4 py-2 text-white" href="choose_role.html">Sign In</a>
           </li>
         </ul>
       </div>
@@ -109,7 +105,7 @@
       <div class="carousel-caption top-0 d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
         <div><h1>BAYANIHAN PARA SA MALINIS NA HALALAN</h1></div>
         <div class="mb-4"><p>since 2000</p></div>
-        <div><a href="volunteer_sign_up_form.php" class="btn btn-primary px-5 text-white">Be a Volunteer!</a></div>
+        <div><a href="vol_signup.php" class="btn btn-primary px-5 text-white">Be a Volunteer!</a></div>
       </div>
     </div>
     <div class="carousel-item c-item">
@@ -142,6 +138,7 @@
       <div class="col m-3"> <img src="img/samplepic3.jpg" alt="" class="samplepic samplepic3"></div>
     </div>
   </section>
+  
 
 
   <!--SECTION 3 - Features-->
@@ -219,7 +216,7 @@
         <!-- Logo Section -->
         <div class="col d-flex flex-column justify-content-center align-items-center mb-4 mb-lg-0">
           <div>
-            <img src="img/logo.png" alt="Logo" width="100%" height="auto" class="_2logo" class="img-fluid">
+            <img src="img/logo.png" alt="Logo" class="img-fluid">
           </div>
         </div>
 
@@ -290,15 +287,15 @@
         <!-- Copyright Section -->
         <div class="col d-flex flex-column justify-content-center align-items-center order-2 order-lg-1 mb-4 mb-lg-0">
           <div class="d-flex flex-column justify-content-center align-items-center">
-            <div><a href="" class="text-white">&#169; Copyright 2024</a></div>
+            <div><span class="text-white">&#169; Copyright 2024</span></div>
           </div>
         </div>
 
         <!-- Privacy and Terms Section -->
         <div class="col d-flex flex-column justify-content-center align-items-center order-3 order-lg-2">
           <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-            <div><a href="" class="text-white col">Privacy Policy</a></div>
-            <div><a href="" class="text-white col">Terms and Conditions</a></div>
+            <div><span class="text-white">Privacy Policy</div>
+            <div><span class="text-white">Terms and Conditions</div>
           </div>
         </div>
 
