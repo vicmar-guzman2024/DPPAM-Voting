@@ -1,24 +1,14 @@
 <?php 
-include ("php/connection.php");
-include ("php/dashboard.php");
-
 session_start();
 
-// Prevent caching of the page by the browser
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Pragma: no-cache");
-header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // In the past
-
-// Check if the user is logged in by verifying the session variable
-if (!isset($_SESSION['username'])) {
-    // Redirect to login page if session is not set (user is logged out)
-    header("location: admin_sign_in.php");
-    exit();
-}
+include ("php/connection.php");
+include ("php/dashboard.php");
+include ("php/nocache.php");
 
 $username = $_SESSION['username'];
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,7 +139,7 @@ $username = $_SESSION['username'];
                     
                 </a></li>
                 <hr class="text-dark">
-                  <li><a class="dropdown-item" href="editprofile.html"><i class="fa-solid fa-user-pen pe-2"></i>Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="editprofile.php"><i class="fa-solid fa-user-pen pe-2"></i>Edit Profile</a></li>
                   <li><a class="dropdown-item" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>Logout</a></li>
                 </ul>
               </div>

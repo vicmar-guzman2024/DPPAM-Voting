@@ -233,32 +233,32 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apply the function to both dropdowns
     handleDropdownSelection("prevExpAss", "selected-prevExpAss", "otherPrevExpAss");
     handleDropdownSelection("prefVolAss", "selected-prefVolAss", "otherPrefVolAss");
-  });
+});
 
 
-    // Get the search input element in submissions.php
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-        searchInput.addEventListener("keyup", function() {
-            const filter = searchInput.value.toLowerCase();
-            const rows = document.querySelectorAll("#tableBody .table-row");
+// Get the search input element in submissions.php
+const searchInput = document.getElementById("searchInput");
+if (searchInput) {
+    searchInput.addEventListener("keyup", function() {
+        const filter = searchInput.value.toLowerCase();
+        const rows = document.querySelectorAll("#tableBody .table-row");
     
-            rows.forEach(function(row) {
-                const name = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
-                const date = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
-    
-                if (name.includes(filter) || date.includes(filter)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
-                }
-            });
+        rows.forEach(function(row) {
+            const name = row.querySelector("td:nth-child(2)").textContent.toLowerCase();                const date = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+
+            if (name.includes(filter) || date.includes(filter)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
         });
-    }
+    });
+}
 
+
+/* LIST OF VOLUNTEERS PAGE */
 // Get the search input element in list_of_volunteers.php
 const searchVol = document.getElementById("searchVol");
-
 // Get the dropdown filter table in list_of_volunteers.php
 const missionsSelect = document.getElementById("missions");
 const precinctsSelect = document.getElementById("precincts");
