@@ -266,10 +266,10 @@ include("php/dashboard.php");
                                                     <td><?php echo $formatted_date; ?></td>
                                                     <td class="">
                                                         <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
-                                                            <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                                            <a href="php/edit.php" class="btn btn-outline-primary d-flex align-items-center">
                                                                 <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
                                                             </a>
-                                                            <a href="#" class="btn btn-outline-danger d-flex align-items-center">
+                                                            <a href="php/delete.php" class="btn btn-outline-danger d-flex align-items-center">
                                                                 <i class="bi bi-trash fs-6 me-1"></i> Delete
                                                             </a>
                                                             <a href="#" class="btn btn-outline-secondary d-flex align-items-center">

@@ -399,6 +399,7 @@ include("php/addnewvolunteers.php");
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?>
+                                            <option value="Others">Others</option>
                                     </select>
 
                                     <div id="selected-prevExpAss" class="mt-3">
@@ -423,6 +424,7 @@ include("php/addnewvolunteers.php");
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?> 
+                                            <option value="Others">Others</option>
                                       </select>
 
                                       <div id="selected-prefVolAss" class="mt-3">
