@@ -167,9 +167,6 @@ window.onload = function () {
 };
 
 
-
-
-
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -233,83 +230,83 @@ document.addEventListener("DOMContentLoaded", function () {
     // Apply the function to both dropdowns
     handleDropdownSelection("prevExpAss", "selected-prevExpAss", "otherPrevExpAss");
     handleDropdownSelection("prefVolAss", "selected-prefVolAss", "otherPrefVolAss");
-});
+  });
 
 
-// Get the search input element in submissions.php
-const searchInput = document.getElementById("searchInput");
-if (searchInput) {
-    searchInput.addEventListener("keyup", function() {
-        const filter = searchInput.value.toLowerCase();
-        const rows = document.querySelectorAll("#tableBody .table-row");
+    // Get the search input element in submissions.php
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("keyup", function() {
+            const filter = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll("#tableBody .table-row");
     
-        rows.forEach(function(row) {
-            const name = row.querySelector("td:nth-child(2)").textContent.toLowerCase();                const date = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+            rows.forEach(function(row) {
+                const name = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                const date = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+    
+                if (name.includes(filter) || date.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+}
 
-            if (name.includes(filter) || date.includes(filter)) {
+// Get the search input element in list_of_volunteers.php
+const searchVol = document.getElementById("searchVol");
+
+    // Get the dropdown filter table in list_of_volunteers.php
+    const missionsSelect = document.getElementById("missions");
+    const precinctsSelect = document.getElementById("precincts");
+    const statusSelect = document.getElementById("allStatus");
+    const parishSelect = document.getElementById("parishSelect");
+
+    function filterTable() {
+        const filterText = searchVol ? searchVol.value.toLowerCase() : ""; // If searchVol is available, get its value
+        const selectedMission = missionsSelect.value.toLowerCase();
+        const selectedPrecinct = precinctsSelect.value.toLowerCase();
+        const selectedStatus = statusSelect.value.toLowerCase();
+        const selectedParish = parishSelect ? parishSelect.value.toLowerCase() : "name of parish"; // Default to "name of parish"
+
+        const rows = document.querySelectorAll("#listtable .listrow");
+
+        rows.forEach(row => {
+            const volunteerId = row.cells[0].textContent.toLowerCase();
+            const volunteerName = row.cells[2].textContent.toLowerCase();
+            const precinct = row.cells[1].textContent.toLowerCase(); // Assuming precinct is in the 2nd column
+            const mission = row.cells[4].textContent.toLowerCase(); // Assuming mission is in the 5th column
+            const status = row.cells[5].textContent.toLowerCase(); // Assuming status is in the 6th column
+            const parish = row.cells[3].textContent.toLowerCase(); // Assuming parish is in the 4th column
+
+            // Check if row matches search text, selected Mission, Precinct, Status, and Parish
+            const matchesSearch = volunteerId.includes(filterText) || volunteerName.includes(filterText);
+            const matchesMission = selectedMission === "select mission" || mission.includes(selectedMission);
+            const matchesPrecinct = selectedPrecinct === "select precincts" || precinct.includes(selectedPrecinct);
+            const matchesStatus = selectedStatus === "all status" || status.includes(selectedStatus);
+            
+            // If parish is "name of parish", don't filter based on parish column, show all rows
+            const matchesParish = selectedParish === "name of parish" || parish.includes(selectedParish);
+
+            // Show row if all conditions match
+            if (matchesSearch && matchesMission && matchesPrecinct && matchesStatus && matchesParish) {
                 row.style.display = "";
             } else {
                 row.style.display = "none";
             }
         });
-    });
-}
-
-
-/* LIST OF VOLUNTEERS PAGE */
-// Get the search input element in list_of_volunteers.php
-const searchVol = document.getElementById("searchVol");
-// Get the dropdown filter table in list_of_volunteers.php
-const missionsSelect = document.getElementById("missions");
-const precinctsSelect = document.getElementById("precincts");
-const statusSelect = document.getElementById("allStatus");
-const parishSelect = document.getElementById("parishSelect");
-
-function filterTable() {
-    const filterText = searchVol ? searchVol.value.toLowerCase() : ""; // If searchVol is available, get its value
-    const selectedMission = missionsSelect.value.toLowerCase();
-    const selectedPrecinct = precinctsSelect.value.toLowerCase();
-    const selectedStatus = statusSelect.value.toLowerCase();
-    const selectedParish = parishSelect ? parishSelect.value.toLowerCase() : "name of parish"; // Default to "name of parish"
-
-    const rows = document.querySelectorAll("#listtable .listrow");
-
-    rows.forEach(row => {
-        const volunteerId = row.cells[0].textContent.toLowerCase();
-        const volunteerName = row.cells[2].textContent.toLowerCase();
-        const precinct = row.cells[1].textContent.toLowerCase(); // Assuming precinct is in the 2nd column
-        const mission = row.cells[4].textContent.toLowerCase(); // Assuming mission is in the 5th column
-        const status = row.cells[5].textContent.toLowerCase(); // Assuming status is in the 6th column
-        const parish = row.cells[3].textContent.toLowerCase(); // Assuming parish is in the 4th column
-
-        // Check if row matches search text, selected Mission, Precinct, Status, and Parish
-        const matchesSearch = volunteerId.includes(filterText) || volunteerName.includes(filterText);
-        const matchesMission = selectedMission === "select mission" || mission.includes(selectedMission);
-        const matchesPrecinct = selectedPrecinct === "select precincts" || precinct.includes(selectedPrecinct);
-        const matchesStatus = selectedStatus === "all status" || status.includes(selectedStatus);
-        
-        // If parish is "name of parish", don't filter based on parish column, show all rows
-        const matchesParish = selectedParish === "name of parish" || parish.includes(selectedParish);
-
-        // Show row if all conditions match
-        if (matchesSearch && matchesMission && matchesPrecinct && matchesStatus && matchesParish) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    });
-}
+    }
 
 // Add event listeners for the search input and dropdowns
 if (searchVol) {
-    searchVol.addEventListener("input", filterTable);
-}
+        searchVol.addEventListener("input", filterTable);
+    }
 
 if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
-    missionsSelect.addEventListener("change", filterTable);
-    precinctsSelect.addEventListener("change", filterTable);
-    statusSelect.addEventListener("change", filterTable);
-    parishSelect.addEventListener("change", filterTable);
+        missionsSelect.addEventListener("change", filterTable);
+        precinctsSelect.addEventListener("change", filterTable);
+        statusSelect.addEventListener("change", filterTable);
+        parishSelect.addEventListener("change", filterTable);
 }
 
 

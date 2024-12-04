@@ -410,7 +410,7 @@ include ("php/dashboard.php");
                             <div class="col-md-3">
                                 <select class="form-select" aria-label="precincts" id="precincts">
                                     <option selected>Select Precincts</option>
-                                        <?php while($row = mysqli_fetch_assoc($sql_result4)){ ?>
+                                        <?php while($row = mysqli_fetch_assoc($sql_result8)){ ?>
                                             <option value="<?php echo $row['PRECINCT']; ?>"><?php echo $row['PRECINCT']; ?></option>
                                         <?php } ?>
                                 </select>
@@ -419,52 +419,52 @@ include ("php/dashboard.php");
 
                              <!-- SEARCH BAR -->
                              <div class="col-md-3 position-relative">
-    <span class="position-absolute top-0 start-0 mt-2 ms-4"><i class="fa fa-search"></i></span>
-    <input type="text" id="searchVol" class="form-control ps-5" placeholder="Search here...">
-</div>
+                                <span class="position-absolute top-0 start-0 mt-2 ms-4"><i class="fa fa-search"></i></span>
+                                <input type="text" id="searchVol" class="form-control ps-5" placeholder="Search here...">
+                            </div>
 
-<!-- TABLE -->
-<section class="table-responsive p-3">
-<table class="table align-middle table-bordered border border-dark">
-        <thead>
-            <tr class="bg-danger">
-                <th scope="col"><span class="text-white">Volunteer ID</span></th>
-                <th scope="col"><span class="text-white">Precinct #</span></th>
-                <th scope="col"><span class="text-white">Volunteer Name</span></th>
-                <th scope="col"><span class="text-white">Parishioner of</span></th>
-                <th scope="col"><span class="text-white">Preferred Volunteer Assignment</span></th>
-                <th scope="col"><span class="text-white">Status</span></th>
-                <th scope="col"><span class="text-white">Action</span></th>
-            </tr>
-        </thead>
-        <tbody id="listtable">
-            <?php while ($row = mysqli_fetch_assoc($sql_result7)) { 
-                $fname = $row['FIRST_NAME'];
-                $lname = $row['LAST_NAME'];
-                $flname = $fname . " " . $lname;
-            ?>
-            <tr class="listrow">
-                <th scope="row"><?php echo $row['VOLUNTEERS_ID']; ?></th>
-                <td><?php echo $row['PRECINCT_NO']; ?></td>
-                <td><?php echo $flname; ?></td>
-                <td><?php echo $row['ASSIGNED_PARISH']; ?></td>
-                <td><?php echo $row['ASSIGNED_ASSIGNMENT']; ?></td>
-                <td><?php echo $row['STATUS']; ?></td>
-                <td>
-                    <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
-                        <a href="#" class="btn btn-outline-primary d-flex align-items-center">
-                            <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
-                        </a>
-                        <a href="#" class="btn btn-outline-danger d-flex align-items-center">
-                            <i class="bi bi-trash fs-6 me-1"></i> Delete
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-                        </div>
+                            <!-- TABLE -->
+                            <section class="table-responsive p-3">
+                            <table class="table align-middle table-bordered border border-dark">
+                                    <thead>
+                                        <tr class="bg-danger">
+                                            <th scope="col"><span class="text-white">Volunteer ID</span></th>
+                                            <th scope="col"><span class="text-white">Precinct #</span></th>
+                                            <th scope="col"><span class="text-white">Volunteer Name</span></th>
+                                            <th scope="col"><span class="text-white">Parishioner of</span></th>
+                                            <th scope="col"><span class="text-white">Preferred Volunteer Assignment</span></th>
+                                            <th scope="col"><span class="text-white">Status</span></th>
+                                            <th scope="col"><span class="text-white">Action</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="listtable">
+                                        <?php while ($row = mysqli_fetch_assoc($sql_result7)) { 
+                                            $fname = $row['FIRST_NAME'];
+                                            $lname = $row['LAST_NAME'];
+                                            $flname = $fname . " " . $lname;
+                                        ?>
+                                        <tr class="listrow">
+                                            <th scope="row"><?php echo $row['VOLUNTEERS_ID']; ?></th>
+                                            <td><?php echo $row['PRECINCT_NO']; ?></td>
+                                            <td><?php echo $flname; ?></td>
+                                            <td><?php echo $row['ASSIGNED_PARISH']; ?></td>
+                                            <td><?php echo $row['ASSIGNED_ASSIGNMENT']; ?></td>
+                                            <td><?php echo $row['STATUS']; ?></td>
+                                            <td>
+                                                <div class="d-flex flex-wrap flex-md-nowrap justify-content-start align-items-center gap-2">
+                                                    <a href="#" class="btn btn-outline-primary d-flex align-items-center">
+                                                        <i class="bi bi-pencil-square fs-6 me-1"></i> Edit
+                                                    </a>
+                                                    <a href="#" class="btn btn-outline-danger d-flex align-items-center">
+                                                        <i class="bi bi-trash fs-6 me-1"></i> Delete
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                     </section>
                 </div>
             </main>
