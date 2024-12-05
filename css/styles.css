@@ -32,15 +32,9 @@ ul li a:hover {
     letter-spacing: 6px !important;
 }
 
-.containerOfImgAndTxt,
-.mandate {
+.containerOfImgAndTxt{
     width: 80%;
     margin: auto;
-}
-
-.whoAreWe,
-.missionVision {
-    width: 80% !important;
 }
 
 .whoAreWe article p {
@@ -58,8 +52,9 @@ ul li a:hover {
 
 .samplepic {
     width: 350px;
-    height: 350px;
+    height: 350px !important;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .samplepic1 {
@@ -74,10 +69,6 @@ ul li a:hover {
     border: 3px solid #0145AA;
 }
 
-
-.section3 {
-    width: 80%; 
-}
 
 .section3 p {
     text-align: justify;

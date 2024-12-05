@@ -95,44 +95,70 @@
 
 
       <!--SECTION 2 PPCRV National Office.--> 
+    <section class="container-md my-5">
+      <h1>PPCRV National Office</h1>
+    
       
-      <section class="container p-5">
-
-          <h3 class="mb-5 fw-bolder">Contact Us</h3>
-            <div class="row row-cols-lg-2 row-cols-1 justify-content-center align-items-center gap-5">
-              <div class="row-row-cols-md-2 row-cols-1">
-                  <div class="col">
-                  <ul class="d-flex flex-column gap-2 list-unstyled">
-                      <li><i class="fa-solid fa-phone m-3 text-primary fs-4"></i>(02) 8807 6283</li>
-                      <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-envelope m-3 text-primary fs-4"></i><a href="">hello@ppcrv.org</a></li>
-                      <li class="d-flex flex-row align-items-center"><i class="fa-brands fa-facebook m-3 text-primary fs-4"></i><a href="https://www.facebook.com/ppcrv">https://www.facebook.com/ppcrv</a></li>
-                      <li class="d-flex flex-row align-items-center"><i class="fa-solid fa-location-dot m-3 text-primary fs-4"></i><a href="https://maps.app.goo.gl/fMe7rQok3FmeZwJY6" target="_blank">PPCRV National Office Room 301, Pius XII Catholic Center, United Nations Avenue, Manila, Philippines</a></li>
-                  </ul>
-              </div>
-              <div class="col ratio ratio-4x3 mb-3">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
-              </div>
-              
-              <form class="col-lg-5 col-12 border p-3">
-                  <div class="form-floating mb-3">
-                      <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-                      <label for="name">Name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input type="email" name="email" class="form-control" id="floatingEmail" placeholder="Email" required>
-                      <label for="email">Email</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <textarea class="form-control" name="message" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;" required></textarea>
-                      <label for="message">Message</label>
-                    </div>
-                    <div>
-                      <button class="btn btn-primary w-100">Submit</button>
-                    </div>
-                  </form>
+      <div class="row align-items-start">
+        <!-- Left Column: Contact Details and Map -->
+        <div class="col-lg-6 col-md-12 mb-lg-0 mb-5">
+          <!-- CONTACT DETAILS -->
+          <ul class="d-flex flex-column gap-2 list-unstyled">
+            <li>
+              <i class="fa-solid fa-phone m-3 text-primary fs-4"></i>(02) 8807 6283
+            </li>
+            <li class="d-flex flex-row align-items-center">
+              <i class="fa-solid fa-envelope m-3 text-primary fs-4"></i>
+              <a href="">hello@ppcrv.org</a>
+            </li>
+            <li class="d-flex flex-row align-items-center">
+              <i class="fa-brands fa-facebook m-3 text-primary fs-4"></i>
+              <a href="https://www.facebook.com/ppcrv" target="_blank">https://www.facebook.com/ppcrv</a>
+            </li>
+            <li class="d-flex flex-row align-items-center">
+              <i class="fa-solid fa-location-dot m-3 text-primary fs-4"></i>
+              <a href="https://maps.app.goo.gl/fMe7rQok3FmeZwJY6" target="_blank">
+                PPCRV National Office Room 301, Pius XII Catholic Center, United Nations Avenue, Manila, Philippines
+              </a>
+            </li>
+          </ul>
+    
+          <!-- MAP -->
+          <div class="ratio ratio-4x3 mt-3">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.173431257543!2d120.97427814951024!3d14.582352624427244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c98a4bfb38fd%3A0xfb33eeff422ecbbd!2sPope%20Pius%20XII%20Catholic%20Center!5e0!3m2!1sen!2sph!4v1729786575051!5m2!1sen!2sph" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+    
+        <!-- Right Column: Form -->
+        <div class="col-lg-6 col-md-12">
+          <form action="" class="border p-3">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Your name">
             </div>
-      </section>
+            <div class="mb-3">
+              <label for="emailAddress" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="emailAddress" placeholder="exampleemail@gmail.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div>
+              <button class="btn btn-primary w-100">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    
 
      
 
