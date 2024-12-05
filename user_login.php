@@ -6,8 +6,14 @@ $error_message = isset($_SESSION['error_message']) ? $_SESSION['error_message'] 
 unset($_SESSION['username_input'], $_SESSION['error_message']); // Clear after usage
 
 // Retrieve success message, if any
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
-unset($_SESSION['success_message']); // Clear message after use
+$success_sign_up_message = isset($_SESSION['success_sign_up_message']) ? $_SESSION['success_sign_up_message'] : '';
+unset($_SESSION['success_sign_up_message']); // Clear message after use
+
+// LOGIN FIRST (ALERT)
+if (isset($_SESSION['login_required_alert'])) {
+    $modalMessage = htmlspecialchars($_SESSION['login_required_alert']);
+    unset($_SESSION['login_required_alert']); 
+}
 
 ?>
 
@@ -41,13 +47,44 @@ unset($_SESSION['success_message']); // Clear message after use
   <section class="signInContainer d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">  
 
     <!-- Display Success Message -->
-  <?php if (!empty($success_message)): ?>
+  <?php if (!empty($success_sign_up_message)): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <?= htmlspecialchars($success_message) ?>
+                <?= htmlspecialchars($success_sign_up_message) ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         <?php endif; ?>
+
+    
+  <!-- DISPLAY LOGIN ALERT (MODAL) -->
+        <?php if (!empty($modalMessage)): ?>
+        <!-- Simple Modal -->
+        <div class="modal fade" id="alertModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notice!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <?php echo $modalMessage; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Okay</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Auto-trigger the modal -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+                alertModal.show();
+            });
+        </script>
+    <?php endif; ?>    
         
+
+
     <div class="containerOfLeftRight row row-cols-lg-2 row-cols-1 justify-content-between align-items-center">
 
         <div class="leftContainer col-lg-6 col-12 d-flex flex-row justify-content-center align-items-start" style="height: 60vh;">
