@@ -87,6 +87,11 @@ ul li a:hover {
     height: 300px;
 }
 
+.d-flex.overflow-auto {
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; 
+    scrollbar-width: thin;
+  }
 
 /**CAROUSEL**/
 .c-item {
@@ -97,7 +102,7 @@ ul li a:hover {
     height: 710px;
 }
 
-.c-img{
+.c-img{ 
     height: 100%;
     object-fit: cover;
     filter: brightness(0.5);
