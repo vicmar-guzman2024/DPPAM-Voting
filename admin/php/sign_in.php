@@ -2,8 +2,8 @@
 include("connection.php");
 
 if (isset($_POST['login'])) {
-    $USERNAME = $_POST['Username'];
-    $PASSWORD = $_POST['Password'];
+    $USERNAME = $_POST['USERNAME'];
+    $PASSWORD = $_POST['PASSWORD'];
     $Error_Message = "";
 
     // Validate inputs
@@ -15,7 +15,7 @@ if (isset($_POST['login'])) {
 
     if (!empty($Error_Message)) {
         echo "<script>alert('$Error_Message')</script>";
-        header("location: ../admin_sign_in.html");
+        header("location: ../admin_sign_in.php");
         exit();
     }
 
@@ -30,30 +30,36 @@ if (isset($_POST['login'])) {
         // Check the user's status
         if ($user['STATUS'] === "INACTIVE") {
             echo "<script>alert('Account is terminated');</script>";
-            header("location: ../admin_sign_in.html");
+            header("location: ../admin_sign_in.php");
             exit(); 
         }
         
-        // if(password_verify($PASSWORD, $user['PASSWORD']))
+        // If passwords match
         if($PASSWORD === $user['PASSWORD']){
-            // Start the session and store user info
+            // Start the session
             session_start();
-            $_SESSION['username'] = $USERNAME;  // You can also store user ID or other data here
-    
+            
+            // Store user data in session (this will persist until the user logs out)
+            $_SESSION['username'] = $USERNAME;
+            $_SESSION['user_id'] = $user['USER_ID']; // You can also store other details here
+            
+            // Redirect to the index page if logged in successfully
             header("location: ../index.php");
         } else {
             echo "<script>alert('Invalid credentials');</script>";
-            header("location: ../admin_sign_in.html");
+            header("location: ../admin_sign_in.php");
         }
     } else {
         echo "<script>alert('User Not Found');</script>";
-        header("location: ../admin_sign_in.html");
+        header("location: ../admin_sign_in.php");
     }
-    
 
     $stmt->close();
 }
+
 ?>
+
+
 
 
 // use this if the password is in hash

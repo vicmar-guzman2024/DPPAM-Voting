@@ -1,7 +1,14 @@
 <?php 
+session_start();
+
 include ("php/connection.php");
 include ("php/dashboard.php");
+include ("php/nocache.php");
+
+$username = $_SESSION['username'];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +30,6 @@ include ("php/dashboard.php");
 
   
   
-
 
   <title>Admin</title>
 </head>
@@ -129,12 +135,12 @@ include ("php/dashboard.php");
                 <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1" style="width: 250px;">
                   <li><a class="dropdown-item d-flex flex-row justify-content-center align-items-center" href="#">
                     <img src="../img/DPPAMLOGO.png" alt="" width="50px" height="50px" class="img-fluid">
-                    <p>Vicmar M. Guzman</p>
+                    <p><?php echo $username; ?></p>
                     
                 </a></li>
                 <hr class="text-dark">
-                  <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-pen pe-2"></i>Edit Profile</a></li>
-                  <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>Logout</a></li>
+                  <li><a class="dropdown-item" href="editprofile.php"><i class="fa-solid fa-user-pen pe-2"></i>Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>Logout</a></li>
                 </ul>
               </div>
         </div>

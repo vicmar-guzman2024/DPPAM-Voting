@@ -31,10 +31,8 @@ while ($row = mysqli_fetch_assoc($sql_result3)) {
 }
 $stmt3->close();
 
-// the precinct here is to get it in list of volunteer table dropdown
 $stmt4 = $sql_connection->prepare("
     SELECT DISTINCT
-        PRECINCT,
         pr.ASSIGNED_SCHOOL, 
         p.PARISH_NAME 
     FROM PRECINCTS pr
@@ -63,5 +61,11 @@ $stmt7 = $sql_connection->prepare("SELECT VOLUNTEERS_ID, PRECINCT_NO, FIRST_NAME
 $stmt7->execute();
 $sql_result7 = $stmt7->get_result();
 $stmt7->close();
+
+// LIST OF VOLUNTEERS PRECINCT DROPDOWN
+$stmt8 = $sql_connection->prepare("SELECT DISTINCT PRECINCT FROM PRECINCTS");
+$stmt8->execute();
+$sql_result8 = $stmt8->get_result();
+$stmt8->close();
 
 ?>
