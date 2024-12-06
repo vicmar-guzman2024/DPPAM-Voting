@@ -231,6 +231,27 @@ input:focus,
     margin-left: 10px;
 }
 
+
+/* CHART STYLE */
+.chart-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  /** PICTURE FOR ID **/
+  .id-picture {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 20px solid darkblue;
+  }
+  
+
 /* Responsive */
 
 @media (min-width:768px) {
