@@ -123,7 +123,7 @@ if (isset($_SESSION['login_required_alert'])) {
 
     <hr class="text-dark mt-5">
     <div class="col d-flex flex-row justify-content-center align-items-center">
-        <p>Don't have an account? <a href="vol_signup.php" class="text-primary">Sign Up</a></p>
+        <p>Don't have an account? <a href="choose_role.html" class="text-primary">Sign Up</a></p>
     </div>
 </form>
 
