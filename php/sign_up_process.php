@@ -67,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->execute()) {
             // Set success message in session and redirect
-            $_SESSION['success_sign_up_message'] = "Account created successfully. You can now log in.";
-            header("Location: ../user_login.php"); // Redirect to the login page
+            // $_SESSION['success_sign_up_message'] = "Account created successfully. You can now log in.";
+            header("Location: ../vol_registration.php"); // Redirect to the login page
             exit();
         } else {
             echo "Error: " . $stmt->error;

@@ -8,74 +8,25 @@ $(document).ready(function () {
 
     $(".next-step").click(function () {
         currentGfgStep = $(this).parent();
-        let isValid = true;
 
-        // Validate required fields
-        currentGfgStep.find("input, select").each(function () {
-            const $this = $(this);
+        // Proceed to the next step
+        nextGfgStep = currentGfgStep.next();
 
-            if ($this.attr("type") === "radio") {
-                let name = $this.attr("name");
+        $("#progressbar li").eq($("fieldset").index(nextGfgStep)).addClass("active");
 
-                // Check if at least one radio button in the group is checked
-                if ($(`input[name="${name}"]:checked`).length === 0) {
-                    isValid = false;
-                    $this.closest(".form-check").addClass("is-invalid");
-                } else {
-                    $this.closest(".form-check").removeClass("is-invalid");
-                }
-            } else if ($this.attr("type") === "file" && !$this.val()) {
-                isValid = false;
-                $this.addClass("is-invalid");
-            } else if ($this.is("select")) {
-                // Check if a dropdown has a valid value
-                if ($this.val() === "" || $this.val() === null) {
-                    isValid = false;
-                    $this.addClass("is-invalid");
-                } else {
-                    $this.removeClass("is-invalid");
-                }
-            } else if ($this.is(":enabled") && !$this.val()) {
-                // Only validate enabled inputs
-                isValid = false;
-                $this.addClass("is-invalid");
-            } else {
-                $this.removeClass("is-invalid");
-            }
+        nextGfgStep.show();
+        currentGfgStep.animate({ opacity: 0 }, {
+            step: function (now) {
+                opacity = 1 - now;
+                currentGfgStep.css({
+                    display: "none",
+                    position: "relative",
+                });
+                nextGfgStep.css({ opacity: opacity });
+            },
+            duration: 500,
         });
-
-        // Handle "Others" input validation dynamically
-        const othersDropdown = $("#prefVolAss");
-        const othersInput = $("#otherPrefVolAss");
-        if (othersDropdown.val() === "Others" && !othersInput.val()) {
-            isValid = false;
-            othersInput.addClass("is-invalid");
-        } else {
-            othersInput.removeClass("is-invalid");
-        }
-
-        // Proceed to the next step if all validations pass
-        if (isValid) {
-            nextGfgStep = currentGfgStep.next();
-
-            $("#progressbar li").eq($("fieldset").index(nextGfgStep)).addClass("active");
-
-            nextGfgStep.show();
-            currentGfgStep.animate({ opacity: 0 }, {
-                step: function (now) {
-                    opacity = 1 - now;
-                    currentGfgStep.css({
-                        display: "none",
-                        position: "relative",
-                    });
-                    nextGfgStep.css({ opacity: opacity });
-                },
-                duration: 500,
-            });
-            setProgressBar(++current);
-        } else {
-            alert("Please fill out all required fields before proceeding.");
-        }
+        setProgressBar(++current);
     });
 
     $(".previous-step").click(function () {
@@ -132,6 +83,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 
 
@@ -212,6 +164,54 @@ document.addEventListener("DOMContentLoaded", function () {
     setupDropdown("prevExpAss", "selected-prevExpAss", "otherPrevExpAss");
     setupDropdown("prefVolAss", "selected-prefVolAss", "otherPrefVolAss");
   });
+
+
+
+
+
+  //ABLING AND DISABLING IN "ARE YOU A REGISTERED VOTER"
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const yesRadio = document.getElementById("yes");
+  const noRadio = document.getElementById("no");
+  const precinctNoField = document.getElementById("precinctNo");
+  const pollingPlaceField = document.getElementById("pollingPlace");
+  const noReasonField = document.getElementById("no_reason");
+
+  // Function to toggle field states
+  function toggleFields() {
+    if (yesRadio.checked) {
+      // Enable "Precinct No." and "Polling Place", disable "Reason Why"
+      precinctNoField.disabled = false;
+      pollingPlaceField.disabled = false;
+      noReasonField.disabled = true;
+      noReasonField.value = ""; // Clear the "Reason Why" field
+    } else if (noRadio.checked) {
+      // Enable "Reason Why", disable "Precinct No." and "Polling Place"
+      precinctNoField.disabled = true;
+      pollingPlaceField.disabled = true;
+      noReasonField.disabled = false;
+      precinctNoField.value = ""; // Clear the "Precinct No." field
+      pollingPlaceField.value = ""; // Clear the "Polling Place" field
+    }
+  }
+
+  // Disable all fields by default
+  function initializeFields() {
+    precinctNoField.disabled = true;
+    pollingPlaceField.disabled = true;
+    noReasonField.disabled = true;
+  }
+
+  // Attach event listeners to radio buttons
+  yesRadio.addEventListener("change", toggleFields);
+  noRadio.addEventListener("change", toggleFields);
+
+  // Initialize the fields on page load
+  initializeFields();
+});
+
+
   
   
 
