@@ -335,12 +335,11 @@ $username = $_SESSION['username'];
                         </div>
                     </div>
                     
-
                 <section class="mb-5 border py-3">
                         <div>
                             <h3>Registered Volunteers</h3>
                             <div>
-                                <canvas id="myChart" width="1200" height="600"></canvas>
+                                <canvas id="myChart" width="500" height="400"></canvas>
                             </div>
                         </div>
 
@@ -357,16 +356,17 @@ $username = $_SESSION['username'];
 
                     <div class="row mb-5">
                       <div class="col-md-3">
-                      <select class="form-select" aria-label="school" id="schoolSelect" onchange="filterSchools();">
-                          <option selected value="">Name of School</option>
-                          <?php while ($row = mysqli_fetch_assoc($sql_result4)) { ?>
-                              <option class="school-option" 
-                                      data-parish="<?php echo htmlspecialchars($row['PARISH_NAME']); ?>" 
-                                      value="<?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>">
-                                  <?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>
-                              </option>
-                          <?php } ?>
-                      </select>
+                        <!-- Dropdown for school selection -->
+                        <select class="form-select" aria-label="school" id="schoolSelect" onchange="updateChartData();">
+                            <option selected value="">Name of School</option>
+                            <?php while ($row = mysqli_fetch_assoc($sql_result4)) { ?>
+                                <option class="school-option" 
+                                        data-parish="<?php echo htmlspecialchars($row['PARISH_NAME']); ?>" 
+                                        value="<?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>">
+                                    <?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>
+                                </option>
+                            <?php } ?>
+                        </select>
                       </div>
                     </div>
 
@@ -411,22 +411,146 @@ $username = $_SESSION['username'];
                           <div class="row row-cols-md-2 row-cols-1 d-flex justify-content-center align-items-center">
                             <!-- Pie Chart Section -->
                             <div class="col-md-6 mb-4">
-                              <canvas id="pieChart"></canvas>
-                              <script>
-                                const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+                            <canvas id="pieChartCtx" width="400" height="400"></canvas>
+                            <script>
+                                // Dynamically inject PHP arrays into JavaScript
+                                const totalRV = <?php echo json_encode($registered_Vol); ?>; // Array of registered volunteers
+                                const neededRV = <?php echo json_encode($needed_Vol); ?>; // Array of needed volunteers
+                                const assignedSchools = <?php echo json_encode($assigned_schoool); ?>; // Array of school names
+
+                                // Default to the first value if no selection
+                                let defaultRegisteredVolunteers = totalRV[0];
+                                let defaultNeededVolunteers = neededRV[0];
+
+                                // Initial pie chart data with dynamic values
                                 const pieData = {
-                                  labels: ['Red', 'Blue', 'Yellow'],
-                                  datasets: [{
-                                    label: 'My First Dataset',
-                                    data: [300, 50, 100],
-                                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
-                                    hoverOffset: 4
-                                  }]
+                                    labels: ["Registered Volunteers", "Needed Volunteers"],
+                                    datasets: [{
+                                        data: [defaultRegisteredVolunteers, defaultNeededVolunteers],
+                                        backgroundColor: ['#69ccec', '#ff4d4d'],
+                                        hoverOffset: 4
+                                    }]
                                 };
-                                new Chart(pieChartCtx, { type: 'doughnut', data: pieData });
+
+                                // Custom plugin to add center text
+                                const centerTextPlugin = {
+                                    id: 'centerText',
+                                    beforeDraw: (chart) => {
+                                        const { width, height, ctx } = chart;
+                                        const centerX = width / 2; // circle size 
+                                        const centerY = height / 2;
+
+                                        ctx.save();
+                                        ctx.font = 'bold 1.2em sans-serif';
+                                        ctx.textAlign = 'center';
+                                        ctx.textBaseline = 'middle';
+                                        ctx.fillStyle = 'black';
+
+                                        ctx.fillText('Number of', centerX, centerY + 30); // label ng number of text
+                                        ctx.font = 'bold 1.4em sans-serif';
+                                        ctx.fillText('Volunteers', centerX, centerY + 50); // label ng volunteers text
+                                        ctx.restore();
+                                    }
+                                };
+
+                                // Plugin to add percentages on each segment
+                                const segmentLabelsPlugin = {
+                                    id: 'segmentLabels',
+                                    afterDatasetDraw: (chart) => {
+                                        const { ctx, chartArea } = chart;
+                                        const { top, bottom, left, right } = chartArea;
+                                        const chartCenterX = (left + right) / 2;
+                                        const chartCenterY = (top + bottom) / 2;
+
+                                        chart.data.datasets[0].data.forEach((value, index) => {
+                                            const meta = chart.getDatasetMeta(0);
+                                            const arc = meta.data[index];
+                                            const angle = (arc.startAngle + arc.endAngle) / 2;
+
+                                            const radius = arc.outerRadius - (arc.outerRadius - arc.innerRadius) / 2;
+                                            const labelX = chartCenterX + radius * Math.cos(angle);
+                                            const labelY = chartCenterY + radius * Math.sin(angle);
+
+                                            ctx.save();
+                                            ctx.font = 'bold 0.8em sans-serif';
+                                            ctx.textAlign = 'center';
+                                            ctx.textBaseline = 'middle';
+                                            ctx.fillStyle = 'black';
+
+                                            ctx.fillText(`${Math.round((value / (totalRV[0] + neededRV[0])) * 100)}%`, labelX, labelY);
+                                            ctx.restore();
+                                        });
+                                    }
+                                };
+
+                                // Create the pie chart
+                                let pieChart = new Chart(document.getElementById('pieChartCtx').getContext('2d'), {
+                                    type: 'doughnut',
+                                    data: pieData,
+                                    options: {
+                                        responsive: true,
+                                        plugins: {
+                                            legend: {
+                                                display: true,
+                                                position: 'top', // This will place the legend at the top
+                                                align: 'start',  // Aligns the legend items to the left
+                                                labels: {
+                                                  font: {
+                                                      size: 15, // Adjust the font size for labels
+                                                      weight: 'bold'
+                                                  },
+                                                  boxWidth: 15, // Adjust the size of the color box in the legend
+                                                  padding: 20 // Adds space between the legend box and the label text
+                                              }
+                                            },
+                                            tooltip: {
+                                                enabled: true
+                                            }
+                                        },
+                                        layout: {
+                                            padding: {
+                                                left: 20, // Adds padding to the left of the chart
+                                                top: 15, // Adds some padding at the top for the labels
+                                                bottom: 20
+                                            }
+                                        }
+                                    },
+                                    plugins: [centerTextPlugin, segmentLabelsPlugin]
+                                });
+
+                                // Function to update chart data when a school is selected
+                                function updateChartData() {
+                                    const selectedSchool = document.getElementById('schoolSelect').value;
+
+                                    if (selectedSchool) {
+                                        // Find the index of the selected school
+                                        const index = assignedSchools.indexOf(selectedSchool);
+                                        if (index !== -1) {
+                                            // Update the chart with the selected school's data
+                                            pieData.datasets[0].data = [
+                                                totalRV[index],  // Registered volunteers
+                                                neededRV[index]   // Needed volunteers
+                                            ];
+                                            console.log('Selected school data updated:', totalRV[index], neededRV[index]);
+                                        }
+                                    } else {
+                                        // If no school is selected, show the default data (first school)
+                                        pieData.datasets[0].data = [
+                                            totalRV[0], // Default to the first school's registered volunteers
+                                            neededRV[0] // Default to the first school's needed volunteers
+                                        ];
+                                        console.log('No school selected, showing default data:', totalRV[0], neededRV[0]);
+                                    }
+
+                                    // Update the chart with the new data
+                                    pieChart.update();
+                                }
+
+                                // Call the function initially to display the default chart data
+                                updateChartData();
                               </script>
                             </div>
-                      
+                    
                             <!-- Bar Chart Section -->
                             <div class="col-md-6 mb-4">
                               <canvas id="myChart2"></canvas>

@@ -127,9 +127,9 @@ function updateChart() {
                     data: registeredData,
                     backgroundColor: '#00A1E4',
                     borderColor: '#00A1E4',
-                    borderWidth: 1,
-                    barPercentage: 0.4,
-                    categoryPercentage: 0.8,
+                    borderWidth: .1,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5,
                 },
                 {
                     label: 'Needed Registered Volunteers',
@@ -144,18 +144,31 @@ function updateChart() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y',
+            indexAxis: 'y', // Horizontal bar chart
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: { display: false },
+                    ticks: {
+                        padding: 1 // Adjust this to reduce the space between y-axis labels
+                    }
                 },
                 x: {
                     grid: { display: false },
                     offset: true,
-                },
+                    ticks: {
+                        padding: 1 // Adjust this to reduce the space between x-axis labels
+                    }
+                }
             },
-        },
+            plugins: {
+                legend: {
+                    labels: {
+                        padding: 20 // Adjust this to change the space between legend labels
+                    }
+                }
+            }
+        }
     });
 }
 
@@ -164,8 +177,8 @@ window.onload = function () {
     filterParishes(); // Ensure Parish dropdown is properly set
     updateChart(); // Initialize chart
     filterSchools();
+    updateChart();
 };
-
 
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
 

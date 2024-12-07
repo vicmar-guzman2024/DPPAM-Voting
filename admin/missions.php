@@ -321,16 +321,21 @@ include("php/addnewroles.php");
 
                                 // Mapping predefined roles to their icons
                                 $roleIcons = [
-                                    'Voters Education (Speakers Bureau/training)' => 'fa-person-chalkboard',
-                                    'Voters List Cleansing & Verification ' => 'fa-circle-check',
+
+                                    'Voters Education & Media Group (VEMG)' => 'fa-person-chalkboard',
                                     'Accountable Material Verifiable Audit Trail Team (AMVATT)' => 'fa-list-check',
-                                    'Precincts Poll Monitoring (PPM)' => 'fa-clipboard-check',
+                                    'Polling Precinct Poll Watcher (PPMW)' => 'fa-clipboard-check',
                                     'Voters Assistance Desk (VAD)' => 'fa-user-group',
-                                    'Technical Witness of Truth (SWOT-Roving Team)' => 'fa-file-pen',
-                                    'Election Monitoring System Encoders (EMS)' => 'fa-keyboard',
-                                    'Logistics (Foods & Supplies)' => 'fa-keyboard',
-                                    'Transportation & Communications ' => 'fa-square-phone',
-                                    'Finance & Solicitation ' => 'fa-file-invoice-dollar',
+                                    'Technical Witness of Truth (SWOT)' => 'fa-file-pen',
+                                    'Unofficial Parallel Count Encoders (UCPE)' => 'fa-circle-check',   
+                                    'Logistics & Foods Team (LFT)' => 'fa-keyboard',
+                                    'Transportation & Communications Group (TCG)' => 'fa-square-phone',
+                                    'Finance & Solicitation Group (FSG)' => 'fa-file-invoice-dollar',
+                                    'Post Election Poll Watching (PEPW)' => 'fa-keyboard',
+                                    // 'Prayer Power Group (PPG)' => 0,
+                                    // 'LEGAL/PARA-LEGAL TEAM (LPLT)' => 0,
+                                    // 'Technical Assistance Group (TAG)' => 0,
+                                    // 'EMERGENCY MANAGEMENT TEAM (EMT)' => 0
                                 ];
 
                                 while ($row = mysqli_fetch_assoc($sql_result5)) {
