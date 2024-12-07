@@ -1,4 +1,7 @@
 <?php
+// Start the session to store the success message
+session_start();
+
 // Include the database connection file (if you have one)
 include('../php/condb.php');
 
@@ -26,10 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $position = $_POST['position'];
     $years_in_service = $_POST['years_in_service'];
     $voter_status = $_POST['voterStatus'];
-    $precinctNo = $_POST['precinctNo'];
-    $pollingPlace = $_POST['pollingPlace'];
-    $no_reason = $_POST['no_reason'];
-
+    $precinctNo = isset($_POST['precinctNo']) ? $_POST['precinctNo'] : '';
+    $pollingPlace = isset($_POST['pollingPlace']) ? $_POST['pollingPlace'] : '';
+    $no_reason = isset($_POST['no_reason']) ? trim($_POST['no_reason']) : '';
 
     $prev_ppcrv_experience_date = $_POST['prev_ppcrv_experience_date'];
     $prev_ppcrv_experience_assignment = $_POST['prev_ppcrv_experience_assignment'];
@@ -96,7 +98,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Execute the statement
             if ($stmt->execute()) {
-                echo "Registration successful!";
+                // Store the success message in the session
+                $_SESSION['reg_success_message'] = "Registration successful!";
+
+                // Redirect to the same page to prevent resubmission on refresh
+                header("Location: " . $_SERVER['PHP_SELF']);
+                exit(); // Make sure the script stops after redirection
             } else {
                 echo "Error: " . $stmt->error;
             }
@@ -113,4 +120,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close connection
 $sql_connection->close();
+?>
+
+
+<?php
+// Check if there's a success message stored in the session
+if (isset($_SESSION['reg_success_message'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['reg_success_message'] . "</div>";
+    // Clear the success message after displaying it
+    unset($_SESSION['reg_success_message']);
+}
 ?>
