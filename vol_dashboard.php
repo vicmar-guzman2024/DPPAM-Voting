@@ -1,37 +1,7 @@
 <?php
-// Start the session
-session_start();
+
 include('php/condb.php');
-
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['login_required_alert'] = "You must be logged in to access this page.";
-    header("Location: user_login.php"); // Redirect to login page
-    exit;
-}
-
-// Retrieve success message, if any
-$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
-unset($_SESSION['success_message']); // Clear message after use
-
-// Retrieve user details from the session
-$firstname = $_SESSION['firstname'];
-$lastname = $_SESSION['lastname'];
-$username = $_SESSION['username'];
-
-// Fetch user data
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT firstname, lastname, username, profile_picture FROM users WHERE user_id = ?";
-$stmt = $sql_connection->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$stmt->bind_result($firstname, $lastname, $email, $profile_image);
-$stmt->fetch();
-$stmt->close();
-$sql_connection->close();
-
-// Determine profile image
-$image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profile_picture/default_profile.jpg";
+include('php/authentication.php');
 
 ?>
 
@@ -78,8 +48,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
             <div class="" style="min-height: 100vh;">
                 <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
                     <div class="position-relative">
-                        <img src="<?php echo htmlspecialchars($image_path); ?>" alt="User Profile"
-                                class="img-fluid profileImg">
+                    <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>" alt="User Profile" class="img-fluid profileImg">
+
                         <div class="btn-group dropend">
                             <button type="button" class="editProfile position-absolute top-0 start-100 translate-middle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -104,7 +74,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="userProfileImageModal">
-                                    <img src="" alt="User Profile" class="img-fluid profileImgModal">
+                                <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>"
+                                            alt="User Profile" class="img-fluid img-thumbnail">
                                 </div>
                             </div>
                         </div>
@@ -113,7 +84,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     <!-- Modal for changing profile picture-->
                     <div class="modal fade" id="editProfilePictureModal" tabindex="-1"
                         aria-labelledby="editProfilePictureModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-dialog modal-dialog-centered  modal-md-sm">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editProfilePictureModalLabel">Edit Profile Picture</h5>
@@ -125,10 +96,12 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     <div class="modal-body text-center">
                                         <!-- Current Profile Picture -->
                                         <div id="profilePictureContainer" style="height: 300px; width: 100%;">
-                                            <img id="currentProfilePicture"
-                                                src="<?php echo htmlspecialchars($image_path); ?>"
-                                                class="img-thumbnail img-fluid mb-3" alt="Profile Picture" width="300"
-                                                style="cursor: move;">
+                                            <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>"
+                                            id="currentProfilePicture"
+                                            alt="User Profile" 
+                                            class="img-fluid img-thumbnail"
+                                            width="300"
+                                            style="cursor: move;">
                                         </div>
 
                                         <!-- Crop and Done Buttons -->
@@ -150,7 +123,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" id="saveChangesButton">Save
+                                        <button type="submit" name="change_profile_btn" class="btn btn-primary" id="saveChangesButton">Save
                                             Changes</button>
                                     </div>
                                 </form>
@@ -161,8 +134,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
 
 
                     <div>
-                        <h4 class="profile-name"><?php echo htmlspecialchars($firstname . ' ' . $lastname); ?></h4>
-                        <p class="profile-email"><?php echo htmlspecialchars($username); ?></p>
+                        <h4 class="profile-name"><?= $_SESSION['auth_user']['firstname'] . ' ' . $_SESSION['auth_user']['lastname']; ?></h4>    
+                        <p class="profile-email"><?= $_SESSION['auth_user']['email']; ?></p>
                     </div>
                 </div>
 
@@ -215,6 +188,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                     </div>
 
                     <style>
+                        /**
                         .modal {
                             display: none; 
                             position: fixed;
@@ -234,6 +208,36 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         .modal-content {
+                            background-color: #fff;
+                            margin: 5% auto;
+                            padding: 20px;
+                            border: 1px solid #888;
+                            width: 70%;
+                            top: 50px;
+                            max-width: 400px;
+                            text-align: center;
+                        }
+                            */
+
+                        #logoutModal {
+                            display: none; 
+                            position: fixed;
+                            z-index: 1; 
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5); 
+                            overflow: auto;
+                            padding-top: 60px;
+                        }
+
+                        #logoutModal .message{
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        #logoutModal .modal-content {
                             background-color: #fff;
                             margin: 5% auto;
                             padding: 20px;
@@ -333,8 +337,21 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     </div>
                                 <?php endif; ?>
                 <div>
+                    <!-- LOGGED IN SUCCESSFULLY MSG -->
+                <?php
+    if(isset($_SESSION['status'])){
+        ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h6><?= $_SESSION['status']; ?></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            unset($_SESSION['status']);
+    }
+    
+    ?>
 
-                    <h3 class="message1">Welcome back, <?php echo htmlspecialchars($firstname); ?>!</h3>
+                    <h3 class="message1">Welcome back, <?= $_SESSION['auth_user']['firstname']; ?> !</h3>
                     <p class="message2">Volunteer since: 09/22/2020</p>
 
                     <!--DASHBOARD CONTENT-->

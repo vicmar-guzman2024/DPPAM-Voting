@@ -98,16 +98,6 @@ if (isset($_SESSION['login_required_alert'])) {
     ?>
 
 
-    
-
-    
-
-
-
-
-
-        
-
 
     <div class="containerOfLeftRight row row-cols-lg-2 row-cols-1 justify-content-between align-items-center">
 
@@ -124,7 +114,7 @@ if (isset($_SESSION['login_required_alert'])) {
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-        <input type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?= htmlspecialchars($username_input) ?>" required>
+        <input type="text" name="email" id="username" class="form-control" placeholder="Username" value="<?= htmlspecialchars($username_input) ?>" required>
     </div>
 
     <div class="input-group mb-3">
@@ -142,7 +132,7 @@ if (isset($_SESSION['login_required_alert'])) {
         </div>
     </div>
     <div>
-        <button class="btn btn-primary w-100" type="submit">Login</button>
+        <button class="btn btn-primary w-100" name="login_btn" type="submit">Login</button>
     </div>
 
     <hr class="text-dark mt-5">
