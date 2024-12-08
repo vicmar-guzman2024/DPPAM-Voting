@@ -322,7 +322,36 @@ if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
         parishSelect.addEventListener("change", filterTable);
 }
 
+    // Function to update chart data when a school is selected
+    function updateChartData() {
+        const selectedSchool = document.getElementById('schoolSelect').value;
 
+        if (selectedSchool) {
+            // Find the index of the selected school
+            const index = assignedSchools.indexOf(selectedSchool);
+            if (index !== -1) {
+                // Update the chart with the selected school's data
+                pieData.datasets[0].data = [
+                    totalRV[index],  // Registered volunteers
+                    neededRV[index]   // Needed volunteers
+                ];
+                console.log('Selected school data updated:', totalRV[index], neededRV[index]);
+            }
+        } else {
+            // If no school is selected, show the default data (first school)
+            pieData.datasets[0].data = [
+                totalRV[0], // Default to the first school's registered volunteers
+                neededRV[0] // Default to the first school's needed volunteers
+            ];
+            console.log('No school selected, showing default data:', totalRV[0], neededRV[0]);
+        }
+
+        // Update the chart with the new data
+        pieChart.update();
+    }
+
+    // Call the function initially to display the default chart data
+    updateChartData();
 
 
     
