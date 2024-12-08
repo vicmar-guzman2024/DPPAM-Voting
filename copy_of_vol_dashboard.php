@@ -28,7 +28,7 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $stmt->bind_result($firstname, $lastname, $email, $profile_image);
 $stmt->fetch();
-$stmt->close();
+$stmt->close(); 
 $sql_connection->close();
 
 // Determine profile image
