@@ -81,7 +81,31 @@ if (isset($_SESSION['login_required_alert'])) {
                 alertModal.show();
             });
         </script>
-    <?php endif; ?>    
+    <?php endif; ?>
+
+
+    <?php
+    if(isset($_SESSION['status'])){
+        ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h6><?= $_SESSION['status']; ?></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <?php
+            unset($_SESSION['status']);
+    }
+    
+    ?>
+
+
+    
+
+    
+
+
+
+
+
         
 
 
