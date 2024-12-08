@@ -5,9 +5,14 @@ include('php/condb.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: user_login.php"); // Redirect to login page if not logged in
+    $_SESSION['login_required_alert'] = "You must be logged in to access this page.";
+    header("Location: user_login.php"); // Redirect to login page
     exit;
 }
+
+// Retrieve success message, if any
+$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : '';
+unset($_SESSION['success_message']); // Clear message after use
 
 // Retrieve user details from the session
 $firstname = $_SESSION['firstname'];
@@ -63,6 +68,8 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
 </head>
 
 <body>
+
+ 
 
     <div class="wrapper">
 
@@ -197,7 +204,13 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                             <div class="animated-character">
                                 <img src="img/logout.gif" alt="Waving Character">
                             </div>
-                            <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
+                            <a href="vol_logout.php" class="confirm-btn btn text-white">Yes, log me out</a>
+
+                            
+                            <!-- 
+                                <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
+                            -->
+
                         </div>
                     </div>
 
@@ -312,7 +325,13 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
             </nav>
 
             <main class="container-fluid p-5">
-
+                        <!-- Display Success Message (CHANGE PROFILE PICTURE SUCCESSFULLY)-->
+                        <?php if (!empty($success_message)): ?>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <?= htmlspecialchars($success_message) ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                <?php endif; ?>
                 <div>
 
                     <h3 class="message1">Welcome back, <?php echo htmlspecialchars($firstname); ?>!</h3>

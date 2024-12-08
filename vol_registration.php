@@ -47,20 +47,31 @@
         <h2>Step 1: Input your personal information</h2> 
         <hr class="text-dark">
         <div class="row">
-            <div class="col-md-6 mb-4">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
+        <div class="col-md-6 mb-4">
+        <label for="name" class="form-label">Fullname</label>
+        <div class="input-group">
+            <input type="text" aria-label="First name" class="form-control" placeholder="First name" name="fname" id="firstname">
+            <input type="text" aria-label="Middle name" class="form-control" placeholder="Middle name" name="midname" id="middlename">
+            <input type="text" aria-label="Last name" class="form-control" placeholder="Last name" name="lname" id="lastname">
+        </div>
+        <input type="hidden" name="full_name" id="fullName">
+        </div>
             <div class="col-md-6 mb-4">
                 <label for="nickname" class="form-label">Nickname</label>
                 <input type="text" class="form-control" id="nickname" name="nickname">
             </div>
 
-            <div class="col-md-3 mb-4">
+            <div class="col-md-2 mb-4">
                 <label for="birthDate" class="form-label">Date of Birth</label>
                 <input type="date" class="form-control" id="birthDate" name="birthdate">
             </div>
-            <div class="col-md-3 mb-4">
+
+            <div class="col-md-2 mb-4">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age">
+            </div>
+
+            <div class="col-md-2 mb-4">
                 <label for="sex" class="form-label">Sex</label>
                 <select id="sex" name="gender" class="form-select">
                     <option selected>Male</option>
@@ -101,8 +112,8 @@
             </div>
             
             <div class="col-md-4 mb-4">
-                <label for="foxNo" class="form-label">Fox No.</label>
-                <input type="text" class="form-control" id="foxNo" name="fox_no">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
             </div>
 
             <div class="col-md-9 mb-4">
@@ -115,7 +126,9 @@
             </div>
         </div>
         <input type="button" name="next-step" class="next-step" value="Next" /> 
-    </fieldset> 
+    </fieldset>  
+    
+    
 
     <!-- STEP 2 -->
     <fieldset> 
@@ -123,8 +136,19 @@
         <hr class="dark-text">
         <div class="row">
             <div class="col-md-9 mb-4">
-                <label for="orgMember" class="form-label">PPCRV Organization Membership</label>
+                <label for="orgMember" class="form-label">Parish Organization Membership</label>
                 <input type="text" class="form-control" id="orgMember" name="ppcrv_org_membership" placeholder="Committees">
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <label for="position" class="form-label">Position</label>
+                <input type="text" class="form-control" id="position" name="position">
+            </div>
+
+            
+            <div class="col-md-6 mb-4">
+                <label for="years_in_service" class="form-label">For current PPCRV Member: No. of years in service</label>
+                <input type="number" class="form-control" id="years_in_service" name="years_in_service">
             </div>
 
             <div class="col-md-6 mb-4">
@@ -152,8 +176,44 @@
                 <input type="text" class="form-control" id="otherPrevExpAss" name="other_prev_experience_assignment" disabled>
             </div>
 
+                <!-- REGISTERED VOTER??? -->
+                    <div class="col-12 mb-4">
+                    <!-- Question and Radio Buttons -->
+                    <div class="d-flex flex-column flex-md-row gap-3 align-items-center">
+                        <p class="mb-0">Are you a registered voter?</p>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="voterStatus" id="yes" value="Yes">
+                        <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="voterStatus" id="no" value="No">
+                        <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+
+                    <!-- Conditional Inputs -->
+                    <div class="row g-3 mt-3">
+                        <!-- Precinct Number (Yes) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="precinctNo" class="form-label text-nowrap mb-0">If Yes, Precinct No.</label>
+                        <input type="text" class="form-control" id="precinctNo" name="precinctNo" placeholder="Precinct No.">
+                        </div>
+                        <!-- Polling Place (Yes) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="pollingPlace" class="form-label text-nowrap mb-0">Polling Place</label>
+                        <input type="text" class="form-control" id="pollingPlace" name="pollingPlace" placeholder="Polling Place">
+                        </div>
+                        <!-- Reason (No) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="no_reason" class="form-label text-nowrap mb-0">If No, Reason Why</label>
+                        <input type="text" class="form-control" id="no_reason" name="no_reason" placeholder="Reason">
+                        </div>
+                    </div>
+                    </div>
+
+
             <div class="col-md-9 mb-4">
-                <label for="prefVolAss" class="form-label">Preferred Volunteer Assignments</label>
+                <label for="prefVolAss" class="form-label">Preferred Activity Assignments</label>
                 <select id="prefVolAss" name="preferred_volunteer_assignment" class="form-select">
                     <option selected disabled>Select options</option>
                     <option value="Preferred Assignment 1">Preferred Assignment 1</option>

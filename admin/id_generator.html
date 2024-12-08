@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/admin-style.css">
+  <!--bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+   <!--Font awesome CDN-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+   integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <!--JS CHART CDN-->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  
+
+  <title>ID Generator</title>
+</head>
+
+<body>
+
+
+    <!--LOGO AND HEADER-->
+    <section class="header d-flex flex-row justify-content-between align-items-center gap-4 px-4 py-2">
+        
+        <div class="d-flex flex-row justify-content-center align-items-center gap-4">
+            <div><img src="../img/DPPAMLOGO.png" alt="" width="70px" height="70px" class="img-fluid logo"></div>
+            <div><h4 class="text-white">DPPAM Volunteers Management and Tracking System</h4></div>
+        </div>
+
+        <div class="d-flex flex-row justify-content-center align-items-center gap-4">
+
+            <!--NOTIFICATION-->
+            <div class="dropdown">
+                
+                <button type="button" class="btn bellBtn position-relative" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-bell text-dark fs-4"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end pt-0 notif-container" aria-labelledby="dropdownMenuButton">
+                    
+                    <div class="sticky-top d-flex flex-column justify-content-center align-items-center p-2 notif-text mb-4">
+                        <h3>Notifications</h3>
+                    </div>
+
+                    
+                    <a href="" class="btn btn-sm">
+                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                        <div class="col-md-2"><img src="../img/DPPAMLOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
+                        
+                        <div class="position-relative col-md-1">
+                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                              </span>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="" class="btn btn-sm">
+                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                        <div class="col-md-2"><img src="../img/DPPAMLOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
+                        
+                        <div class="position-relative col-md-1">
+                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                              </span>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="" class="btn btn-sm">
+                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                        <div class="col-md-2"><img src="../img/DPPAMLOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
+                        
+                        <div class="position-relative col-md-1">
+                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                              </span>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="" class="btn btn-sm">
+                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                        <div class="col-md-2"><img src="../img/DPPAMLOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
+                        
+                        <div class="position-relative col-md-1">
+                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                              </span>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="" class="btn btn-sm">
+                      <div class="row row-cols-3 align-items-center justify-content-evenly mb-3">
+                        <div class="col-md-2"><img src="../img/DPPAMLOGO.png" alt="" style="width: 50px; height: 50px;"></div>
+                        <div class="col-md-8"><span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia, expedita.</span></div>
+                        
+                        <div class="position-relative col-md-1">
+                            <span class="position-absolute top-0 start-50 translate-middle p-2 bg-success border border-light rounded-circle">
+                                <span class="visually-hidden">New alerts</span>
+                              </span>
+                        </div>
+                    </div>
+                    </a>                    
+                  </div>
+            </div>
+
+            <!--PROFILE-->
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="../img/DPPAMLOGO.png" alt="Admin Profie" width="50px" height="50px" class="img-fluid">
+                </button>
+                <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1" style="width: 250px;">
+                  <li><a class="dropdown-item d-flex flex-row justify-content-center align-items-center" href="#">
+                    <img src="../img/DPPAMLOGO.png" alt="" width="50px" height="50px" class="img-fluid">
+                    <p><?php echo $username; ?></p>
+                    
+                </a></li>
+                <hr class="text-dark">
+                  <li><a class="dropdown-item" href="editprofile.php"><i class="fa-solid fa-user-pen pe-2"></i>Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="php/logout.php"><i class="fa-solid fa-arrow-right-from-bracket pe-2"></i>Logout</a></li>
+                </ul>
+              </div>
+        </div>
+            
+    </section>
+
+
+
+
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div style="min-height: 100vh;">
+
+                <ul class="sidebar-nav mt-5">
+                    <li class="sidebar-item">
+                        <a href="index.html" class="sidebar-link active">
+                            <i class="fa-solid fa-house pe-2"></i>Dashboard</a>
+                    </li>
+                    <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-user-group pe-2"></i>Volunteers</a>
+                        <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="missions.html" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="addNewVolunteers.php" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Add New Volunteers</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="list_of_volunteers.php" class="sidebar-link"><i class="fa-solid fa-list-ul pe-2"></i>View Volunteers</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="submissions.php" class="sidebar-link">
+                            <i class="fa-solid fa-school-flag pe-2"></i>Submissions</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link"> 
+                            <i class="fa-solid fa-school-flag pe-2"></i>Schools & Precincts</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard"
+                            aria-expanded="false" aria-controls="dashboard">
+                            <i class="fa-solid fa-user-check pe-2"></i>Attendance Tracking</a>
+                        <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Check-in / Check-out</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="fa-solid fa-list-ul pe-2"></i>Attendance Reports</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#auth"
+                            aria-expanded="false" aria-controls="auth">
+                            <i class="fa-solid fa-list-check pe-2"></i>Role Management</a>
+                        <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="fa-solid fa-clipboard-check pe-2"></i>Assign Roles</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="#" class="sidebar-link"><i class="fa-solid fa-user-check pe-2"></i>View Role Assignments</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link"><i class="fa-solid fa-id-card pe-2"></i>Generate ID</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="#" class="sidebar-link">
+                            <i class="fa-solid fa-location-dot pe-2"></i>Church Locator</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Component -->
+        <div class="main">
+            <nav class="navbar navbar-expand px-3 border-bottom navbar-light bg-light">
+                <!-- Button for sidebar toggle -->
+                <button class="btn toggle-btn" type="button" data-bs-theme="dark">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+            <main class="container-fluid p-5">
+
+                <div>
+                    
+                    <h1 class="text-dark mb-4">ID Generator</h1>
+
+                    <!--ID GENERATOR CONTENT-->
+
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                          <label for="name" class="form-label">Profile name</label>
+                          <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="username" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="username">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="recentStatus" class="form-label">Status Recently</label>
+                          <input type="text" class="form-control" id="recentStatus">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="address" class="form-label">Address</label>
+                          <input type="text" class="form-control" id="address" placeholder="Address mo po">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="precintNum" class="form-label">Volunteer Precinct</label>
+                          <input type="text" class="form-control" id="precintNum">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="preferredVolAssignment" class="form-label">Preferred Volunteer Assignment</label>
+                          <input type="text" class="form-control" id="preferredVolAssignment">
+                        </div>
+                        
+                        <div class="d-flex flex-column flex-md-row gap-3">
+                          <div class="">
+                            <button type="submit" class="btn btn-danger">Save changes</button>
+                          </div>
+                          <div class="">
+                            <button type="submit" class="btn btn-outline-secondary">Edit User Information</button>
+                          </div>
+                        </div>
+                      </form>
+
+
+                      <div class="d-flex flex-column flex-md-row justify-content-around align-items-center">
+                        <!--ID FRONT-->
+                      <div class="card mt-5" style="max-width: 560px;">
+                        <div class="card-header d-flex flex-row justify-content-center align-items-center">
+                          <div><img src="../img/DPPAMLOGO.png" alt=""></div>
+                          <div><h5>Roman Catholic Diocese of Kalookan Public and Political Affairs Ministry</h5>
+                          </div>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center gap-3">
+
+                          <img src="../img/DPPAMLOGO.png" class="id-picture img-fluid" alt="Profile Image">
+                          <h3>Angelito Bautista Jr.</h3>
+                          <h5>Asst. Lay Coordinator</h5>
+
+                          <div class="QR-Code d-flex flex-column justify-content-center align-items-center gap-3">
+                            <img src="../img/qr-code.jpg" class="img-fluid" alt="QR Code" style="max-width: 90px; height: auto;">
+                            <p>ID: DPPAM - 000</p>
+                          </div>
+                          
+                        </div>
+
+                        <div class="card-footer text-muted">
+                          <span>Valid until: </span>
+                        </div>
+                      </div>
+
+                      <!--ID BACK-->
+
+                      <div class="card mt-5" style="max-width: 560px;">
+                        <div class="card-header d-flex flex-row justify-content-center align-items-center">
+                          <div><img src="../img/DPPAMLOGO.png" alt=""></div>
+                          <div><h5>Roman Catholic Diocese of Kalookan Public and Political Affairs Ministry</h5>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                          
+                          <div class="d-flex flex-column justify-content-center align-items-center gap-3">
+                            <h3>Terms & Conditions</h3>
+
+                          <ol class="list-group list-group-numbered">
+                            <li class="list-group-item"><strong>Ownership:</strong> This ID card belongs to the DoK Public and
+                              Political Affairs Ministry. It should be returned upon
+                              request or when membership is terminated.</li>
+                            <li class="list-group-item"><strong>Validity:</strong> The ID is only valid until the expiration date
+                              shown on the front. It must be carried at all times during
+                              ministry events, activities, and within ministry premises.</li>
+                            <li class="list-group-item"><strong>Lost/Stolen ID:</strong> If the ID is lost or stolen, please report it
+                              immediately to the DPPAM office.</li>
+                            <li class="list-group-item"><strong>Unauthorized Use Prohibited:</strong> This card is non-
+                              transferable. Misuse, such as allowing others to use this ID,
+                              may result in confiscation and/or disciplinary action.</li>
+                            <li class="list-group-item"><strong>Privacy:</strong> Personal information associated with this ID is
+                              confidential and handled following the ministry's data
+                              privacy policy.</li>
+                          </ol>
+
+                          <div class="horizontal-line mt-2" style="border-bottom: 3px solid #000; width: 100%;"></div>
+                          </div>
+
+                          <div class="mt-3">
+                            <p><strong>Address:</strong></p>
+                            <p><strong>Contact Number:</strong></p>
+                            <p><strong>Contact in case of Emergency:</strong></p>
+                          </div>
+
+                          <div style="margin-top: 90px;">
+                            <div class="horizontal-line d-flex justify-content-center align-items-center m-auto" style="border-top: 3px solid #000; width: 60%;">
+                              <p>NOT VALID WITHOUT SIGNATURE</p>
+                            </div>
+                          </div>
+
+                          <div class="d-flex flex-column">
+                            <span><strong>If found, please return to:</strong></span>
+                            <span>+123-456-7890</span>
+                            <span>Santo Rosario Parish, Don Basilio
+                              Bautista Blvd. cor. M. Sioson St.,
+                              Dampalit, Malabon City</span>
+                              <span>rcdk.dppam@gmail.com</span>
+                          </div>
+
+
+
+                        </div>
+
+                        <div class="card-footer">
+                        </div>
+                      </div>
+                      </div>
+
+                      <button type="button" class="btn btn-primary">Print</button>
+                    
+                      
+                      
+                    
+
+                    
+                      
+                    
+                </div>
+            </main>
+        </div>
+    </div>
+
+<script src="admin.js"></script>
+
+  <!--bootstrap js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

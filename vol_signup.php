@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,15 @@
 
   <section class="signInContainer p-5" style="height: 100%;">
     <h1 class="text-center">DPPAM Voting</h1>
+    
+    <?php
+        if(isset($_SESSION['status'])){
+            echo "<small class='text-center'>".$_SESSION['status']."</small>";
+            unset($_SESSION['status']);
+        }
+        
+    ?>
+
 
     <form action="php/sign_up_process.php" method="POST" 
     class="container mt-5 py-5 px-4 shadow-lg rounded" 
@@ -61,6 +73,7 @@
                oninput="validatePhoneInput(this)">
     </div>
 
+
     <!-- Email Input -->
     <div class="mb-3">
         <input type="email" class="form-control" name="email" id="email" placeholder="Email address" required>
@@ -86,12 +99,12 @@
 
     <!-- Submit Button -->
     <div class="d-grid gap-2 mt-3">
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" name="sign_up_btn" class="btn btn-primary">Sign Up</button>
     </div>
 
     <!-- Link to Login -->
     <div class="d-grid mt-3">
-        <p class="text-center">Already have an account? <a href="vol_login.php" class="text-primary">Login</a></p>
+        <p class="text-center">Already have an account? <a href="user_login.php" class="text-primary">Login</a></p>
     </div>
 </form>
 

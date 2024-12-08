@@ -20,54 +20,50 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">
-    <div class="container-fluid">
-
-      <div class="logo d-flex flex-row justify-content-center align-items-center gap-3">
-        <div><a href="#"><img src="img/DPPAMLOGO.png" alt="DPPAM Logo" height="auto" width="60"></a></div>
-        <div><a href="#"><img src="img/PPCRVLOGO.png" alt="PPCRV Logo" height="auto" width="60"></a></div>
-        <div><a class="navbar-brand" href="#">(Company Name)</a></div>
-      </div>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo Section -->
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+        <img src="img/DPPAMLOGO.png" alt="DPPAM Logo" width="50">
+        <img src="img/PPCRVLOGO.png" alt="PPCRV Logo" width="50">
+        <span class="fw-bold">(Company Name)</span>
+      </a>
+  
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
+  
+      <!-- Navigation Links -->
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav d-flex flex-lg-row flex-column justify-content-center align-content-center gap-4">
+        <ul class="navbar-nav align-items-lg-center gap-lg-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="user_home.html">Home</a>
+            <a class="nav-link" aria-current="page" href="user_home.html">Home</a>
           </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">About Us</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              About Us
+            </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="aboutWhoAreWe.html">Who Are We?</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="aboutMissionVision.html">Mission / Vision</a></li>
-
             </ul>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="volunteers.html">Volunteers</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link btn btn-danger px-5 text-white" href="choose_role.html">Sign in</a>
+            <a class="btn btn-danger px-4 py-2 text-white" href="choose_role.html">Sign Up</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  
 
 
 
@@ -75,16 +71,17 @@
 
   <!--SECTION 1-->
 
+  <!--
   <section class="section1 py-5">
   <div class="container-fluid">
     <div class="row justify-content-around align-items-center">
 
-      <!-- Logo Image -->
+       Logo Image 
       <div class="col-12 col-sm-8 col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-        <img src="img/logo.png" alt="Company Logo" class="img-fluid" style="max-width: 100%; height: auto;" aria-label="Company Logo">
+        <img src="img/logo.png" alt="Company Logo" class="img-fluid" style="width: 500px; height: auto;" aria-label="Company Logo">
       </div>
 
-      <!-- About Us Text -->
+    About Us Text 
       <div class="col-12 col-sm-10 col-md-6 col-lg-5 text-center text-md-left">
         <h1 class="text-white aboutUs">Volunteers</h1>
       </div>
@@ -92,20 +89,37 @@
     </div>
   </div>
 </section>
+  -->
+
+<div id="carousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active position-relative">
+      <img src="img/ITO.png" class="d-block w-100" alt="..." style="height: 100vh;">
+
+      <div class="position-absolute top-0 d-flex flex-column flex-lg-row justify-content-center align-items-center ms-5 gap-5" style="height: 80vh;">
+          <img src="img/logo.png" alt="" class="img-fluid" style="width: 500px; height: auto;">
+          <h1 class="text-white aboutUs">Volunteers</h1>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 
 
       <!--SECTION 2 WE ARE PPCRV-->
 
-      <section class="container p-5">
+      <section class="container-md p-5">
 
         <h3 class="mb-5 fw-bolder">We are PPCRV</h3>
         
      
-          <div class="p-5">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=wSf5JL8oZjfWgFb1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+        <div class="mb-5">
+          <div class="ratio ratio-16x9">
+            <iframe width="1328" height="747" src="https://www.youtube.com/embed/ja7h7TRLw0k" title="Hesus Sa Krus Super Book Theme Song Lyrics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
+        </div>
+        
 
           <article>
             <p>The Parish Pastoral Council for Responsible Voting (PPCRV) is a non-partisan, non-sectarian, 
@@ -131,29 +145,29 @@
 
       <!--SECTION 3 DIFFERENT TYPES OF VOL..-->
       
-      <section class="container pb-5">
-        <h3 class="my-5 text-center">Different Types of Volunteers</h3>
+      <section class="container mb-5">
+        <h3 class="mb-5 text-center">Different Types of Volunteers</h3>
         <hr class="text-dark mb-5">
 
         <div class="container">
 
-          <div class="row row-cols-md-3 row-cols-1">
+          <div class="row row-cols-lg-3 row-cols-1">
 
             <div class="col d-flex flex-column justify-content-center align-items-center gap-3">
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text1
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text1
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text1
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Voters Assistance Desk (VAD)
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Power Prayer Group Poll Watcher (PPG)
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Special Witness of Truth Poll Watcher (SWOT)
             </div>
 
             <div class="col d-flex flex-column justify-content-center align-items-center gap-3">
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text2
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text2
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Accountable Materials’ Verifiable Audit Trail Team Poll Watcher (AMVATT)
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Technical Assistance Group Poll Watcher (TAG)
             </div>
 
             <div class="col d-flex flex-column justify-content-center align-items-center gap-3">
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text3
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text3
-              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">text3
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Post-Election Patrol Watcher (PEP)
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Unofficial Parallel Count Encoder (UPCE)
+              <img src="img/featuresPic.jpg" alt="" height="auto" width="300px" class="img-fluid">Polling Precinct Poll Watcher (PPP)
             </div>
             
           </div>
@@ -222,7 +236,7 @@
         <!-- Logo Section -->
         <div class="col d-flex flex-column justify-content-center align-items-center mb-4 mb-lg-0">
           <div>
-            <img src="img/logo.png" alt="Logo" width="100%" height="auto" class="_2logo" class="img-fluid">
+            <img src="img/logo.png" alt="Logo" class="img-fluid">
           </div>
         </div>
 
