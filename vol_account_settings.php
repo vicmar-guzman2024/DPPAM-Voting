@@ -146,13 +146,13 @@ include('php/authentication.php');
                         </a>
                     </li>
 
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_attachments.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-file"></i>My Attachments
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
@@ -313,15 +313,22 @@ include('php/authentication.php');
         <!-- Main Component -->
         <div class="main">
 
-            <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
-                 <div class="d-flex flex-row justify-content-center align-items-center">
-                    <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
-                    <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
+        <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
+                <div class="d-flex align-items-center">
+                    <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
+                    <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
                 </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button>
+                </div>
+            </div>
 
-                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button> 
-                </div>
+            
+            <nav class="navbar navbar-expand px-3 navbar-light">
+                <!-- Button for sidebar toggle -->
+                <button class="btn toggle-btn" type="button" data-bs-theme="dark">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </nav>
 
             <main class="container p-5" style="max-width: 950px; margin-top: 10px;">
