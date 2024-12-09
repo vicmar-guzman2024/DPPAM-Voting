@@ -353,6 +353,33 @@ if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
     // Call the function initially to display the default chart data
     updateChartData();
 
+    function getTotalRegistered() {
+        // Get selected location
+        var location = document.getElementById('schoolSelect').value;
+
+        if (location) {
+            // Send AJAX request
+            $.ajax({
+                url: 'php/dashboard.php', // PHP script to handle the request
+                method: 'POST',
+                data: { location: location },
+                success: function(response) {
+                    // Update the h1 tag with the result
+                    document.getElementById('total_registered').innerHTML = response;
+                }
+            });
+        } else {
+            document.getElementById('total_registered').innerHTML = 0;
+        }
+    }
+
+    
+
+    
+    
+    
+    
+
 
     
   

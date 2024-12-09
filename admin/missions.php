@@ -287,13 +287,13 @@ include("php/addnewroles.php");
                                     <form action="php/addnewroles.php" method="POST">
                                         <div class="mb-3">
                                             <label for="category" class="form-label">Category</label>
-                                            <input type="text" class="form-control" id="category" name="category_name" placeholder="Category Name">
+                                            <input type="text" class="form-control" id="category" name="mission_name" placeholder="Category Name">
 
                                         </div> 
 
                                         <div class="mb-3">
                                             <label for="description" class="form-label">Description</label>
-                                            <textarea class="form-control" id="description" name="descriptions" placeholder="Description" style="height: 100px;"></textarea>
+                                            <textarea class="form-control" id="description" name="mission_description" placeholder="Description" style="height: 100px;"></textarea>
                                             
                                         </div>
 
@@ -339,12 +339,12 @@ include("php/addnewroles.php");
                                 ];
 
                                 while ($row = mysqli_fetch_assoc($sql_result5)) {
-                                    $role_name = $row['ROLE_NAME'];
-                                    $descriptions = $row['DESCRIPTIONS'];
-                                    $roles = $role_name . " " . $descriptions;
+                                    $mission_name = $row['MISSION_NAME'];
+                                    $mission_descriptions = $row['MISSION_DESCRIPTION'];
+                                    $mission = $mission_name . " " . $mission_descriptions;
 
                                     // Use predefined icon if role exists, otherwise default icon
-                                    $icon = $roleIcons[$roles] ?? $defaultIcon;
+                                    $icon = $roleIcons[$mission] ?? $defaultIcon;
                             ?>
                             <div class="col">
                                 <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
@@ -357,7 +357,7 @@ include("php/addnewroles.php");
                                     </div>
                                     <div>
                                         <p class="text-center" style="width: 100%">
-                                            <?php echo $roles; ?>
+                                            <?php echo $mission; ?>
                                         </p>
                                     </div>
                                 </div>

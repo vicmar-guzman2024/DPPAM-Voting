@@ -27,6 +27,8 @@ $username = $_SESSION['username'];
 
    <!--JS CHART CDN-->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
   
   
@@ -164,7 +166,7 @@ $username = $_SESSION['username'];
                     <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-user-group pe-2"></i>Volunteers</a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="missions.html" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
+                                <a href="missions.php" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Missions</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="addNewVolunteers.php" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Add New Volunteers</a>
@@ -180,7 +182,7 @@ $username = $_SESSION['username'];
                             <i class="fa-solid fa-school-flag pe-2"></i>Submissions</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link"> 
+                        <a href="assignment_management.php" class="sidebar-link"> 
                             <i class="fa-solid fa-school-flag pe-2"></i>Schools & Precincts</a>
                     </li>
                     <li class="sidebar-item">
@@ -189,7 +191,7 @@ $username = $_SESSION['username'];
                             <i class="fa-solid fa-user-check pe-2"></i>Attendance Tracking</a>
                         <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="#" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Check-in / Check-out</a>
+                                <a href="attendance_tracking.php" class="sidebar-link"><i class="fa-solid fa-user-plus pe-2"></i>Check-in / Check-out</a>
                             </li>
                             <li class="sidebar-item">
                                 <a href="#" class="sidebar-link"><i class="fa-solid fa-list-ul pe-2"></i>Attendance Reports</a>
@@ -256,7 +258,7 @@ $username = $_SESSION['username'];
                                 <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                                     <div class="d-flex flex-column justify-content-center align-items-start">
                                         <div>
-                                            <h1>20</h1>
+                                            <h1><?php echo $total_volunteers ?></h1>
                                         </div>
                                         <div><span>Total number of volunteers</span></div>
                                     </div>
@@ -282,7 +284,7 @@ $username = $_SESSION['username'];
                                 <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                                     <div class="d-flex flex-column justify-content-center align-items-start">
                                         <div>
-                                            <h1>20</h1>
+                                            <h1><?php echo $total_assigned ?></h1>
                                         </div>
                                         <div><span>Volunteer assigned</span></div>
                                     </div>
@@ -295,7 +297,7 @@ $username = $_SESSION['username'];
                                 <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3">
                                     <div class="d-flex flex-column justify-content-center align-items-start">
                                         <div>
-                                            <h1>20</h1>
+                                            <h1><?php echo $total_pending ?></h1>
                                         </div>
                                         <div><span>Pending assignments</span></div>
                                     </div>
@@ -357,13 +359,13 @@ $username = $_SESSION['username'];
                     <div class="row mb-5">
                       <div class="col-md-3">
                         <!-- Dropdown for school selection -->
-                        <select class="form-select" aria-label="school" id="schoolSelect" onchange="updateChartData();">
+                        <select class="form-select" aria-label="school" id="schoolSelect" onchange="updateChartData(); getTotalRegistered();">
                             <option selected value="">Name of School</option>
                             <?php while ($row = mysqli_fetch_assoc($sql_result4)) { ?>
                                 <option class="school-option" 
                                         data-parish="<?php echo htmlspecialchars($row['PARISH_NAME']); ?>" 
-                                        value="<?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>">
-                                    <?php echo htmlspecialchars($row['ASSIGNED_SCHOOL']); ?>
+                                        value="<?php echo htmlspecialchars($row['LOCATION']); ?>">
+                                    <?php echo htmlspecialchars($row['LOCATION']); ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -376,8 +378,8 @@ $username = $_SESSION['username'];
                           <div class="col">
                             <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                               <div class="d-flex flex-column justify-content-center align-items-start">
-                                <div><h1>20</h1></div>
-                                <div><span>Lorem ipsum dolor sit amet.</span></div>
+                                <div><h1 id="total_registered">0</h1></div>
+                                <div><span>NUMBERS OF REGISTERED VOTERS</span></div>
                               </div>
                               <div><i class="fa-solid fa-person-chalkboard"></i></div>
                             </div>
@@ -388,7 +390,7 @@ $username = $_SESSION['username'];
                             <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                               <div class="d-flex flex-column justify-content-center align-items-start">
                                 <div><h1>20</h1></div>
-                                <div><span>Lorem ipsum dolor sit amet.</span></div>
+                                <div><span>NUMBERS OF VOLUNTEERS</span></div>
                               </div>
                               <div><i class="fa-solid fa-person-chalkboard"></i></div>
                             </div>
@@ -399,7 +401,7 @@ $username = $_SESSION['username'];
                             <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                               <div class="d-flex flex-column justify-content-center align-items-start">
                                 <div><h1>20</h1></div>
-                                <div><span>Lorem ipsum dolor sit amet.</span></div>
+                                <div><span>NUMBERS OF NEEDED VOLUNTEERS</span></div>
                               </div>
                               <div><i class="fa-solid fa-person-chalkboard"></i></div>
                             </div>
@@ -417,7 +419,7 @@ $username = $_SESSION['username'];
                                 const totalRV = <?php echo json_encode($registered_Vol); ?>; // Array of registered volunteers
                                 const neededRV = <?php echo json_encode($needed_Vol); ?>; // Array of needed volunteers
                                 const assignedSchools = <?php echo json_encode($assigned_schoool); ?>; // Array of school names
-
+                                
                                 // Default to the first value if no selection
                                 let defaultRegisteredVolunteers = totalRV[0];
                                 let defaultNeededVolunteers = neededRV[0];
@@ -548,8 +550,6 @@ $username = $_SESSION['username'];
                           </div>
                         </div>
                       </section>
-                      
-                    
                 </div>
             </main>
         </div>
