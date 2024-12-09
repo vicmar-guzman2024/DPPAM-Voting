@@ -114,21 +114,22 @@ if (isset($_SESSION['login_required_alert'])) {
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-        <input type="text" name="email" id="username" class="form-control" placeholder="Username" value="<?= htmlspecialchars($username_input) ?>" required>
+        <input type="text" name="email" id="username" class="form-control" placeholder="Username" value="<?= isset($_SESSION['input_email']) ? htmlspecialchars($_SESSION['input_email']) : (isset($_COOKIE['email']) ? htmlspecialchars($_COOKIE['email']) : ''); ?>"  required>
     </div>
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" value="<?= isset($_COOKIE['password']) ? htmlspecialchars($_COOKIE['password']) : ''; ?>" required>
     </div>
 
     <div class="row mb-4">
         <div class="col">
-            <input type="checkbox" class="form-check-input" name="remember_me" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+        <input type="checkbox" class="form-check-input" name="remember_me" id="exampleCheck1" 
+            <?= isset($_COOKIE['email']) ? 'checked' : ''; ?>>
+        <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
         <div class="col">
-            <a href="" class="float-end">Forgot Password?</a>
+            <a href="reset_password.php" class="float-end">Forgot Password?</a>
         </div>
     </div>
     <div>

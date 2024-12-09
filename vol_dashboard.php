@@ -48,7 +48,9 @@ include('php/authentication.php');
             <div class="" style="min-height: 100vh;">
                 <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
                     <div class="position-relative">
-                    <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>" alt="User Profile" class="img-fluid profileImg">
+                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
+                    alt="User Profile" 
+                    class="img-fluid profileImg">
 
                         <div class="btn-group dropend">
                             <button type="button" class="editProfile position-absolute top-0 start-100 translate-middle"
@@ -74,8 +76,8 @@ include('php/authentication.php');
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="userProfileImageModal">
-                                <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>"
-                                            alt="User Profile" class="img-fluid">
+                                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
+                                    alt="User Profile" class="img-fluid">
                                 </div>
                             </div>
                         </div>
@@ -95,8 +97,8 @@ include('php/authentication.php');
                                     action="php/update_profile_picture.php">
                                     <div class="modal-body text-center">
                                         <!-- Current Profile Picture -->
-                                        <div id="profilePictureContainer" style="height: 300px; width: 100%;">
-                                            <img src="php/profile_picture/<?= $_SESSION['auth_user']['profile_picture'];?>"
+                                        <div id="profilePictureContainer">
+                                            <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
                                             id="currentProfilePicture"
                                             alt="User Profile" 
                                             class="img-fluid img-thumbnail"
@@ -357,7 +359,7 @@ include('php/authentication.php');
     
     ?>
 
-                    <h3 class="message1">Welcome back, <?= $_SESSION['auth_user']['firstname']; ?> !</h3>
+                    <h3 class="message1">Welcome back, <?= $_SESSION['auth_user']['firstname']; ?>!</h3>
                     <p class="message2">Volunteer since: 09/22/2020</p>
 
                     <!--DASHBOARD CONTENT-->

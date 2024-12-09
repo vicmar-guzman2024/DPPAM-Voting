@@ -1,69 +1,96 @@
-<?php
-
+<?php 
 session_start();
 include('condb.php');
 
-if(isset($_POST['login_btn'])){
+if (isset($_POST['login_btn'])) {
 
-    if(!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))){
+    if (!empty(trim($_POST['email'])) && !empty(trim($_POST['password']))) {
 
         $email = mysqli_real_escape_string($sql_connection, $_POST['email']);
         $password = mysqli_real_escape_string($sql_connection, $_POST['password']);
+        $remember_me = isset($_POST['remember_me']) ? $_POST['remember_me'] : null; // Check if "Remember Me" is checked
 
-        $login_query = "SELECT firstname, lastname, email, phone_num, verify_token, email_status, profile_picture FROM users WHERE email='$email' AND password='$password' LIMIT 1";
+        $login_query = "SELECT firstname, lastname, email, phone_num, verify_token, email_status, profile_picture, role, password 
+                        FROM users WHERE email='$email' LIMIT 1";
         $login_query_run = mysqli_query($sql_connection, $login_query);
 
-        if(mysqli_num_rows($login_query_run) > 0){
-
+        if (mysqli_num_rows($login_query_run) > 0) {
             $row = mysqli_fetch_array($login_query_run);
 
-            if($row['email_status'] == "1"){
-                $_SESSION['authenticated'] = TRUE;
-                $_SESSION['auth_user'] = [
-                    'firstname' => $row['firstname'],
-                    'lastname' => $row['lastname'],
-                    'email' => $row['email'],
-                    'phone_num' => $row['phone_num'],
-                    'profile_picture' => $row['profile_picture'],
-                ];
+            // Verify the hashed password
+            if (password_verify($password, $row['password'])) {
 
-                $_SESSION['status'] = "Logged in successfully";
-                 // Debugging session
-                //var_dump($_SESSION);  // This will output the session data
+                // Check if the email is verified
+                if ($row['email_status'] == "1") {
+                    $_SESSION['authenticated'] = true;
+                    $_SESSION['auth_user'] = [
+                        'firstname' => $row['firstname'],
+                        'lastname' => $row['lastname'],
+                        'email' => $row['email'],
+                        'phone_num' => $row['phone_num'],
+                        'profile_picture' => $row['profile_picture'],
+                        'role' => $row['role'] // Save the role in session
+                    ];
 
-                header("Location: ../vol_dashboard.php");
+                    // "Remember Me" functionality
+                    if ($remember_me) {
+                        // Set a cookie to remember the user (valid for 30 days)
+                        setcookie('email', $email, time() + (30 * 24 * 60 * 60), "/"); // expires in 30 days
+                        setcookie('password', $password, time() + (30 * 24 * 60 * 60), "/"); // expires in 30 days
+                    } else {
+                        // Clear cookies if not "Remember Me"
+                        if (isset($_COOKIE['email'])) {
+                            setcookie('email', '', time() - 3600, '/'); 
+                        }
+                        if (isset($_COOKIE['password'])) {
+                            setcookie('password', '', time() - 3600, '/');
+                        }
+                    }
+
+                    $_SESSION['status'] = "Logged in successfully";
+
+                    // Redirect based on user role
+                    if ($row['role'] == 'VOLUNTEER') {
+                        header("Location: ../vol_dashboard.php");
+                    } elseif ($row['role'] == 'COORDINATOR') {
+                        header("Location: ../coordinator_dashboard.php");
+                    } elseif ($row['role'] == 'ADMIN') {
+                        header("Location: ../admin/id_generator.html");
+                    } else {
+                        $_SESSION['status'] = "Invalid role detected";
+                        header("Location: ../user_login.php");
+                    }
+                    exit();
+                } else {
+                    $_SESSION['input_email'] = $email; // Save email input for feedback
+                    $_SESSION['status'] = "Verify your email address to login";
+                    header("Location: ../user_login.php");
+                    exit();
+                }
+            } else {
+                $_SESSION['input_email'] = $email; // Save email input for feedback
+                $_SESSION['status'] = "Invalid password. Please try again.";
+                header("Location: ../user_login.php");
                 exit();
             }
- 
-            else{
-
-                $_SESSION['status'] = "Verify your email address to login";
-                header("Location: ../user_login.php");
-                exit(0);
-            }
-            
-        }
-
-        else {
-
-            $_SESSION['status'] = "Invalid email or password";
+        } else {
+            $_SESSION['status'] = "Invalid email. Please check your input.";
             header("Location: ../user_login.php");
-            exit(0);
-
+            exit();
         }
-        
-
-    }
-
-    else {
+    } else {
         $_SESSION['status'] = "Fill out all fields";
         header("Location: ../user_login.php");
-        exit(0);
+        exit();
     }
-
-    
 }
 ?>
+
+
+
+
+
+
 
 
 

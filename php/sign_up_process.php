@@ -90,98 +90,118 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
     */
 
+session_start(); 
+include('condb.php');
 
-    session_start();
-    include('condb.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+// Load Composer's autoloader
+require '../vendor/autoload.php';
 
-    //Load Composer's autoloader
-    require '../vendor/autoload.php';
+function send_email_verify($firstname, $lastname, $email, $verify_token){
+    // Create an instance; passing `true` enables exceptions
+    $mail = new PHPMailer(true);    
 
-    function send_email_verify($firstname, $lastname, $email, $verify_token){
-        //Create an instance; passing `true` enables exceptions
-        $mail = new PHPMailer(true);    
+    // Server settings
+    //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
+    $mail->Username   = 'vicmarrrrr.2002@gmail.com';            // SMTP username
+    $mail->Password   = 'ybfmfruyfursakmt';                     // SMTP password
+    $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_SMTPS';          // Enable implicit TLS encryption
+    $mail->Port       = 587;                                    // TCP port to connect to
 
-        //Server settings
-        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-        $mail->isSMTP();                                            //Send using SMTP
-        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        
-        $mail->Username   = 'vicmarrrrr.2002@gmail.com';                     //SMTP username
-        $mail->Password   = 'ybfmfruyfursakmt';                               //SMTP password
-        $mail->SMTPSecure = 'PHPMailer::ENCRYPTION_SMTPS';            //Enable implicit TLS encryption
-        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    // Recipients
+    $mail->setFrom('vicmarrrrr.2002@gmail.com', 'DPPAM');
+    $mail->addAddress($email);     // Add a recipient
+    
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'DPPAM Email Verification';
 
-
-        //Recipients
-        $mail->setFrom('vicmarrrrr.2002@gmail.com', 'DPPAM');
-        $mail->addAddress($email);     //Add a recipient
-        
-        //Content
-        $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'DPPAM Email Verification';
-
-        $email_template = "
+    $email_template = "
         <h2>You have registered with DPPAM</h2>
         <h4>Verify your email address to login with the given link below.</h4><br>
         <a href='http://localhost/DPPAM%20Voting/php/verify_email.php?token=$verify_token'>Click Me</a>
-        ";
+    ";
 
-        $mail->Body = $email_template;
-        $mail->send();
-        //echo "Message has been sent";
-    }
+    $mail->Body = $email_template;
+    $mail->send();
+}
 
-    if(isset($_POST['sign_up_btn'])){
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $phone_num = $_POST['phone_num'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $role = $_POST['role'];
-        $confirm_password = $_POST['confirm_password'];
-        $verify_token = md5(rand());
+if (isset($_POST['sign_up_btn'])) {
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $phone_num = $_POST['phone_num'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    $role = $_POST['role'];
+    $verify_token = md5(rand());
 
-        
+    // Store the user input in session if email already exists
+    $_SESSION['temp_firstname'] = $firstname;
+    $_SESSION['temp_lastname'] = $lastname;
+    $_SESSION['temp_phone_num'] = $phone_num;
 
+    // Check if email exists
+    $check_email_query = "SELECT email FROM users WHERE email='$email' LIMIT 1";
+    $check_email_query_run = mysqli_query($sql_connection, $check_email_query);
 
+    if (mysqli_num_rows($check_email_query_run) > 0) {
+        $_SESSION['status'] = 'Email already exists';
 
-        // Email exists or not
-        
-        $check_email_query = "SELECT email FROM users WHERE email='$email' LIMIT 1";
-        $check_email_query_run = mysqli_query($sql_connection, $check_email_query);
+        // Redirect based on role
+        if ($role === 'Admin') {
+            header("Location: ../admin_sign_up_form.php");
+        } elseif ($role === 'Coordinator') {
+            header("Location: ../coordinator_sign_up_form.php");
+        } elseif ($role === 'Volunteer') {
+            header("Location: ../vol_signup.php");
+        } else {
+            header("Location: ../vol_signup.php"); // Default fallback
+        }
+        exit(); // Stop execution after redirect
+    } else {
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        if(mysqli_num_rows($check_email_query_run) > 0) {
-            $_SESSION['status'] = 'Email already exists';
+        // Insert New User
+        $query = "INSERT INTO users(firstname, lastname, email, phone_num, password, role, verify_token) 
+                  VALUES('$firstname','$lastname','$email','$phone_num','$hashed_password','$role','$verify_token')";
+        $query_run = mysqli_query($sql_connection, $query);
+
+        if ($query_run) {
+            // Send email verification (ensure the function send_email_verify exists and works)
+            send_email_verify("$firstname", "$lastname", "$email", "$verify_token");
+            $_SESSION['status'] = 'Registered Successfully. Verify your email address';
+
+            // Clear the temporary session data after successful registration
+            unset($_SESSION['temp_firstname']);
+            unset($_SESSION['temp_lastname']);
+            unset($_SESSION['temp_phone_num']);
+
+            // Redirect based on role
+            if ($role === 'Admin') {
+                header("Location: ../admin_sign_up_form.php");
+            } elseif ($role === 'Coordinator') {
+                header("Location: ../coordinator_sign_up_form.php");
+            } elseif ($role === 'Volunteer') {
+                header("Location: ../vol_signup.php");
+            } else {
+                header("Location: ../vol_signup.php"); // Default fallback
+            }
+        } else {
+            $_SESSION['status'] = 'Registration Failed';
             header("Location: ../vol_signup.php");
         }
-        
-        else {
-            // Insert New User
-            $query = "INSERT INTO users(firstname, lastname, email, phone_num, password, role, verify_token) 
-            VALUES('$firstname','$lastname','$email','$phone_num','$password','$role','$verify_token')";
-            $query_run = mysqli_query($sql_connection, $query);
-
-            if($query_run){
-
-                send_email_verify("$firstname", "$lastname", "$email", "$verify_token");
-                $_SESSION['status'] = 'Registered Successfully. Verify your email address';
-                header("Location: ../vol_signup.php");
-            }
-
-            else {
-                $_SESSION['status'] = 'Registration Failed';
-                header("Location: ../vol_signup.php");
-            }
-        }
-            
+        exit(); // Stop execution after redirect
     }
-        
+}
 
 ?>
+
 
