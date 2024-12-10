@@ -5,6 +5,7 @@ include('php/authentication.php');
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,19 +144,13 @@ include('php/authentication.php');
                         </a>
                     </li>
 
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_registration_info.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-address-card"></i>Registration Info
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="vol_attachments.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-file"></i>My Attachments
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
@@ -342,8 +337,9 @@ include('php/authentication.php');
                             <i class="bi bi-chevron-left"></i>
                         </a>
                     </div>
-                    <div class="ms-3">
-                        <h3 class="pi">Profile Information</h3>
+                    <div>
+                        <h3 class="text-dark mb-1">Volunteer Form Information</h3>
+                        <h6 class="text-muted">Personal Details</h6>
                     </div>
                 </div>
 

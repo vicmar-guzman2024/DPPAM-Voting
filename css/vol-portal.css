@@ -480,11 +480,11 @@ input:focus,
 }
 
 .contentBox5 img {
-    max-width: 100px; /* Resize the logo */
+    max-width: 100px; 
     height: auto;
 }
 
-/* Custom file input styling */
+
 .custom-file-input {
     display: flex;
     align-items: center;
@@ -494,22 +494,22 @@ input:focus,
 }
 
 .custom-file-input input[type="file"] {
-    display: none; /* Hide the file input */
+    display: none;
 }
 
 .custom-file-input .icon {
     font-size: 18px;
-    color: #379BF6; /* Match theme */
+    color: #379BF6; 
 }
 
-/* Adjust form inputs */
+
 .contentBox5 .form-control {
     font-size: 14px;
     padding: 8px 10px;
     border-radius: 4px;
 }
 
-/* Style the buttons */
+
 .contentBox5 .btn {
     font-size: 14px;
     padding: 8px 20px;
@@ -527,12 +527,11 @@ input:focus,
     font-size: 16px;
 }
 
-/* Row spacing */
 .contentBox5 .row {
-    margin-bottom: 15px; /* Add space between rows */
+    margin-bottom: 15px; 
 }
 
-/* CHEVRON */
+
 .btn-chevron {
     display: flex;
     justify-content: center;
