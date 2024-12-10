@@ -147,7 +147,7 @@
 
                 <ul class="sidebar-nav mt-5">
                     <li class="sidebar-item">
-                        <a href="index.html" class="sidebar-link active">
+                        <a href="index.php" class="sidebar-link active">
                             <i class="fa-solid fa-house pe-2"></i>Dashboard</a>
                     </li>
                     <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-user-group pe-2"></i>Volunteers</a>
@@ -169,11 +169,11 @@
                             <i class="fa-solid fa-school-flag pe-2"></i>Submissions</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link"> 
+                        <a href="assignment_management.php" class="sidebar-link"> 
                             <i class="fa-solid fa-school-flag pe-2"></i>Schools & Precincts</a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard"
+                        <a href="attendance_tracking.php" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard"
                             aria-expanded="false" aria-controls="dashboard">
                             <i class="fa-solid fa-user-check pe-2"></i>Attendance Tracking</a>
                         <ul id="dashboard" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -200,7 +200,7 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link"><i class="fa-solid fa-id-card pe-2"></i>Generate ID</a>
+                        <a href="id_generator.html" class="sidebar-link"><i class="fa-solid fa-id-card pe-2"></i>Generate ID</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
