@@ -1,7 +1,26 @@
 <?php
-
+// Start the session
+session_start();
 include('php/condb.php');
-include('php/authentication.php');
+
+// Retrieve user details from the session
+$firstname = $_SESSION['firstname'];
+$lastname = $_SESSION['lastname'];
+$username = $_SESSION['username'];
+
+// Fetch user data
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT firstname, lastname, username, profile_picture FROM users WHERE user_id = ?";
+$stmt = $sql_connection->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($firstname, $lastname, $email, $profile_image);
+$stmt->fetch();
+$stmt->close();
+$sql_connection->close();
+
+// Determine profile image
+$image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profile_picture/default_profile.jpg";
 
 ?>
 
@@ -29,9 +48,9 @@ include('php/authentication.php');
 
   
   
- 
 
-  <title>Personal Details</title>
+
+  <title>Change Password</title>
 </head>
 
 <body>
@@ -43,10 +62,8 @@ include('php/authentication.php');
             <div class="" style="min-height: 100vh;">
                 <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
                     <div class="position-relative">
-                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
-                    alt="User Profile" 
-                    class="img-fluid profileImg">
-
+                        <img src="<?php echo htmlspecialchars($image_path); ?>" alt="User Profile"
+                                class="img-fluid profileImg">
                         <div class="btn-group dropend">
                             <button type="button" class="editProfile position-absolute top-0 start-100 translate-middle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -71,8 +88,7 @@ include('php/authentication.php');
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body" id="userProfileImageModal">
-                                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
-                                    alt="User Profile" class="img-fluid">
+                                    <img src="" alt="User Profile" class="img-fluid profileImgModal">
                                 </div>
                             </div>
                         </div>
@@ -81,7 +97,7 @@ include('php/authentication.php');
                     <!-- Modal for changing profile picture-->
                     <div class="modal fade" id="editProfilePictureModal" tabindex="-1"
                         aria-labelledby="editProfilePictureModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered  modal-md-sm">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="editProfilePictureModalLabel">Edit Profile Picture</h5>
@@ -92,13 +108,11 @@ include('php/authentication.php');
                                     action="php/update_profile_picture.php">
                                     <div class="modal-body text-center">
                                         <!-- Current Profile Picture -->
-                                        <div id="profilePictureContainer">
-                                            <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
-                                            id="currentProfilePicture"
-                                            alt="User Profile" 
-                                            class="img-fluid img-thumbnail"
-                                            width="300"
-                                            style="cursor: move;">
+                                        <div id="profilePictureContainer" style="height: 300px; width: 100%;">
+                                            <img id="currentProfilePicture"
+                                                src="<?php echo htmlspecialchars($image_path); ?>"
+                                                class="img-thumbnail img-fluid mb-3" alt="Profile Picture" width="300"
+                                                style="cursor: move;">
                                         </div>
 
                                         <!-- Crop and Done Buttons -->
@@ -120,7 +134,7 @@ include('php/authentication.php');
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" name="change_profile_btn" class="btn btn-primary" id="saveChangesButton">Save
+                                        <button type="submit" class="btn btn-primary" id="saveChangesButton">Save
                                             Changes</button>
                                     </div>
                                 </form>
@@ -131,33 +145,27 @@ include('php/authentication.php');
 
 
                     <div>
-                        <h4 class="profile-name"><?= $_SESSION['auth_user']['firstname'] . ' ' . $_SESSION['auth_user']['lastname']; ?></h4>    
-                        <p class="profile-email"><?= $_SESSION['auth_user']['email']; ?></p>
+                        <h4 class="profile-name"><?php echo htmlspecialchars($firstname . ' ' . $lastname); ?></h4>
+                        <p class="profile-email"><?php echo htmlspecialchars($username); ?></p>
                     </div>
                 </div>
 
                 <ul class="sidebar-nav mt-5">
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_dashboard.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-house-user"></i>Dashboard
+                        <i class="fa-solid fa-house-user"></i>Dashboard
                         </a>
                     </li>
 
                     <li class="sidebar-item">
                         <a href="vol_registration_info.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-address-card"></i>Registration Info
+                        <i class="fa-solid fa-address-card"></i>Registration Info
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a href="vol_attachments.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-file"></i>My Attachments
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-gear"></i>Profile Settings
+                        <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
                     </li>
 
@@ -174,18 +182,11 @@ include('php/authentication.php');
                             <div class="animated-character">
                                 <img src="img/logout.gif" alt="Waving Character">
                             </div>
-                            <a href="vol_logout.php" class="confirm-btn btn text-white">Yes, log me out</a>
-
-                            
-                            <!-- 
-                                <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
-                            -->
-
+                            <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
                         </div>
                     </div>
 
                     <style>
-                        /**
                         .modal {
                             display: none; 
                             position: fixed;
@@ -205,36 +206,6 @@ include('php/authentication.php');
                         }
 
                         .modal-content {
-                            background-color: #fff;
-                            margin: 5% auto;
-                            padding: 20px;
-                            border: 1px solid #888;
-                            width: 70%;
-                            top: 50px;
-                            max-width: 400px;
-                            text-align: center;
-                        }
-                            */
-
-                        #logoutModal {
-                            display: none; 
-                            position: fixed;
-                            z-index: 1; 
-                            left: 0;
-                            top: 0;
-                            width: 100%;
-                            height: 100%;
-                            background-color: rgba(0, 0, 0, 0.5); 
-                            overflow: auto;
-                            padding-top: 60px;
-                        }
-
-                        #logoutModal .message{
-                            font-size: 18px;
-                            font-weight: bold;
-                        }
-
-                        #logoutModal .modal-content {
                             background-color: #fff;
                             margin: 5% auto;
                             padding: 20px;
@@ -302,10 +273,9 @@ include('php/authentication.php');
                         }
 
                         function logout() {
-                            window.location.href = "user_login.php";
+                            window.location.href = "vol_login.php";
                         }
                     </script>
-
                 </ul>
             </div>
         </aside>
@@ -313,133 +283,70 @@ include('php/authentication.php');
         <!-- Main Component -->
         <div class="main">
 
-            <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
-                <div class="d-flex align-items-center">
-                    <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
-                    <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
+           <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
+                <div class="d-flex flex-row justify-content-center align-items-center">
+                    <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
+                    <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
                 </div>
-                <div class="d-flex align-items-center gap-3">
-                    <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button>
-                </div>
-            </div>
 
-            
-            <nav class="navbar navbar-expand px-3 navbar-light">
-                <!-- Button for sidebar toggle -->
-                <button class="btn toggle-btn" type="button" data-bs-theme="dark">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button> 
+                </div>
             </nav>
 
-            <main class="container-fluid p-5">
-
-                <div>
-                    
-                    <div class="d-flex flex-row align-items-center mb-4 gap-3">
-                        <div><a href="vol_registration_info.php" class="btn"><i class="bi bi-chevron-left"></i></a></div>
-                        <div>
-                            <h3 class="text-dark mb-1">Volunteer Form Information</h3>
-                            <h6 class="text-muted">Personal Details</h6>
-                        </div>
+            <main class="container p-5">
+                <div class="d-flex flex-row align-items-center mb-4 chevron-container">
+                    <div>
+                        <a href="vol_account_settings.php" class="btn-chevron">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
                     </div>
+                    <div class="ms-3">
+                        <h3 class="pi">Change Password</h3>
+                    </div>
+                </div>
 
                     <!--DASHBOARD CONTENT-->
 
-                    
-                        <form action="" class="contentBox p-5">
-                            <!--STEP 1-->
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" required>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="nickname" class="form-label">Nickname</label>
-                                <input type="text" class="form-control" id="nickname">
-                            </div>
-
-                            <div class="col-md-3 mb-4">
-                                <label for="birthDate" class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control" id="birthDate">
-                            </div>
-                            <div class="col-md-3 mb-4">
-                                <label for="sex" class="form-label">Sex</label>
-                                <select id="sex" class="form-select">
-                                    <option selected>Male</option>
-                                    <option>Female</option>
-                                  </select>
-                            </div>
-                            <div class="col-md-3 mb-4">
-                                <label for="civilStatus" class="form-label">Civil Status</label>
-                                <select id="civilStatus" class="form-select">
-                                    <option selected>Single</option>
-                                    <option>Married</option>
-                                    <option>Divored</option>
-                                    <option>Widowed</option>
-                                    <option>Separated</option>
-                                  </select>
-                            </div>
-                            <div class="col-md-3 mb-4">
-                                <label for="citizenship" class="form-label">Citizenship</label>
-                                <input type="text" class="form-control" id="citizenship" placeholder="Filipino">
-                            </div>
-
-                            <div class="col-md-9 mb-4">
-                                <label for="address" class="form-label">Residence Address</label>
-                                <input type="text" class="form-control" id="address">
-                            </div>
-                            <div class="col-md-3 mb-4">
-                                <label for="tel" class="form-label">Telephone No.</label>
-                                <input type="tel" class="form-control" id="tel">
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <label for="occupation" class="form-label">Occupation</label>
-                                <input type="text" class="form-control" id="occupation">
-                            </div>
-                            <div class="col-md-4 mb-4">
-                                <label for="celNo" class="form-label">Cellphone No.</label>
-                                <input type="tel" class="form-control" id="celNo">
-                            </div>
-                            
-                            <div class="col-md-4 mb-4">
-                                <label for="foxNo" class="form-label">Fox No.</label>
-                                <input type="text" class="form-control" id="foxNo">
-                            </div>
-
-                            <div class="col-md-9 mb-4">
-                                <label for="company" class="form-label">Company</label>
-                                <input type="text" class="form-control" id="company">
-                            </div>
-                            <div class="col-md-3 mb-4">
-                                <label for="tel" class="form-label">Telephone No.</label>
-                                <input type="tel" class="form-control" id="tel">
-                            </div>
-
+                    <section class="p-5 contentBox5 text-center">
+                        <!-- Success Icon -->
+                        <div class="check-icon mb-3">
+                            <i class="bi bi-check-circle-fill" style="font-size: 2rem; color: green;"></i>
                         </div>
-                        <input type="button" name="save" class="bg-success btn text-white px-5" value="Save" /> 
-                        </form>
 
-                    
-                      
-                    
+                        <!-- Title -->
+                        <h5 class="mb-3" style="font-weight: bold;">Ready to Scan</h5>
+
+                        <!-- Description -->
+                        <p class="text-muted mb-4">
+                            Please present this QR Code to the admin or scanner to mark your attendance. Ensure it is clear and readable.
+                        </p>
+
+                        <!-- QR Code Container -->
+                        <div class="qr-code-container" style="border: 1px dashed #ddd; padding: 20px; border-radius: 10px; display: inline-block;">
+                            <img src="img/attendance-qrcode.png" alt="QR Code for Attendance" class="img-fluid" style="width: 150px;">
+                        </div>
+
+                        <!-- Optional Info -->
+                        <div class="user-details mt-3">
+                            <h6 style="font-weight: bold;">Volunteer Name</h6>
+                            <p class="text-muted" style="margin-bottom: 0;">Volunteer ID: 123456</p>
+                        </div>
+                    </section>
+
+
+
+            
                 </div>
             </main>
         </div>
     </div>
-
-
-
-
-
-
-<script src="vol-portal.js"></script>
-
-
-  <!--bootstrap js-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+    
+    <!--bootstrap js-->
+    <script src="vol-portal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
 </body>
-
 </html>
