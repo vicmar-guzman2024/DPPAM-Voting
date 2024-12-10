@@ -389,7 +389,7 @@ $username = $_SESSION['username'];
                           <div class="col">
                             <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                               <div class="d-flex flex-column justify-content-center align-items-start">
-                                <div><h1>20</h1></div>
+                                <div><h1 id="total_volunteers">0</h1></div>
                                 <div><span>NUMBERS OF VOLUNTEERS</span></div>
                               </div>
                               <div><i class="fa-solid fa-person-chalkboard"></i></div>
@@ -400,7 +400,7 @@ $username = $_SESSION['username'];
                           <div class="col">
                             <div class="dashboardBox d-flex flex-row justify-content-between align-items-center gap-3 p-3" style="width: 100%;">
                               <div class="d-flex flex-column justify-content-center align-items-start">
-                                <div><h1>20</h1></div>
+                                <div><h1 id="needed_volunteers">0</h1></div>
                                 <div><span>NUMBERS OF NEEDED VOLUNTEERS</span></div>
                               </div>
                               <div><i class="fa-solid fa-person-chalkboard"></i></div>
@@ -443,14 +443,14 @@ $username = $_SESSION['username'];
                                         const centerY = height / 2;
 
                                         ctx.save();
-                                        ctx.font = 'bold 1.2em sans-serif';
+                                        ctx.font = 'bold 1.4em sans-serif';
                                         ctx.textAlign = 'center';
                                         ctx.textBaseline = 'middle';
                                         ctx.fillStyle = 'black';
 
-                                        ctx.fillText('Number of', centerX, centerY + 30); // label ng number of text
-                                        ctx.font = 'bold 1.4em sans-serif';
-                                        ctx.fillText('Volunteers', centerX, centerY + 50); // label ng volunteers text
+                                        ctx.fillText('Number of', centerX, centerY + 10); // label ng number of text
+                                        ctx.font = 'bold 1.6em sans-serif';
+                                        ctx.fillText('Volunteers', centerX, centerY + 30); // label ng volunteers text
                                         ctx.restore();
                                     }
                                 };
@@ -525,27 +525,72 @@ $username = $_SESSION['username'];
                     
                             <!-- Bar Chart Section -->
                             <div class="col-md-6 mb-4">
-                              <canvas id="myChart2"></canvas>
-                              <script>
-                                const myChart2Ctx = document.getElementById('myChart2').getContext('2d');
-                                new Chart(myChart2Ctx, {
-                                  type: 'bar',
-                                  data: {
-                                    labels: ['John', 'Pedro', 'Juan'],
-                                    datasets: [
-                                      { label: 'Cats', data: [2, 3, 1], backgroundColor: 'rgb(255, 99, 132)', borderWidth: 1 },
-                                      { label: 'Dogs', data: [1, 4, 1], backgroundColor: 'rgb(54, 162, 235)', borderWidth: 1 }
-                                    ]
-                                  },
-                                  options: {
-                                    indexAxis: 'y',
-                                    scales: {
-                                      x: { beginAtZero: true, stacked: true },
-                                      y: { stacked: true }
-                                    }
-                                  }
-                                });
-                              </script>
+                              <canvas id="myChart2" width="1300" height="1400"></canvas>
+                                <script>
+                                    // Pass the PHP arrays to JavaScript
+                                    const missionNames = <?php echo json_encode($mission_names); ?>;
+                                    const assignedVolunteers = <?php echo json_encode($assigned_volunteers); ?>;
+                                    const pendingAssignments = <?php echo json_encode($pending_assignments); ?>;
+
+                                    // Create the bar chart
+                                    const myChart2Ctx = document.getElementById('myChart2').getContext('2d');
+                                    new Chart(myChart2Ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: missionNames,  // Use mission names as labels
+                                            datasets: [
+                                                { 
+                                                    label: 'Assigned Volunteers', 
+                                                    data: assignedVolunteers,  // Data for assigned volunteers
+                                                    backgroundColor: '#00A1E4',  // Blue color
+                                                    borderColor: '#00A1E4',  // Same blue border
+                                                    borderWidth: 1,  // Thin border
+                                                    barPercentage: 0.5,  // Set the bar width (50%)
+                                                    categoryPercentage: 0.5  // Set the space between bars (50%)
+                                                },
+                                                { 
+                                                    label: 'Pending Assignments', 
+                                                    data: pendingAssignments,  // Data for pending assignments
+                                                    backgroundColor: '#910200',  // Red color
+                                                    borderColor: '#910200',  // Same red border
+                                                    borderWidth: 1,  // Thin border
+                                                    barPercentage: 0.5,  // Set the bar width (50%)
+                                                    categoryPercentage: 0.5  // Set the space between bars (50%)
+                                                }
+                                            ]
+                                        },
+                                        options: {
+                                            responsive: true,
+                                            indexAxis: 'y',  // Horizontal bar chart
+                                            scales: {
+                                                y: {
+                                                    beginAtZero: true,
+                                                    grid: { display: false },
+                                                    ticks: {
+                                                        padding: 1 // Adjust this to reduce the space between y-axis labels
+                                                    },
+                                                    stacked: true  // Stack the bars on the Y-axis
+                                                },
+                                                x: {
+                                                    grid: { display: false },
+                                                    offset: true,
+                                                    ticks: {
+                                                        padding: 1 // Adjust this to reduce the space between x-axis labels
+                                                    },
+                                                    stacked: true  // Stack the bars on the X-axis
+                                                }
+                                            },
+                                            plugins: {
+                                                legend: {
+                                                    labels: {
+                                                        padding: 20 // Adjust this to change the space between legend labels
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    });
+                                </script>
+
                             </div>
                           </div>
                         </div>

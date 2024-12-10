@@ -40,8 +40,8 @@ $neededData = [];
 while ($row = mysqli_fetch_assoc($sql_result3)) {
     $labels[] = $row['PARISH_NAME'];         // Parish names for chart labels
     $cityData[] = $row['CITY'];             // Cities corresponding to parishes
-    $registeredData[] = $row['TOTAL_ASSIGNED']; // Registered volunteers
-    $neededData[] = 35;         // Needed volunteers
+    $registeredData[] = rand(25, 35); // Registered volunteers
+    $neededData[] = rand(40, 50);         // Needed volunteers
 }
 $stmt3->close();
 
@@ -101,8 +101,8 @@ $needed_Vol = [];
 $assigned_schoool = [];
 
 while ($row = mysqli_fetch_assoc($sql_result9)) {
-    $registered_Vol[] = 50; // Registered volunteers for the chart
-    $needed_Vol[] =  35; // Placeholder for needed volunteers, update as required
+    $registered_Vol[] = rand(20, 30); // Registered volunteers for the chart
+    $needed_Vol[] =  rand(25, 35); // Placeholder for needed volunteers, update as required
     $assigned_schoool[] = $row['LOCATION'];
 } 
 
@@ -112,7 +112,9 @@ $stmt9->close();
 $stmt10 = $sql_connection->prepare("
     SELECT 
         COUNT(VOLUNTEERS_ID) AS TOTAL_VOLUNTEERS,  
-        (SELECT COUNT(*) FROM VOLUNTEERS WHERE STATUS = 'ACTIVE') AS TOTAL_ASSIGNED,  
+        (SELECT COUNT(*) FROM VOLUNTEERS WHERE STATUS = 'ACTIVE') AS TOTAL_ASSIGNED,
+        (SELECT COUNT(*) FROM VOLUNTEERS WHERE STATUS = 'INACTIVE') AS TOTAL_INACTIVE,   
+        (SELECT COUNT(*) FROM VOLUNTEERS WHERE STATUS = 'DEACTIVATED') AS TOTAL_DEACTIVATED,  
         (SELECT COUNT(*) FROM REGISTRATION_INFOS WHERE STATUS = 'PENDING') AS TOTAL_PENDING  
     FROM 
         VOLUNTEERS 
@@ -124,9 +126,11 @@ $sql_result10 = $stmt10->get_result();
 if ($data = $sql_result10->fetch_assoc()) {
     $total_volunteers = $data['TOTAL_VOLUNTEERS'];  // All volunteers
     $total_assigned = $data['TOTAL_ASSIGNED'];      // Active volunteers
-    $total_pending = $data['TOTAL_PENDING'];       // Pending registrations
+    $total_pending = $data['TOTAL_PENDING'];
+    $total_inactive = $data['TOTAL_INACTIVE'];
+    $total_deactivated = $data['TOTAL_DEACTIVATED'];       // Pending registrations
 } else {
-    $total_volunteers = $total_assigned = $total_pending = 0; // Default values
+    $total_volunteers = $total_assigned = $total_pending = $total_inactive = $total_deactivated = 0; // Default values
 } 
 $stmt10->close();
 
@@ -175,29 +179,77 @@ $stmt12->close();
 if (isset($_POST['location'])) {
     $location = $_POST['location'];
 
-    // Prepare and execute the query to fetch the total registered voters for the selected location
+    // Prepare and execute the query to fetch the total registered voters
     $stmt13 = $sql_connection->prepare("
         SELECT
-             SUM(REGISTERED_VOTERS) AS TOTAL_REGISTERED
+            SUM(REGISTERED_VOTERS) AS TOTAL_REGISTERED
         FROM 
             PRECINCTS
         WHERE
-             LOCATION = ?
+            LOCATION = ?
     ");
     $stmt13->bind_param('s', $location); // Bind the location to the query
     $stmt13->execute();
     $sql_result13 = $stmt13->get_result();
 
-    // Fetch the result and return the total registered voters
-    if ($row = mysqli_fetch_assoc($sql_result13)) {
-        echo $row['TOTAL_REGISTERED'];
-          // This will be the response for the AJAX request
+    // Check if the location is the default (empty or "Name of School")
+    if (empty($location) || $location == 'Name of School') {
+        $mock_volunteers = 0; 
+        $mock_needed_volunteers = 0; 
     } else {
-        echo "No Registered Voters";  // In case no data is found
+        $mock_volunteers = rand(20, 30); 
+        $mock_needed_volunteers = rand(25, 35); 
+    }
+
+    // Fetch the result and return as JSON with mock data
+    if ($row = $sql_result13->fetch_assoc()) {
+        echo json_encode([
+            'total_registered' => $row['TOTAL_REGISTERED'] ?? 0,
+            'total_volunteers' => $mock_volunteers,
+            'needed_volunteers' => $mock_needed_volunteers
+        ]);
+    } else {
+        echo json_encode([
+            'total_registered' => 0,
+            'total_volunteers' => $mock_volunteers,
+            'needed_volunteers' => $mock_needed_volunteers
+        ]);
     }
 
     $stmt13->close();
 }
+
+// Prepare and execute the query to fetch mission data with assigned volunteers and pending assignments
+$stmt14 = $sql_connection->prepare("
+    SELECT
+        MISSION_NAME
+    FROM 
+        MISSIONS
+");
+$stmt14->execute();
+$sql_result14 = $stmt14->get_result();
+
+// Initialize arrays for mission names and their respective data
+$mission_names = [];
+$assigned_volunteers = [];
+$pending_assignments = [];
+
+while ($row = mysqli_fetch_assoc($sql_result14)) {
+    // Populate arrays with data from the 'missions' table
+    $mission_names[] = $row['MISSION_NAME'];
+    $assigned_volunteers[] = rand(20, 30);
+    $pending_assignments[] = rand(25, 35);
+}
+
+// Close the statement
+$stmt14->close();
+
+
+
+
+
+
+
 
 
 

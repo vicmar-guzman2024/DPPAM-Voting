@@ -288,7 +288,6 @@ include("php/addnewroles.php");
                                         <div class="mb-3">
                                             <label for="category" class="form-label">Category</label>
                                             <input type="text" class="form-control" id="category" name="mission_name" placeholder="Category Name">
-
                                         </div> 
 
                                         <div class="mb-3">
@@ -321,23 +320,42 @@ include("php/addnewroles.php");
 
                                 // Mapping predefined roles to their icons
                                 $roleIcons = [
-
                                     'Voters Education & Media Group (VEMG)' => 'fa-person-chalkboard',
                                     'Accountable Material Verifiable Audit Trail Team (AMVATT)' => 'fa-list-check',
                                     'Polling Precinct Poll Watcher (PPMW)' => 'fa-clipboard-check',
                                     'Voters Assistance Desk (VAD)' => 'fa-user-group',
                                     'Technical Witness of Truth (SWOT)' => 'fa-file-pen',
-                                    'Unofficial Parallel Count Encoders (UCPE)' => 'fa-circle-check',   
+                                    'Unofficial Parallel Count Encoders (UCPE)' => 'fa-circle-check',
                                     'Logistics & Foods Team (LFT)' => 'fa-keyboard',
                                     'Transportation & Communications Group (TCG)' => 'fa-square-phone',
                                     'Finance & Solicitation Group (FSG)' => 'fa-file-invoice-dollar',
                                     'Post Election Poll Watching (PEPW)' => 'fa-keyboard',
-                                    // 'Prayer Power Group (PPG)' => 0,
-                                    // 'LEGAL/PARA-LEGAL TEAM (LPLT)' => 0,
-                                    // 'Technical Assistance Group (TAG)' => 0,
-                                    // 'EMERGENCY MANAGEMENT TEAM (EMT)' => 0
                                 ];
 
+                                // Get the assignments from the database
+                                $stmt15 = $sql_connection->prepare("SELECT `ASSIGNED_ASSIGNMENT` FROM `VOLUNTEERS`");
+                                $stmt15->execute();
+                                $sql_result15 = $stmt15->get_result();
+                                $assignment_counts = [];
+
+                                while ($row = mysqli_fetch_assoc($sql_result15)) {
+                                    // Split the assignments (assuming comma separated)
+                                    $assignments = explode(",", $row['ASSIGNED_ASSIGNMENT']);
+                                    
+                                    foreach ($assignments as $assignment) {
+                                        $assignment = trim($assignment);  // Remove any extra spaces
+                                        
+                                        if (isset($assignment_counts[$assignment])) {
+                                            $assignment_counts[$assignment]++;
+                                        } else {
+                                            $assignment_counts[$assignment] = 1;
+                                        }
+                                    }
+                                }
+
+                                $stmt15->close();
+
+                                // Fetch missions and display them
                                 while ($row = mysqli_fetch_assoc($sql_result5)) {
                                     $mission_name = $row['MISSION_NAME'];
                                     $mission_descriptions = $row['MISSION_DESCRIPTION'];
@@ -345,12 +363,23 @@ include("php/addnewroles.php");
 
                                     // Use predefined icon if role exists, otherwise default icon
                                     $icon = $roleIcons[$mission] ?? $defaultIcon;
+
+                                    // Get the count of volunteers assigned to this specific mission
+                                    $mission_count = 0;
+                                    foreach ($assignment_counts as $assignment => $count) {
+                                        if (stripos($assignment, $mission_name) !== false) {
+                                            $mission_count += $count;
+                                        }
+                                    }
                             ?>
                             <div class="col">
                                 <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
                                     <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
                                         <div>
-                                            <h1>20</h1>
+                                            <!-- Display the dynamic count of volunteers for this mission -->
+                                            <h1>
+                                                <?php echo $mission_count; ?>
+                                            </h1>
                                         </div>
                                         <div><span>Volunteers</span></div>
                                         <div><i class="fa-solid <?php echo $icon; ?>"></i></div>
@@ -365,7 +394,6 @@ include("php/addnewroles.php");
                             <?php } ?>
                         </div>
                     </section>
-
                 </div>
             </main>
         </div>

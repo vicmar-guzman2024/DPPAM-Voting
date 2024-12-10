@@ -123,22 +123,22 @@ function updateChart() {
             labels: chartLabels,
             datasets: [
                 {
-                    label: 'Registered Volunteers',
-                    data: registeredData,
-                    backgroundColor: '#00A1E4',
-                    borderColor: '#00A1E4',
-                    borderWidth: .1,
-                    barPercentage: 0.5,
-                    categoryPercentage: 0.5,
-                },
-                {
                     label: 'Needed Registered Volunteers',
                     data: neededData,
                     backgroundColor: '#910200',
                     borderColor: '#910200',
                     borderWidth: 1,
-                    barPercentage: 0.4,
-                    categoryPercentage: 0.8,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5,
+                },
+                {
+                    label: 'Registered Volunteers',
+                    data: registeredData,
+                    backgroundColor: '#00A1E4',
+                    borderColor: '#00A1E4',
+                    borderWidth: 1,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5,
                 },
             ],
         },
@@ -148,13 +148,13 @@ function updateChart() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    grid: { display: false },
+                    stacked: true,
                     ticks: {
                         padding: 1 // Adjust this to reduce the space between y-axis labels
                     }
                 },
                 x: {
-                    grid: { display: false },
+                    stacked: true,
                     offset: true,
                     ticks: {
                         padding: 1 // Adjust this to reduce the space between x-axis labels
@@ -356,7 +356,7 @@ if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
     function getTotalRegistered() {
         // Get selected location
         var location = document.getElementById('schoolSelect').value;
-
+    
         if (location) {
             // Send AJAX request
             $.ajax({
@@ -364,14 +364,30 @@ if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
                 method: 'POST',
                 data: { location: location },
                 success: function(response) {
-                    // Update the h1 tag with the result
-                    document.getElementById('total_registered').innerHTML = response;
+                    // Parse the response if multiple data points are returned as JSON
+                    try {
+                        var data = JSON.parse(response);
+    
+                        // Update the respective elements with the result
+                        document.getElementById('total_registered').innerHTML = data.total_registered || 0;
+                        document.getElementById('total_volunteers').innerHTML = data.total_volunteers || 0;
+                        document.getElementById('needed_volunteers').innerHTML = data.needed_volunteers || 0;
+                    } catch (e) {
+                        console.error('Error parsing response:', response);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', error);
                 }
             });
         } else {
+            // Reset the display if no location is selected
             document.getElementById('total_registered').innerHTML = 0;
+            document.getElementById('total_volunteers').innerHTML = 0;
+            document.getElementById('needed_volunteers').innerHTML = 0;
         }
     }
+    
 
     
 

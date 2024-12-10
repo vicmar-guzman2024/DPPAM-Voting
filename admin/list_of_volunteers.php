@@ -236,6 +236,7 @@ include ("php/dashboard.php");
                     <!--LIST OF Volunteers CONTENT-->
 
                     <section class=" mb-5">
+
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 dashboard">
                             
                             <div class="col ">
@@ -250,7 +251,7 @@ include ("php/dashboard.php");
                                         <div><span>Total volunteers</span></div>
 
                                         <div>
-                                            <h1 class="text-danger">20</h1>
+                                            <h1 class="text-danger"><?php echo $total_volunteers; ?></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +287,7 @@ include ("php/dashboard.php");
                                         <div><span>Active volunteers</span></div>
 
                                         <div>
-                                            <h1 class="text-danger">87</h1>
+                                            <h1 class="text-danger"><?php echo $total_assigned; ?></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -304,7 +305,7 @@ include ("php/dashboard.php");
                                         <div><span>Inactive volunteers</span></div>
 
                                         <div>
-                                            <h1 class="text-danger">100</h1>
+                                            <h1 class="text-danger"><?php echo $total_inactive ?></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -322,7 +323,7 @@ include ("php/dashboard.php");
                                         <div><span>Deactivated volunteers</span></div>
 
                                         <div>
-                                            <h1 class="text-danger">20</h1>
+                                            <h1 class="text-danger"><?php echo $total_deactivated; ?></h1>
                                         </div>
                                     </div>
                                 </div>
@@ -401,7 +402,7 @@ include ("php/dashboard.php");
                                     <select class="form-select" aria-label="mission" id="missions">
                                         <option selected>Select Mission</option>
                                             <?php while($row = mysqli_fetch_assoc($sql_result5)){ ?>
-                                                <option value="<?php echo $row['ROLE_NAME']; ?>"><?php echo $row['ROLE_NAME']; ?></option>
+                                                <option value="<?php echo $row['MISSION_NAME']; ?>"><?php echo $row['MISSION_NAME']; ?></option>
                                             <?php } ?>       
                                     </select>
                                 </div>
@@ -445,7 +446,7 @@ include ("php/dashboard.php");
                                         ?>
                                         <tr class="listrow">
                                             <th scope="row"><?php echo $row['VOLUNTEERS_ID']; ?></th>
-                                            <td><?php echo $row['PRECINCT_NO']; ?></td>
+                                            <td><?php // echo $row['PRECINCT_ID']; ?></td>
                                             <td><?php echo $flname; ?></td>
                                             <td><?php echo $row['ASSIGNED_PARISH']; ?></td>
                                             <td><?php echo $row['ASSIGNED_ASSIGNMENT']; ?></td>
