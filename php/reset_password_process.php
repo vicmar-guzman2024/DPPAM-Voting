@@ -105,6 +105,9 @@ if (isset($_POST['change_pass_btn'])) {
                     $update_password_run = mysqli_query($sql_connection, $update_password);
 
                     if ($update_password_run) {
+                        $new_token = md5(rand());
+                        $update_to_new_token = "UPDATE users SET verify_token='$new_token' WHERE verify_token='$token' LIMIT 1";
+                        $update_to_new_token_run = mysqli_query($sql_connection, $update_to_new_token);
                         $_SESSION['status'] = "Password updated successfully!";
                         header("Location: ../user_login.php");
                         exit();
@@ -134,8 +137,3 @@ if (isset($_POST['change_pass_btn'])) {
         exit();
     }
 }
-
-
-
-
-?>

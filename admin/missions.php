@@ -314,57 +314,56 @@ include("php/addnewroles.php");
                       </div>
                     
                       <section class="mb-4">
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-2 mission">
-                            <?php 
-                                // Default icon for roles without specific mapping
-                                $defaultIcon = 'fa-users';
+    <div class="row row-cols-1 row-cols-md-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 g-3 mission">
+        <?php 
+            // Default icon for roles without specific mapping
+            $defaultIcon = 'fa-users';
 
-                                // Mapping predefined roles to their icons
-                                $roleIcons = [
+            // Mapping predefined roles to their icons
+            $roleIcons = [
+                'Voters Education & Media Group (VEMG)' => 'fa-person-chalkboard',
+                'Accountable Material Verifiable Audit Trail Team (AMVATT)' => 'fa-list-check',
+                'Polling Precinct Poll Watcher (PPMW)' => 'fa-clipboard-check',
+                'Voters Assistance Desk (VAD)' => 'fa-user-group',
+                'Technical Witness of Truth (SWOT)' => 'fa-file-pen',
+                'Unofficial Parallel Count Encoders (UCPE)' => 'fa-circle-check',   
+                'Logistics & Foods Team (LFT)' => 'fa-keyboard',
+                'Transportation & Communications Group (TCG)' => 'fa-square-phone',
+                'Finance & Solicitation Group (FSG)' => 'fa-file-invoice-dollar',
+                'Post Election Poll Watching (PEPW)' => 'fa-keyboard',
+            ];
 
-                                    'Voters Education & Media Group (VEMG)' => 'fa-person-chalkboard',
-                                    'Accountable Material Verifiable Audit Trail Team (AMVATT)' => 'fa-list-check',
-                                    'Polling Precinct Poll Watcher (PPMW)' => 'fa-clipboard-check',
-                                    'Voters Assistance Desk (VAD)' => 'fa-user-group',
-                                    'Technical Witness of Truth (SWOT)' => 'fa-file-pen',
-                                    'Unofficial Parallel Count Encoders (UCPE)' => 'fa-circle-check',   
-                                    'Logistics & Foods Team (LFT)' => 'fa-keyboard',
-                                    'Transportation & Communications Group (TCG)' => 'fa-square-phone',
-                                    'Finance & Solicitation Group (FSG)' => 'fa-file-invoice-dollar',
-                                    'Post Election Poll Watching (PEPW)' => 'fa-keyboard',
-                                    // 'Prayer Power Group (PPG)' => 0,
-                                    // 'LEGAL/PARA-LEGAL TEAM (LPLT)' => 0,
-                                    // 'Technical Assistance Group (TAG)' => 0,
-                                    // 'EMERGENCY MANAGEMENT TEAM (EMT)' => 0
-                                ];
+            while ($row = mysqli_fetch_assoc($sql_result5)) {
+                $mission_name = $row['MISSION_NAME'];
+                $mission_descriptions = $row['MISSION_DESCRIPTION'];
+                $mission = $mission_name . " " . $mission_descriptions;
 
-                                while ($row = mysqli_fetch_assoc($sql_result5)) {
-                                    $mission_name = $row['MISSION_NAME'];
-                                    $mission_descriptions = $row['MISSION_DESCRIPTION'];
-                                    $mission = $mission_name . " " . $mission_descriptions;
+                // Use predefined icon if role exists, otherwise default icon
+                $icon = $roleIcons[$mission] ?? $defaultIcon;
+        ?>
+        <div class="col">
+            <div class="missionBox card text-center p-3 h-100 d-flex flex-column justify-content-between">
+                <!-- Top Section -->
+                <div class="mb-3 d-flex flex-row justify-content-center align-content-center gap-4">
+                    <h1>20</h1>
+                    <span>Volunteers</span>
+                    <div class="mt-2">
+                        <i class="fa-solid <?php echo $icon; ?> fa-2x"></i>
+                    </div>
+                </div>
 
-                                    // Use predefined icon if role exists, otherwise default icon
-                                    $icon = $roleIcons[$mission] ?? $defaultIcon;
-                            ?>
-                            <div class="col">
-                                <div class="missionBox d-flex flex-column justify-content-center align-items-center gap-3 p-3">
-                                    <div class="d-flex flex-row justify-content-evenly align-items-center" style="width: 100%">
-                                        <div>
-                                            <h1>20</h1>
-                                        </div>
-                                        <div><span>Volunteers</span></div>
-                                        <div><i class="fa-solid <?php echo $icon; ?>"></i></div>
-                                    </div>
-                                    <div>
-                                        <p class="text-center" style="width: 100%">
-                                            <?php echo $mission; ?>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-                        </div>
-                    </section>
+                <!-- Mission Description -->
+                <div>
+                    <p class="mb-0">
+                        <?php echo $mission; ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+</section>
+
 
                 </div>
             </main>

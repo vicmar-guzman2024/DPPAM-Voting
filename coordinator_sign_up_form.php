@@ -59,7 +59,7 @@ session_start();
             </div>
 
             <!-- Hidden Role Field -->
-            <input type="hidden" class="form-control" name="role" value="Coordinator">
+            <input type="hidden" class="form-control" name="role" value="Admin">
 
             <!-- First Name Input -->
             <div class="mb-3">

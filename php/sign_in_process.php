@@ -55,7 +55,7 @@ if (isset($_POST['login_btn'])) {
                     } elseif ($row['role'] == 'COORDINATOR') {
                         header("Location: ../coordinator_dashboard.php");
                     } elseif ($row['role'] == 'ADMIN') {
-                        header("Location: ../admin/id_generator.html");
+                        header("Location: ../admin/index.php");
                     } else {
                         $_SESSION['status'] = "Invalid role detected";
                         header("Location: ../user_login.php");

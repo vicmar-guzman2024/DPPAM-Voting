@@ -3,9 +3,9 @@ session_start();
 
 include ("php/connection.php");
 include ("php/dashboard.php");
-include ("php/nocache.php");
+//include ("php/nocache.php");
 
-$username = $_SESSION['username'];
+//$username = $_SESSION['username'];
 
 ?>
 
@@ -137,7 +137,7 @@ $username = $_SESSION['username'];
                 <ul class="dropdown-menu p-2" aria-labelledby="dropdownMenuButton1" style="width: 250px;">
                   <li><a class="dropdown-item d-flex flex-row justify-content-center align-items-center" href="#">
                     <img src="../img/DPPAMLOGO.png" alt="" width="50px" height="50px" class="img-fluid">
-                    <p><?php echo $username; ?></p>
+                    <p><?php //echo $username; ?></p>
                     
                 </a></li>
                 <hr class="text-dark">
@@ -160,7 +160,7 @@ $username = $_SESSION['username'];
 
                 <ul class="sidebar-nav mt-5">
                     <li class="sidebar-item">
-                        <a href="index.html" class="sidebar-link active">
+                        <a href="index.php" class="sidebar-link active">
                             <i class="fa-solid fa-house pe-2"></i>Dashboard</a>
                     </li>
                     <li class="sidebar-item"><a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#pages" aria-expanded="false" aria-controls="pages"><i class="fa-solid fa-user-group pe-2"></i>Volunteers</a>
