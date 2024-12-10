@@ -6,7 +6,7 @@ include("php/addnewvolunteers.php");
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
   <meta charset="UTF-8">
@@ -301,97 +301,112 @@ include("php/addnewvolunteers.php");
     
     
                             <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name">
-                                </div>
+                            <div class="col-md-6 mb-4">
+        <label for="name" class="form-label">Fullname</label>
+        <div class="input-group">
+            <input type="text" aria-label="First name" class="form-control" placeholder="First name" name="fname" id="firstname">
+            <input type="text" aria-label="Middle name" class="form-control" placeholder="Middle name" name="midname" id="middlename">
+            <input type="text" aria-label="Last name" class="form-control" placeholder="Last name" name="lname" id="lastname">
+        </div>
+        <input type="hidden" name="full_name" id="fullName">
+        </div>
                                 <div class="col-md-6 mb-4">
                                     <label for="nickname" class="form-label">Nickname</label>
                                     <input type="text" class="form-control" id="nickname" name="nickname">
                                 </div>
     
-                                <div class="col-md-3 mb-4">
-                                    <label for="birthDate" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="birthDate" name="birthDate">
-                                </div>
-                                <div class="col-md-3 mb-4">
-                                    <label for="sex" class="form-label">Sex</label>
-                                    <select id="sex" name="sex" class="form-select">
-                                        <option selected>Male</option>
-                                        <option>Female</option>
-                                      </select>
-                                </div>
-                                <div class="col-md-3 mb-4">
-                                    <label for="civilStatus" class="form-label">Civil Status</label>
-                                    <select id="civilStatus" name="civilstatus" class="form-select">
-                                        <option selected>Single</option>
-                                        <option>Married</option>
-                                        <option>Divored</option>
-                                        <option>Widowed</option>
-                                        <option>Separated</option>
-                                      </select>
-                                </div>
+                                <div class="col-md-2 mb-4">
+                <label for="birthDate" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="birthDate" name="birthdate">
+            </div>
 
-                                <div class="col-md-3 mb-4">
-                                    <label for="citizenship" class="form-label">Citizenship</label>
-                                    <input type="text" class="form-control" id="citizenship" name="citizenship"  placeholder="Filipino">
-                                </div>
+            <div class="col-md-2 mb-4">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age">
+            </div>
 
-                                <div class="col-md-9 mb-4">
-                                    <label for="ResidenceAddress" class="form-label">Residence Address</label>
-                                    <input type="text" class="form-control" id="residence_address" name="residence_address">
-                                </div>
-                                <div class="col-md-3 mb-4">
-                                    <label for="tel" class="form-label">Telephone No.</label>
-                                    <input type="tel" class="form-control" id="tel" name="telephone_no">
-                                </div>
+            <div class="col-md-2 mb-4">
+                <label for="sex" class="form-label">Sex</label>
+                <select id="sex" name="gender" class="form-select">
+                    <option selected>Male</option>
+                    <option>Female</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="civilStatus" class="form-label">Civil Status</label>
+                <select id="civilStatus" name="civil_status" class="form-select">
+                    <option selected>Single</option>
+                    <option>Married</option>
+                    <option>Divorced</option>
+                    <option>Widowed</option>
+                    <option>Separated</option>
+                </select>
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="citizenship" class="form-label">Citizenship</label>
+                <input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="Filipino">
+            </div>
+
+            <div class="col-md-9 mb-4">
+                <label for="address" class="form-label">Residence Address</label>
+                <input type="text" class="form-control" id="address" name="residence_address">
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="tel" class="form-label">Telephone No.</label>
+                <input type="tel" class="form-control" id="tel" name="telephone_no">
+            </div>
     
-                                <div class="col-md-4 mb-4">
-                                    <label for="occupation" class="form-label">Occupation</label>
-                                    <input type="text" class="form-control" id="occupation" name="occupation">
-                                </div>
-                                <div class="col-md-4 mb-4">
-                                    <label for="celNo" class="form-label">Cellphone No.</label>
-                                    <input type="tel" class="form-control" id="celNo" name="cel_no">
-                                </div>
-                                
-                                <div class="col-md-4 mb-4">
-                                    <label for="foxNo" class="form-label">Fox No.</label>
-                                    <input type="text" class="form-control" id="foxNo" name="fox_no">
-                                </div>
+            <div class="col-md-4 mb-4">
+                <label for="occupation" class="form-label">Occupation</label>
+                <input type="text" class="form-control" id="occupation" name="occupation">
+            </div>
+            <div class="col-md-4 mb-4">
+                <label for="celNo" class="form-label">Cellphone No.</label>
+                <input type="tel" class="form-control" id="celNo" name="cellphone_no">
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
     
-                                <div class="col-md-9 mb-4">
-                                    <label for="company" class="form-label">Company</label>
-                                    <input type="text" class="form-control" id="company" name="company">
-                                </div>
-                                <div class="col-md-3 mb-4">
-                                    <label for="tel" class="form-label">Telephone No.</label>
-                                    <input type="tel" class="form-control" id="tel" name="company_telephone_no">
-                                </div>
+            <div class="col-md-9 mb-4">
+                <label for="company" class="form-label">Company</label>
+                <input type="text" class="form-control" id="company" name="company_name">
+            </div>
+            <div class="col-md-3 mb-4">
+                <label for="tel" class="form-label">Telephone No.</label>
+                <input type="tel" class="form-control" id="tel" name="company_telephone_no">
+            </div>
                                 
                             </div>
     
                             <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <label for="parishOrgMem" class="form-label">Parish Organization Membership</label>
-                                    <select id="parishOrgMem" name="ppcrv_org_membership"class="form-select">
-                                        <option selected>Select Parish Organization Membership</option>
-                                        <option>Commitee</option>
-                                        <option>...</option>
-                                        <option>...</option>
-                                      </select>
-                                </div>
-    
-                                <div class="col-md-6 mb-4">
-                                    <label for="dateExp" class="form-label">Previous PPCRV Experience Date</label>
-                                    <input type="date" class="form-control" id="dateExp" name="prev_ppcrv_exp_date" required>
-                                </div>
-    
-                                
+
                                 <div class="col-md-9 mb-4">
-                                    <label for="prevExpAss" class="form-label">Previous PPCRV Experience Assignment</label>
-                                    <select id="prevExpAss" name="prev_ppcrv_exp_ass" class="form-select">
-                                        <?php
+                <label for="orgMember" class="form-label">Parish Organization Membership</label>
+                <input type="text" class="form-control" id="orgMember" name="ppcrv_org_membership" placeholder="Committees">
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <label for="position" class="form-label">Position</label>
+                <input type="text" class="form-control" id="position" name="position">
+            </div>
+    
+            <div class="col-md-6 mb-4">
+                <label for="years_in_service" class="form-label">For current PPCRV Member: No. of years in service</label>
+                <input type="number" class="form-control" id="years_in_service" name="years_in_service">
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <label for="dateExp" class="form-label">Previous PPCRV Experience Date</label>
+                <input type="date" class="form-control" id="dateExp" name="prev_ppcrv_experience_date">
+            </div>
+    
+            <div class="col-md-9 mb-4">
+                <label for="prevExpAss" class="form-label">Previous PPCRV Experience Assignment</label>
+                <select id="prevExpAss" name="prev_ppcrv_experience_assignment" class="form-select">
+                <?php
                                         while ($row = $sql_result5->fetch_assoc()) {
                                             $role_name = $row['ROLE_NAME'];
                                             $description = $row['DESCRIPTIONS'];
@@ -399,24 +414,59 @@ include("php/addnewvolunteers.php");
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?>
-                                            <option value="Others">Others</option>
-                                    </select>
+                    <option value="Others">Others</option>
+                </select>
 
-                                    <div id="selected-prevExpAss" class="mt-3">
-                                        <!-- Selected options with 'x' buttons will appear here -->
-                                    </div>
-                                </div>
+                <div id="selected-prevExpAss" class="mt-3">
+                    <!-- Selected options with 'x' buttons will appear here -->
+                </div>
+            </div>
                                 
                                 
                                 <div class="col-md-3 mb-4">
                                     <label for="otherPrevExpAss" class="form-label">Others</label>
                                     <input type="text" class="form-control" id="otherPrevExpAss" name="others_prev_ppcrv_exp_ass" disabled>
                                 </div>
-    
-                                <div class="col-md-9 mb-4">
-                                    <label for="prefVolAss" class="form-label">Preferred Volunteer Assignments</label>
-                                    <select id="prefVolAss" name="pref_ppcrv_vol_ass" class="form-select">
-                                        <?php
+
+                                <!-- REGISTERED VOTER??? -->
+                    <div class="col-12 mb-4">
+                    <!-- Question and Radio Buttons -->
+                    <div class="d-flex flex-column flex-md-row gap-3 align-items-center">
+                        <p class="mb-0">Are you a registered voter?</p>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="voterStatus" id="yes" value="Yes">
+                        <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="voterStatus" id="no" value="No">
+                        <label class="form-check-label" for="no">No</label>
+                        </div>
+                    </div>
+
+                    <!-- Conditional Inputs -->
+                    <div class="row g-3 mt-3">
+                        <!-- Precinct Number (Yes) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="precinctNo" class="form-label text-nowrap mb-0">If Yes, Precinct No.</label>
+                        <input type="text" class="form-control" id="precinctNo" name="precinctNo" placeholder="Precinct No.">
+                        </div>
+                        <!-- Polling Place (Yes) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="pollingPlace" class="form-label text-nowrap mb-0">Polling Place</label>
+                        <input type="text" class="form-control" id="pollingPlace" name="pollingPlace" placeholder="Polling Place">
+                        </div>
+                        <!-- Reason (No) -->
+                        <div class="col-md-6 d-flex align-items-center gap-2">
+                        <label for="no_reason" class="form-label text-nowrap mb-0">If No, Reason Why</label>
+                        <input type="text" class="form-control" id="no_reason" name="no_reason" placeholder="Reason">
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-9 mb-4">
+                <label for="prefVolAss" class="form-label">Preferred Activity Assignments</label>
+                <select id="prefVolAss" name="preferred_volunteer_assignment" class="form-select">
+                <?php
                                         while ($row = $sql_result5->fetch_assoc()) {
                                             $role_name = $row['ROLE_NAME'];
                                             $description = $row['DESCRIPTIONS'];
@@ -424,18 +474,19 @@ include("php/addnewvolunteers.php");
                                         } ?>
                                             <option selected disabled>Select options</option>
                                                 <?php echo $options; ?> 
-                                            <option value="Others">Others</option>
-                                      </select>
+                    <option value="Others">Others</option>
+                </select>
 
-                                      <div id="selected-prefVolAss" class="mt-3">
-                                        <!-- Selected options for Preferred Volunteer Assignments will appear here -->
-                                    </div>
-                                </div>
+                <div id="selected-prefVolAss" class="mt-3">
+                    <!-- Selected options for Preferred Volunteer Assignments will appear here -->
+                </div>
+            </div>
 
-                                <div class="col-md-3 mb-4">
-                                    <label for="otherPrefVolAss" class="form-label">Others</label>
-                                    <input type="text" class="form-control" id="otherPrefVolAss" name="others_pref_ppcrv_vol_ass" disabled>
-                                </div>
+            <div class="col-md-3 mb-4">
+                <label for="otherPrefVolAss" class="form-label">Others</label>
+                <input type="text" class="form-control" id="otherPrefVolAss" name="other_preferred_volunteer_assignment" disabled>
+            </div>
+
                             </div>
     
                             <h5 class="text-center mb-3">PPCRV Pledge</h5>
