@@ -124,14 +124,14 @@ function send_email_verify($firstname, $lastname, $email, $verify_token){
 
     $email_template = "
         <h2>You have registered with DPPAM</h2>
-        <h4>Verify your email address to login with the given link below.</h4><br>
+        <h4>Email verified! Please complete the form to continue registration.</h4><br>
         <a href='http://localhost/DPPAM%20Voting/php/verify_email.php?token=$verify_token'>Click Me</a>
     ";
 
     $mail->Body = $email_template;
     $mail->send();
 }
-
+ 
 if (isset($_POST['sign_up_btn'])) {
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -177,7 +177,7 @@ if (isset($_POST['sign_up_btn'])) {
         if ($query_run) {
             // Send email verification (ensure the function send_email_verify exists and works)
             send_email_verify("$firstname", "$lastname", "$email", "$verify_token");
-            $_SESSION['status'] = 'Registered Successfully. Verify your email address';
+            $_SESSION['status'] = 'Registered Successfully. Check your email address to complete the registration process';
 
             // Clear the temporary session data after successful registration
             unset($_SESSION['temp_firstname']);
@@ -190,7 +190,7 @@ if (isset($_POST['sign_up_btn'])) {
             } elseif ($role === 'Coordinator') {
                 header("Location: ../user_login.php");
             } elseif ($role === 'Volunteer') {
-                header("Location: ../user_login.php");
+                header("Location: ../vol_signup.php");
             } else {
                 header("Location: ../user_login.php"); // Default fallback
             }

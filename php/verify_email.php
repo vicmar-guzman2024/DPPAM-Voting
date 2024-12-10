@@ -19,8 +19,13 @@ if(isset($_GET['token'])){
             $update_query_run = mysqli_query($sql_connection, $update_query);
 
             if($update_query_run){
-                $_SESSION['status'] = "Email verified successfully!";
-                header("Location: ../user_login.php");
+                $user_email_query = "SELECT email FROM users WHERE verify_token = '$clicked_token' LIMIT 1";
+                $user_email_result = mysqli_query($sql_connection, $user_email_query);
+                $user_email = mysqli_fetch_assoc($user_email_result)['email'];
+                
+                $_SESSION['user_email'] = $user_email; // Save user email to session
+                $_SESSION['status'] = "Email verified! Please complete the form to continue registration.";
+                header("Location: ../vol_registration.php");
                 exit(0);
             }
 

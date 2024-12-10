@@ -1,3 +1,29 @@
+<?php
+session_start();
+include('php/condb.php');
+
+// Check if user email exists in session
+if (!isset($_SESSION['user_email'])) {
+    $_SESSION['status'] = "Unauthorized access.";
+    header("Location: user_login.php");
+    exit();
+}
+
+$user_email = $_SESSION['user_email'];
+
+// Fetch user data
+$query = "SELECT * FROM users WHERE email = '$user_email' LIMIT 1";
+$result = mysqli_query($sql_connection, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    $user = mysqli_fetch_assoc($result);
+} else {
+    $_SESSION['status'] = "User data not found.";
+    header("Location: user_login.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +52,18 @@
   <!--MAIN CONTENT-->
 
   <div class="container py-5">
+  <?php
+        if (isset($_SESSION['status'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show align-items-center" role="alert">
+                <h6 class="text-center"><?= $_SESSION['status']; ?></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+            unset($_SESSION['status']);
+        }
+
+        ?>
     <h4>Add Information</h4>
     <p class="text-muted">Input your personal information and save changes</p>
     <div class="row justify-content-center border"> 
@@ -50,9 +88,11 @@
         <div class="col-md-6 mb-4">
         <label for="name" class="form-label">Fullname</label>
         <div class="input-group">
-            <input type="text" aria-label="First name" class="form-control" placeholder="First name" name="fname" id="firstname">
+            <input type="text" aria-label="First name" class="form-control" placeholder="First name" name="fname" id="firstname"
+            value="<?php echo htmlspecialchars($user['FIRSTNAME'] ?? ''); ?>">
             <input type="text" aria-label="Middle name" class="form-control" placeholder="Middle name" name="midname" id="middlename">
-            <input type="text" aria-label="Last name" class="form-control" placeholder="Last name" name="lname" id="lastname">
+            <input type="text" aria-label="Last name" class="form-control" placeholder="Last name" name="lname" id="lastname"
+            value="<?php echo htmlspecialchars($user['LASTNAME'] ?? ''); ?>">
         </div>
         <input type="hidden" name="full_name" id="fullName">
         </div>
@@ -108,12 +148,14 @@
             </div>
             <div class="col-md-4 mb-4">
                 <label for="celNo" class="form-label">Cellphone No.</label>
-                <input type="tel" class="form-control" id="celNo" name="cellphone_no">
+                <input type="tel" class="form-control" id="celNo" name="cellphone_no"
+                value="<?php echo htmlspecialchars($user['PHONE_NUM'] ?? ''); ?>">
             </div>
             
             <div class="col-md-4 mb-4">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email"
+                value="<?php echo htmlspecialchars($user['EMAIL'] ?? ''); ?>">
             </div>
 
             <div class="col-md-9 mb-4">
