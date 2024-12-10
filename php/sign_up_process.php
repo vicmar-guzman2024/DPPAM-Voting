@@ -186,13 +186,13 @@ if (isset($_POST['sign_up_btn'])) {
 
             // Redirect based on role
             if ($role === 'Admin') {
-                header("Location: ../admin_sign_up_form.php");
+                header("Location: ../user_login.php");
             } elseif ($role === 'Coordinator') {
-                header("Location: ../coordinator_sign_up_form.php");
+                header("Location: ../user_login.php");
             } elseif ($role === 'Volunteer') {
-                header("Location: ../vol_signup.php");
+                header("Location: ../user_login.php");
             } else {
-                header("Location: ../vol_signup.php"); // Default fallback
+                header("Location: ../user_login.php"); // Default fallback
             }
         } else {
             $_SESSION['status'] = 'Registration Failed';
