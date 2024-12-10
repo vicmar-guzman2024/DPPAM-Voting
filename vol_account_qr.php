@@ -1,7 +1,8 @@
 <?php
-// Start the session
+
 include('php/condb.php');
 include('php/authentication.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -11,27 +12,34 @@ include('php/authentication.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/vol-portal.css">
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  
-  <!-- Font awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-  <!-- BOOTSTRAP ICON CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   <!--Font awesome CDN-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+   integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+   crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>Volunteer Form Information</title>
+   <!--BOOTSTRAP ICON CDN-->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+   <!--JS CHART CDN-->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  
+
+
+  <title>Change Password</title>
 </head>
 
 <body>
-  <div class="wrapper">
-    <!-- Sidebar -->
-    <aside id="sidebar">
+    
+    <div class="wrapper">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
             <div class="" style="min-height: 100vh;">
                 <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
                     <div class="position-relative">
@@ -135,13 +143,13 @@ include('php/authentication.php');
                         </a>
                     </li>
 
-                    <li class="sidebar-item1">
+                    <li class="sidebar-item">
                         <a href="vol_registration_info.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-address-card"></i>Registration Info
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
+                    <li class="sidebar-item1">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
@@ -296,10 +304,10 @@ include('php/authentication.php');
             </div>
         </aside>
 
-    <!-- Main Content -->
-    <div class="main">
-        
-    <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
+        <!-- Main Component -->
+        <div class="main">
+
+            <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
                 <div class="d-flex align-items-center">
                     <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
                     <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
@@ -317,76 +325,60 @@ include('php/authentication.php');
                 </button>
             </nav>
 
-      <main class="container-fluid p-5" style="max-width: 950px; margin-top: 10px;">
-        <div>
-          <h3 class="message-1">Volunteer Registration Information</h3>
+            <main class="container p-3"> <!-- Reduced padding -->
+                <div class="d-flex flex-row align-items-center mb-3 chevron-container ms-2">
+                    <div>
+                        <a href="vol_account_settings.php" class="btn-chevron">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <h3 class="pi">My QR Code</h3>
+                    </div>
+                </div>
 
-          <!-- Table -->
-          <section class="contentBox1 p-3">
-            <div class="row headers mb-3">
-                <div class="col-3 text-center"><strong>Status</strong></div>
-                <div class="col-3 text-center"><strong>Registration Process</strong></div>
-                <div class="col-3 text-center"><strong>Activity Log</strong></div>
-                <div class="col-3 text-center"><strong>Action</strong></div>
-            </div>
+                    <!--DASHBOARD CONTENT-->
 
-            <div class="row rowBox">
-                <div class="col-3 text-center">
-                    <span class="bg-success text-white status rounded">Complete</span>
-                </div>
-                <div class="col-3 text-center pd1">Personal Details</div>
-                <div class="col-3 text-center">
-                    <span class="text-muted pd">Modified at:</span> <strong>10/22/2024</strong>
-                </div>
-                <div class="col-3 text-center">
-                    <a href="vol_registration1.php"><i class="bi bi-pencil-square fs-5"></i></a>
-                </div>
-            </div>
+                    <section class="p-4 contentBox5 text-center">
+                        <!-- Success Icon -->
+                        <div class="check-icon mb-3">
+                            <i class="bi bi-check-circle-fill" style="font-size: 2rem; color: green;"></i>
+                        </div>
 
-            <div class="row rowBox">
-                <div class="col-3 text-center">
-                    <span class="bg-danger text-white status rounded">Incomplete</span>
-                </div>
-                <div class="col-3 text-center pd1">Assignments</div>
-                <div class="col-3 text-center">
-                    <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
-                </div>
-                <div class="col-3 text-center">
-                    <a href="vol_registration2.php"><i class="bi bi-pencil-square fs-5"></i></a>
-                </div>
-            </div>
+                        <!-- Title -->
+                        <h5 class="mb-3" style="font-weight: bold;">Ready to Scan</h5>
 
-            <div class="row rowBox">
-                <div class="col-3 text-center">
-                    <span class="bg-success text-white status rounded">Complete</span>
+                        <!-- Description -->
+                        <p class="text-muted mb-4">
+                            Please present this QR Code to the admin or scanner to mark your attendance. Ensure it is clear and readable.
+                        </p>
+
+                        <!-- QR Code Container -->
+                        <div class="qr-code-container" style="border: 1px dashed #ddd; padding: 20px; border-radius: 10px; display: inline-block;">
+                            <img src="img/qr_attendance.png" alt="QR Code for Attendance" class="img-fluid" style="width: 150px;">
+                        </div>
+
+                        <!-- Optional Info -->
+                        <div class="user-details mt-3">
+                            <h6 style="font-weight: bold;"><?= $_SESSION['auth_user']['firstname'] . ' ' . $_SESSION['auth_user']['lastname']; ?></h6>
+                            <p class="text-muted" style="margin-bottom: 0;">Volunteer ID: 123456</p>
+                        </div>
+                    </section>
+
+
+
+
+            
                 </div>
-                <div class="col-3 text-center pd1">Attached Documents</div>
-                <div class="col-3 text-center">
-                    <span class="text-muted">Modified at:</span> <strong>10/22/2024</strong>
-                </div>
-                <div class="col-3 text-center">
-                    <a href="vol_registration3.php"><i class="bi bi-pencil-square fs-5"></i></a>
-                </div>
-            </div>
-          </section>
+            </main>
         </div>
-      </main>
     </div>
-  </div>
-
-  <!-- SCRIPT FOR UPDATING USERS' PROFILE PICTURE -->
-  <script src="profile_picture_handler.js"></script>
-  <script src="vol-portal.js"></script>
-
-  <!-- CROPPER JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-
-  <!-- Scripts -->
-  <script src="vol-portal.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+    
+    <!--bootstrap js-->
+    <script src="vol-portal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+    </script>
 </body>
-
 </html>

@@ -155,12 +155,6 @@ include('php/authentication.php');
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="vol_attachments.php" class="sidebar-link py-3">
-                            <i class="fa-solid fa-file"></i>My Attachments
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
                         <a href="vol_account_settings.php" class="sidebar-link py-3">
                             <i class="fa-solid fa-gear"></i>Profile Settings
                         </a>
