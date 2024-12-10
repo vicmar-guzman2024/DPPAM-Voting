@@ -20,7 +20,7 @@
   
   
 
-  <title>Assignment Management</title>
+  <title>Tracking Management</title>
 </head>
 
 <body>
@@ -222,207 +222,206 @@
 
                 <div>
                     
-                    <h1 class="text-dark mb-4">Assignment Management</h1>
+                    <h1 class="text-dark mb-4">Attendance Tracking</h1>
 
-                    <!--ASSIGNMENT MANAGEMENT CONTENT-->
-                    <div class="row">
+                    <!--ATTENDANCE TRACKING CONTENT-->
 
-                      <!-- Volunteer Category Dropdown -->
-                      <div class="col-md-4 mb-3">
-                        <select class="form-select" aria-label="Volunteer Category">
-                          <option selected value="">Volunteer Category</option>
-                          <option value="1">Category 1</option>
-                          <option value="2">Category 2</option>
-                          <option value="3">Category 3</option>
-                        </select>
-                      </div>
-
-                      <!-- Search Bar -->
-                      <div class="col-md-4 position-relative mb-3">
-                        <span class="position-absolute top-50 start-0 translate-middle-y ms-4 text-muted">
-                          <i class="fa fa-search"></i>
-                        </span>
-                        <input
-                          type="text"
-                          id="searchPrecinct"
-                          class="form-control ps-5"
-                          placeholder="Search precinct..."
-                        />
-                      </div>
-
-                      <!-- Add New Precinct Button -->
-                      <div class="col text-nowrap mb-3 ms-md-5">
-                        <button type="button" class="btn btn-primary">Add New Precinct</button>
-                      </div>
+                    <div class="row gap-3">
+                      <!-- CITY & PRECINCT DROPDOWN -->
+                        <!-- Select City Dropdown -->
+                        <div class="col-md-4">
+                          <select class="form-select" aria-label="Volunteer Category">
+                            <option selected value="">Select CIty</option>
+                            <option value="1">...</option>
+                            <option value="2">...</option>
+                            <option value="3">...</option>
+                          </select>
+                        </div>
+                    
+                         <!-- Select Precinct Dropdown -->    
+                        <div class="col-md-4">
+                            <select class="form-select" aria-label="Volunteer Category">
+                              <option selected value="">Select Precinct</option>
+                              <option value="1">...</option>
+                              <option value="2">...</option>
+                              <option value="3">...</option>
+                            </select>
+                          </div>
                     </div>
-                    
-                    
 
-                    
-
-
-
-                    <section class="mt-3 row row-cols-lg-3 row-cols-md-2 row-cols-1 g-4">
-                      <!-- Start of Card -->
-                      <div class="col">
-                        <div class="card shadow-sm border-0 h-100" style="border-radius: 10px;">
-                          <!-- Card Header -->
-                          <div class="card-header text-white text-center fw-bold py-3" style="background-color: #9e1b1e; border-radius: 10px 10px 0 0;">
-                            Caloocan City High School
-                          </div>
-                          <!-- Card Body -->
-                          <div class="card-body d-flex flex-column justify-content-center">
-                            <div class="row text-center">
-                              <!-- Total Volunteers -->
-                              <div class="col">
-                                <h4 class="mb-1">230</h4>
-                                <small class="text-muted">Total Volunteers</small>
+                    <section class="row my-5 gx-4">
+                        <!-- Dashboard Boxes Container -->
+                        <div class="col-lg-3 mb-4">
+                          <div class="d-flex flex-column gap-4">
+                            <!-- Present Summary Box -->
+                            <div
+                              class="dashboardBox d-flex align-items-center p-4 shadow-sm rounded"
+                              style="background-color: #f9f9f9;"
+                            >
+                              <div class="icon-container text-primary fs-2">
+                                <i class="fa-solid fa-person-chalkboard"></i>
                               </div>
-                              <!-- Divider -->
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
+                              <div class="ms-3">
+                                <span class="text-muted">Present Summary</span>
+                                <h2 class="fw-bold mb-0">20</h2>
                               </div>
-                              <!-- Registered Volunteers -->
-                              <div class="col">
-                                <h4 class="mb-1">205</h4>
-                                <small class="text-muted">Registered Volunteers</small>
+                            </div>
+                      
+                            <!-- Not Present Summary Box -->
+                            <div
+                              class="dashboardBox d-flex align-items-center p-4 shadow-sm rounded"
+                              style="background-color: #f9f9f9;"
+                            >
+                              <div class="icon-container text-danger fs-2">
+                                <i class="fa-solid fa-person-chalkboard"></i>
                               </div>
-                              <!-- Divider -->
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <!-- Needed Volunteers -->
-                              <div class="col">
-                                <h4 class="text-danger mb-1">+25</h4>
-                                <small class="text-muted">Needed</small>
+                              <div class="ms-3">
+                                <span class="text-muted">Not Present Summary</span>
+                                <h2 class="fw-bold mb-0">20</h2>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- End of Card -->
+                      
+                        <!-- Chart Container -->
+                        <div class="col-lg-9">
+                          <div class="chart-container p-4 shadow-sm rounded" style="background-color: #ffffff;">
+                            <h4 class="mb-4">Overview Attendance Statistics</h4>
+                            <canvas id="attendanceChart"></canvas>
+                          </div>
+                        </div>
+                      </section>
+                      
+                      <script>
+                        const ctx = document.getElementById('attendanceChart').getContext('2d');
+                      
+                        const data = {
+                          labels: ['Registered Volunteers', 'Present', 'Not Present'],
+                          datasets: [{
+                            label: 'Volunteers',
+                            data: [100, 75, 50], // Replace with your values
+                            backgroundColor: ['#1E4388', '#72DCE8', '#26B7E1'],
+                            borderRadius: 10, // Rounded edges
+                            barThickness: 20,
+                          }]
+                        };
+                      
+                        const options = {
+                          indexAxis: 'y', // Horizontal chart
+                          responsive: true,
+                          plugins: {
+                            legend: { display: false }, // Hide legend
+                            tooltip: {
+                              callbacks: {
+                                label: (context) => `${context.raw} Volunteers`,
+                              }
+                            }
+                          },
+                          scales: {
+                            x: {
+                              beginAtZero: true,
+                              ticks: { stepSize: 20 },
+                            },
+                            y: { grid: { display: false } }
+                          }
+                        };
+                      
+                        new Chart(ctx, {
+                          type: 'bar',
+                          data: data,
+                          options: options,
+                        });
+                      </script>
+
+
+
+<div class="row gap-3">
+    <!-- CITY & PRECINCT DROPDOWN -->
+     
+      <!-- Search Bar -->
+      <div class="position-relative col-md-4">
+        <span class="position-absolute top-50 start-0 translate-middle-y ms-4">
+          <i class="fa fa-search"></i>
+        </span>
+        <input
+          type="text"
+          id="searchPrecinct"
+          class="form-control ps-5"
+          placeholder="Search precinct..."
+        />
+      </div>
+
+
+      <div class="col-md-4">
+        <select class="form-select" aria-label="Volunteer Category">
+          <option selected value="">Select CIty</option>
+          <option value="1">...</option>
+          <option value="2">...</option>
+          <option value="3">...</option>
+        </select>
+      </div>
+  
+       
+  </div>
+
+
+
+  <!-- TABLE -->
+  <section class="table-responsive mt-5">
+    <table class="table align-middle table-bordered border border-dark">
+            <thead>
+                <tr class="bg-danger">
+                    <th scope="col"><span class="text-white">Volunteer ID</span></th>
+                    <th scope="col"><span class="text-white">Volunteer's Name</span></th>
+                    <th scope="col"><span class="text-white">Volunteer's Assignment</span></th>
+                    <th scope="col"><span class="text-white">Time in</span></th>
+                    <th scope="col"><span class="text-white">Time out</span></th>
+                    
+                </tr>
+            </thead>
+            <tbody id="listtable">
+                <tr class="listrow">
+                    <th scope="row">1</th>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                </tr>
+                <tr class="listrow">
+                    <th scope="row">1</th>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                </tr>
+                <tr class="listrow">
+                    <th scope="row">1</th>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                </tr>
+                <tr class="listrow">
+                    <th scope="row">1</th>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                </tr>
+                <tr class="listrow">
+                    <th scope="row">1</th>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                    <td>Vicmar</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+  
                       
                       
-                      <div class="col">
-                        <div class="card shadow-sm border-0 h-100" style="border-radius: 10px;">
-                          <div class="card-header text-white text-center fw-bold py-3" style="background-color: #9e1b1e; border-radius: 10px 10px 0 0;">
-                            Another School Name
-                          </div>
-                          <div class="card-body d-flex flex-column justify-content-center">
-                            <div class="row text-center">
-                              <div class="col">
-                                <h4 class="mb-1">300</h4>
-                                <small class="text-muted">Total Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="mb-1">275</h4>
-                                <small class="text-muted">Registered Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="text-danger mb-1">+25</h4>
-                                <small class="text-muted">Needed</small>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col">
-                        <div class="card shadow-sm border-0 h-100" style="border-radius: 10px;">
-                          <div class="card-header text-white text-center fw-bold py-3" style="background-color: #9e1b1e; border-radius: 10px 10px 0 0;">
-                            Another School Name
-                          </div>
-                          <div class="card-body d-flex flex-column justify-content-center">
-                            <div class="row text-center">
-                              <div class="col">
-                                <h4 class="mb-1">300</h4>
-                                <small class="text-muted">Total Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="mb-1">275</h4>
-                                <small class="text-muted">Registered Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="text-danger mb-1">+25</h4>
-                                <small class="text-muted">Needed</small>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col">
-                        <div class="card shadow-sm border-0 h-100" style="border-radius: 10px;">
-                          <div class="card-header text-white text-center fw-bold py-3" style="background-color: #9e1b1e; border-radius: 10px 10px 0 0;">
-                            Another School Name
-                          </div>
-                          <div class="card-body d-flex flex-column justify-content-center">
-                            <div class="row text-center">
-                              <div class="col">
-                                <h4 class="mb-1">300</h4>
-                                <small class="text-muted">Total Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="mb-1">275</h4>
-                                <small class="text-muted">Registered Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="text-danger mb-1">+25</h4>
-                                <small class="text-muted">Needed</small>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="col">
-                        <div class="card shadow-sm border-0 h-100" style="border-radius: 10px;">
-                          <div class="card-header text-white text-center fw-bold py-3" style="background-color: #9e1b1e; border-radius: 10px 10px 0 0;">
-                            Another School Name
-                          </div>
-                          <div class="card-body d-flex flex-column justify-content-center">
-                            <div class="row text-center">
-                              <div class="col">
-                                <h4 class="mb-1">300</h4>
-                                <small class="text-muted">Total Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="mb-1">275</h4>
-                                <small class="text-muted">Registered Volunteers</small>
-                              </div>
-                              <div class="col-auto d-none d-md-block">
-                                <div class="vr"></div>
-                              </div>
-                              <div class="col">
-                                <h4 class="text-danger mb-1">+25</h4>
-                                <small class="text-muted">Needed</small>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
                     
 
                     

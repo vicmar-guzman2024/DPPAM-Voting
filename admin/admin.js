@@ -127,9 +127,9 @@ function updateChart() {
                     data: registeredData,
                     backgroundColor: '#00A1E4',
                     borderColor: '#00A1E4',
-                    borderWidth: 1,
-                    barPercentage: 0.4,
-                    categoryPercentage: 0.8,
+                    borderWidth: .1,
+                    barPercentage: 0.5,
+                    categoryPercentage: 0.5,
                 },
                 {
                     label: 'Needed Registered Volunteers',
@@ -144,18 +144,31 @@ function updateChart() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y',
+            indexAxis: 'y', // Horizontal bar chart
             scales: {
                 y: {
                     beginAtZero: true,
                     grid: { display: false },
+                    ticks: {
+                        padding: 1 // Adjust this to reduce the space between y-axis labels
+                    }
                 },
                 x: {
                     grid: { display: false },
                     offset: true,
-                },
+                    ticks: {
+                        padding: 1 // Adjust this to reduce the space between x-axis labels
+                    }
+                }
             },
-        },
+            plugins: {
+                legend: {
+                    labels: {
+                        padding: 20 // Adjust this to change the space between legend labels
+                    }
+                }
+            }
+        }
     });
 }
 
@@ -164,8 +177,8 @@ window.onload = function () {
     filterParishes(); // Ensure Parish dropdown is properly set
     updateChart(); // Initialize chart
     filterSchools();
+    updateChart();
 };
-
 
 // Displaying SELECTED OPTION in PREVIOUS EXPERIENCE & PREFERRED ASSIGNMENT
 
@@ -309,7 +322,63 @@ if (missionsSelect || precinctsSelect || statusSelect || parishSelect) {
         parishSelect.addEventListener("change", filterTable);
 }
 
+    // Function to update chart data when a school is selected
+    function updateChartData() {
+        const selectedSchool = document.getElementById('schoolSelect').value;
 
+        if (selectedSchool) {
+            // Find the index of the selected school
+            const index = assignedSchools.indexOf(selectedSchool);
+            if (index !== -1) {
+                // Update the chart with the selected school's data
+                pieData.datasets[0].data = [
+                    totalRV[index],  // Registered volunteers
+                    neededRV[index]   // Needed volunteers
+                ];
+                console.log('Selected school data updated:', totalRV[index], neededRV[index]);
+            }
+        } else {
+            // If no school is selected, show the default data (first school)
+            pieData.datasets[0].data = [
+                totalRV[0], // Default to the first school's registered volunteers
+                neededRV[0] // Default to the first school's needed volunteers
+            ];
+            console.log('No school selected, showing default data:', totalRV[0], neededRV[0]);
+        }
+
+        // Update the chart with the new data
+        pieChart.update();
+    }
+
+    // Call the function initially to display the default chart data
+    updateChartData();
+
+    function getTotalRegistered() {
+        // Get selected location
+        var location = document.getElementById('schoolSelect').value;
+
+        if (location) {
+            // Send AJAX request
+            $.ajax({
+                url: 'php/dashboard.php', // PHP script to handle the request
+                method: 'POST',
+                data: { location: location },
+                success: function(response) {
+                    // Update the h1 tag with the result
+                    document.getElementById('total_registered').innerHTML = response;
+                }
+            });
+        } else {
+            document.getElementById('total_registered').innerHTML = 0;
+        }
+    }
+
+    
+
+    
+    
+    
+    
 
 
     
