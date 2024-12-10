@@ -213,7 +213,7 @@ include ("php/dashboard.php");
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link"><i class="fa-solid fa-id-card pe-2"></i>Generate ID</a>
+                        <a href="id_generator.html" class="sidebar-link"><i class="fa-solid fa-id-card pe-2"></i>Generate ID</a>
                     </li>
                     <li class="sidebar-item">
                         <a href="#" class="sidebar-link">
