@@ -99,10 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Execute the statement
             if ($stmt->execute()) {
                 // Store the success message in the session
-                $_SESSION['reg_success_message'] = "Registration successful!";
+                $_SESSION['status'] = "Registration successful! You can now login your account!";
 
                 // Redirect to the same page to prevent resubmission on refresh
-                header("Location: " . $_SERVER['PHP_SELF']);
+                header("Location: ../user_login.php ");
                 exit(); // Make sure the script stops after redirection
             } else {
                 echo "Error: " . $stmt->error;
@@ -125,9 +125,9 @@ $sql_connection->close();
 
 <?php
 // Check if there's a success message stored in the session
-if (isset($_SESSION['reg_success_message'])) {
-    echo "<div class='alert alert-success'>" . $_SESSION['reg_success_message'] . "</div>";
+if (isset($_SESSION['status'])) {
+    echo "<div class='alert alert-success'>" . $_SESSION['status'] . "</div>";
     // Clear the success message after displaying it
-    unset($_SESSION['reg_success_message']);
+    unset($_SESSION['status']);
 }
 ?>
