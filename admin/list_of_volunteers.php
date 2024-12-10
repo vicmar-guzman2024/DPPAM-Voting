@@ -445,7 +445,7 @@ include ("php/dashboard.php");
                                         ?>
                                         <tr class="listrow">
                                             <th scope="row"><?php echo $row['VOLUNTEERS_ID']; ?></th>
-                                            <td><?php echo $row['PRECINCT_NO']; ?></td>
+                                            <td><?php echo $row['PRECINCT_ID']; ?></td> <!--CHANGED 'PRECINCT_NO TO PRECINCT_ID' -->
                                             <td><?php echo $flname; ?></td>
                                             <td><?php echo $row['ASSIGNED_PARISH']; ?></td>
                                             <td><?php echo $row['ASSIGNED_ASSIGNMENT']; ?></td>
