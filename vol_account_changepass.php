@@ -326,63 +326,61 @@ include('php/authentication.php');
             </nav>
 
 
-            <main class="container p-5">
-
-                <div>
-
-                <div class="d-flex flex-row align-items-center mb-4 chevron-container">
+            <main class="container p-3"> <!-- Reduced padding -->
+                <div class="d-flex flex-row align-items-center mb-3 chevron-container ms-2">
                     <div>
                         <a href="vol_account_settings.php" class="btn-chevron">
                             <i class="bi bi-chevron-left"></i>
                         </a>
                     </div>
-                    <div>
-                        <h3 class="text-dark mb-1">Volunteer Form Information</h3>
-                        <h6 class="text-muted">Personal Details</h6>
+                    <div class="ms-3">
+                        <h3 class="pi">Change Password</h3>
                     </div>
                 </div>
 
                     <!--DASHBOARD CONTENT-->
 
-                    <section class="p-5 contentBox">
-
+                    <section class="p-5 contentBox5">
                         <form action="" class="row">
 
+                            <!-- Description -->
+                            <div class="mt-3">
+                                <p class="text-muted">
+                                Note: Please ensure that your new password is at least 8 characters long and includes a mix of letters, numbers, and special characters for better security.
+                                </p>
+                            </div>
+
                             <!-- Current Password Field -->
-                             <div class="col-md-7 mb-4 position-relative"> 
-                                <input type="password" class="form-control py-2" id="currentPass" placeholder="Current password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('currentPass', 'currentIcon')">
-                                    <i id="currentIcon" class="bi bi-eye-slash"></i>
-                                </button>
+                            <div class="col-md-7 mb-4 position-relative"> 
+                            <input type="password" class="form-control py-2" id="currentPass" placeholder="Current password">
+                            <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('currentPass', 'currentIcon')">
+                                <i id="currentIcon" class="bi bi-eye-slash"></i>
+                            </button>
                             </div>
                             
                             <!-- New Password Field -->
-                             <div class="col-md-7 mb-4 position-relative"> 
-                                <input type="password" class="form-control py-2" id="newPass" placeholder="New password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('newPass', 'newIcon')">
-                                    <i id="newIcon" class="bi bi-eye-slash"></i>
-                                </button>
+                            <div class="col-md-7 mb-4 position-relative"> 
+                            <input type="password" class="form-control py-2" id="newPass" placeholder="New password">
+                            <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('newPass', 'newIcon')">
+                                <i id="newIcon" class="bi bi-eye-slash"></i>
+                            </button>
                             </div>
                             
                             <!-- Confirm New Password Field -->
-                             <div class="col-md-7 mb-4 position-relative">
-                                <input type="password" class="form-control py-2" id="confirmNewPass" placeholder="Confirm new password">
-                                <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('confirmNewPass', 'confirmIcon')">
-                                    <i id="confirmIcon" class="bi bi-eye-slash"></i>
-                                </button>
+                            <div class="col-md-7 mb-4 position-relative">
+                            <input type="password" class="form-control py-2" id="confirmNewPass" placeholder="Confirm new password">
+                            <button type="button" class="btn position-absolute top-50 start-100 translate-middle bg-light" style="margin-left: -35px;" onclick="togglePassword('confirmNewPass', 'confirmIcon')">
+                                <i id="confirmIcon" class="bi bi-eye-slash"></i>
+                            </button>
                             </div>
                             
                             <!-- Save button -->
-                             <div class="col-12 mb-4">
-                                <button type="submit" class="btn btn-primary px-5">Save</button>
+                            <div class="col-12 mb-4">
+                            <button type="submit" class="btn btn-primary px-5">Save</button>
                             </div>  
-
-
-
                         </form>
-
-                        
                     </section>
+
 
                     
 

@@ -306,7 +306,7 @@ include('php/authentication.php');
         <!-- Main Component -->
         <div class="main">
 
-        <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
+            <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
                 <div class="d-flex align-items-center">
                     <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
                     <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
@@ -341,7 +341,7 @@ include('php/authentication.php');
                                     <a href="vol_account_editprofile.php" class="btn d-flex flex-row justify-content-between align-items-center w-100">
                                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                             <div>
-                                                <i class="bi bi-person fs-5"></i>
+                                              <i class="fa-solid fa-user fs-5"></i>
                                             </div>
                                             <div class="d-flex flex-column">
                                                 <span class="fw-bold text-start">Edit Profile</span>
@@ -360,11 +360,30 @@ include('php/authentication.php');
                                     <a href="vol_account_changepass.php" class="btn d-flex flex-row justify-content-between align-items-center w-100">
                                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                             <div>
-                                                <i class="bi bi-lock fs-5"></i>
+                                                <i class="fa-solid fa-lock fs-5"></i>
                                             </div>
                                             <div class="d-flex flex-column">
                                                 <span class="fw-bold text-start">Change Password</span>
                                                 <span class="text-muted">Update and strengthen account security.</span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <i class="fa-solid fa-chevron-right"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <!-- QR Codes -->
+                                <div class="box-container1">
+                                    <a href="vol_account_qr.php" class="btn d-flex flex-row justify-content-between align-items-center w-100">
+                                        <div class="d-flex flex-row justify-content-center align-items-center gap-3">
+                                            <div>
+                                                <i class="fa-solid fa-qrcode fs-5"></i>
+                                            </div>
+                                            <div class="d-flex flex-column">
+                                                <span class="fw-bold text-start">Attendance</span>
+                                                <span class="text-muted">My QR Code for Attendance Monitoring.</span>
                                             </div>
                                         </div>
 
@@ -379,7 +398,7 @@ include('php/authentication.php');
                                     <div class="d-flex flex-row justify-content-between align-items-center ps-3 w-100">
                                         <div class="d-flex flex-row justify-content-center align-items-center gap-3">
                                             <div>
-                                                <i class="bi bi-bell fs-5"></i>
+                                                <i class="fa-solid fa-bell fs-5"></i>
                                             </div>
                                             <div class="d-flex flex-column">
                                                 <span class="fw-bold text-start">Notification</span>

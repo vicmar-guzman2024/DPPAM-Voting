@@ -328,27 +328,49 @@ include('php/authentication.php');
             <main class="container-fluid p-5">
 
                 <div>
-                    
-                <div class="d-flex flex-row align-items-center mb-4 chevron-container">
+                <div class="d-flex flex-row align-items-center mb-3 chevron-container ms-2">
                     <div>
                         <a href="vol_registration_info.php" class="btn-chevron">
                             <i class="bi bi-chevron-left"></i>
                         </a>
                     </div>
-                    <div>
-                        <h3 class="text-dark mb-1">Volunteer Form Information</h3>
-                        <h6 class="text-muted">Personal Details</h6>
+                    <div class="ms-3">
+                        <h3 class="pi">Volunteer Information</h3>
+                        <h6 class="text-muted">Attached Documents</h6>
                     </div>
                 </div>
 
-                    <!--DASHBOARD CONTENT-->
-
                     <div class="contentBox p-5">
-                        <h1>Wala pa hehe</h1>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between">
+                                <div class="text-center" style="width: 30%;">File</div>
+                                <div class="text-center" style="width: 40%;">Title</div>
+                                <div class="text-center" style="width: 30%;">Action</div>
+                            </div>
+                        </div>
+
+                        <ul class="list-group mt-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="text-center" style="width: 30%;">
+                                    <img src="/mnt/data/image.png" alt="Attachment 1" class="img-thumbnail" style="max-width: 50px; max-height: 50px;">
+                                </div>
+                                <div class="text-center" style="width: 40%;">Attachment 1</div>
+                                <div class="text-center" style="width: 30%;">
+                                    <a href="/mnt/data/image.png" class="btn btn-link" target="_blank">Preview</a>
+                                </div>
+                            </li>
+                            
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div class="text-center" style="width: 30%;">
+                                    <img src="/mnt/data/another_image.png" alt="Attachment 2" class="img-thumbnail" style="max-width: 50px; max-height: 50px;">
+                                </div>
+                                <div class="text-center" style="width: 40%;">Attachment 2</div>
+                                <div class="text-center" style="width: 30%;">
+                                    <a href="/mnt/data/another_image.png" class="btn btn-link" target="_blank">Preview</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    
-                      
-                    
                 </div>
             </main>
         </div>

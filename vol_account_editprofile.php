@@ -308,7 +308,7 @@ include('php/authentication.php');
         <!-- Main Component -->
         <div class="main">
 
-        <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
+            <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
                 <div class="d-flex align-items-center">
                     <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
                     <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
@@ -329,71 +329,71 @@ include('php/authentication.php');
 
              <!--MAIN CONTENT-->
 
-            <main class="container p-5">
-                
-                <div class="d-flex flex-row align-items-center mb-4 chevron-container">
+             <main class="container p-3"> <!-- Reduced padding -->
+                <div class="d-flex flex-row align-items-center mb-3 chevron-container ms-2">
                     <div>
                         <a href="vol_account_settings.php" class="btn-chevron">
                             <i class="bi bi-chevron-left"></i>
                         </a>
                     </div>
-                    <div>
-                        <h3 class="text-dark mb-1">Volunteer Form Information</h3>
-                        <h6 class="text-muted">Personal Details</h6>
+                    <div class="ms-3">
+                        <h3 class="pi">Profile Information</h3>
                     </div>
                 </div>
 
-                    <section class="p-5 contentBox5">
-                        <form action="" class="needs-validation" novalidate>
-                            <div class="d-flex flex-md-row flex-column justify-content-start align-items-center mb-5">
+
+
+                <section class="p-4 contentBox5"> <!-- Reduced padding -->
+                    <form action="" class="needs-validation" novalidate>
+                        <div class="d-flex flex-md-row flex-column justify-content-start align-items-center mb-4"> <!-- Reduced bottom margin -->
+                            <div>
+                                <img src="img/DPPAMLOGO.png" alt="Profile picture" class="img-fluid">
+                            </div>
+                            <div class="d-flex flex-row justify-content-center align-items-start gap-3">
                                 <div>
-                                    <img src="img/DPPAMLOGO.png" alt="Profile picture" class="img-fluid">
+                                    <label class="custom-file-input form-label" for="uploadNewImg">
+                                        <i class="icon fas fa-upload"></i>
+                                        <input type="file" id="uploadNewImg">
+                                        <span class="file-name" id="uploadNewImgName">Upload new image</span>
+                                    </label>
                                 </div>
-                                <div class="d-flex flex-row justify-content-center align-items-start gap-3">
-                                    <div>
-                                        <label class="custom-file-input form-label" for="uploadNewImg">
-                                            <i class="icon fas fa-upload"></i>
-                                            <input type="file" id="uploadNewImg">
-                                            <span class="file-name" id="uploadNewImgName">Upload new image</span>
-                                        </label>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="btn btn-light">Remove</button>
-                                    </div>
+                                <div>
+                                    <button type="button" class="btn btn-light">Remove</button>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="displayName" class="form-label">Display Name:</label>
-                                    <input type="text" class="form-control" id="displayName" placeholder="Your name">
-                                </div>
+                        <!-- Textboxes -->
+                        <div class="row mb-2"> <!-- Reduced bottom margin -->
+                            <div class="col-md-6 mb-2"> <!-- Reduced bottom margin -->
+                                <label for="displayName" class="form-label">Display Name:</label>
+                                <input type="text" class="form-control" id="displayName" placeholder="Your name">
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Example input placeholder">
-                                </div>
+                        <div class="row mb-2"> <!-- Reduced bottom margin -->
+                            <div class="col-md-6 mb-2"> <!-- Reduced bottom margin -->
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Example input placeholder">
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="number" class="form-label">Cellphone Number:</label>
-                                    <input type="tel" class="form-control" id="number" placeholder="09999999999">
-                                </div>
+                        <div class="row mb-2"> <!-- Reduced bottom margin -->
+                            <div class="col-md-6 mb-2"> <!-- Reduced bottom margin -->
+                                <label for="number" class="form-label">Cellphone Number:</label>
+                                <input type="tel" class="form-control" id="number" placeholder="09999999999">
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary px-5">Save</button>
-                                </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary px-4">Save</button> <!-- Adjusted padding -->
                             </div>
-                        </form>
-                    </section>
-
-
+                        </div>
+                    </form>
+                </section>
             </main>
+
         </div>
     </div>
 
