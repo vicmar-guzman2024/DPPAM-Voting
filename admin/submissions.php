@@ -236,7 +236,7 @@ include("php/dashboard.php");
                     <form action="" class="row">
 
                                 <!-- SEARCH BAR -->
-                                <<div class="col-md-3 mb-3 position-relative">
+                                <div class="col-md-3 mb-3 position-relative">
                                     <span class="position-absolute top-0 start-0 mt-2 ms-4"><i class="fa fa-search"></i></span>
                                     <input type="text" class="form-control ps-5" id="searchInput" placeholder="Search here...">
                                 </div>

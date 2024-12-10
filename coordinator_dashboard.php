@@ -6,8 +6,7 @@
     <title>Coordinator</title>
 </head>
 <body>
-    <h1>Coordinator</h1>
-    <h3>Testing kung papasok</h3>
+    <h1>Coordinator Dashboard</h1>
 
 </body>
 </html>

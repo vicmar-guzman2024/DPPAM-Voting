@@ -17,7 +17,7 @@
     <script src= 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> 
 
 
-  <title>Volunteers - Sign Up Form</title>
+  <title>Volunteers - Registration Form</title>
 
 </head>
 

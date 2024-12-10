@@ -1,27 +1,7 @@
 <?php
 // Start the session
-session_start();
 include('php/condb.php');
-
-// Retrieve user details from the session
-$firstname = $_SESSION['firstname'];
-$lastname = $_SESSION['lastname'];
-$username = $_SESSION['username'];
-
-// Fetch user data
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT firstname, lastname, username, profile_picture FROM users WHERE user_id = ?";
-$stmt = $sql_connection->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$stmt->bind_result($firstname, $lastname, $email, $profile_image);
-$stmt->fetch();
-$stmt->close();
-$sql_connection->close();
-
-// Determine profile image
-$image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profile_picture/default_profile.jpg";
-
+include('php/authentication.php');
 ?>
 
 <!DOCTYPE html>
@@ -52,37 +32,65 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
   <div class="wrapper">
     <!-- Sidebar -->
     <aside id="sidebar">
-      <div class="" style="min-height: 100vh;">
-        <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
-           <div class="position-relative">
-              <img src="<?php echo htmlspecialchars($image_path); ?>" alt="User Profile" class="img-fluid profileImg">
-                <div class="btn-group dropend">
-                  <button type="button" class="editProfile position-absolute top-0 start-100 translate-middle"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-solid fa-camera"></i>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><button id="seeProfileBtn" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">See Profile</button></li>
-                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal"data-bs-target="#editProfilePictureModal">Edit profile</a></li>
-                  </ul>
-                </div>
-             </div>
+            <div class="" style="min-height: 100vh;">
+                <div class="d-flex flex-column justify-content-center align-items-center mt-5 gap-3">
+                    <div class="position-relative">
+                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
+                    alt="User Profile" 
+                    class="img-fluid profileImg">
 
-            <div class="modal fade" id="editProfilePictureModal" tabindex="-1" aria-labelledby="editProfilePictureModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="editProfilePictureModalLabel">Edit Profile Picture</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <form id="profilePictureForm" method="POST" enctype="multipart/form-data" action="php/update_profile_picture.php">
+                        <div class="btn-group dropend">
+                            <button type="button" class="editProfile position-absolute top-0 start-100 translate-middle"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-camera"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- Dropdown menu links -->
+                                
+                                <li><button id="seeProfileBtn" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#profileModal">See Profile</button></li>
+                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal"data-bs-target="#editProfilePictureModal">Edit profile</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal for showing profile picture -->
+                    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="profileModalLabel">Profile Picture</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" id="userProfileImageModal">
+                                    <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
+                                    alt="User Profile" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for changing profile picture-->
+                    <div class="modal fade" id="editProfilePictureModal" tabindex="-1"
+                        aria-labelledby="editProfilePictureModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered  modal-md-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editProfilePictureModalLabel">Edit Profile Picture</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form id="profilePictureForm" method="POST" enctype="multipart/form-data"
+                                    action="php/update_profile_picture.php">
                                     <div class="modal-body text-center">
                                         <!-- Current Profile Picture -->
-                                        <div id="profilePictureContainer" style="height: 300px; width: 100%;">
-                                            <img id="currentProfilePicture"
-                                                src="<?php echo htmlspecialchars($image_path); ?>"
-                                                class="img-thumbnail img-fluid mb-3" alt="Profile Picture" width="300"
-                                                style="cursor: move;">
+                                        <div id="profilePictureContainer">
+                                            <img src="php/profile_picture/<?= !empty($_SESSION['auth_user']['profile_picture']) ? $_SESSION['auth_user']['profile_picture'] : 'default_profile.jpg'; ?>" 
+                                            id="currentProfilePicture"
+                                            alt="User Profile" 
+                                            class="img-fluid img-thumbnail"
+                                            width="300"
+                                            style="cursor: move;">
                                         </div>
 
                                         <!-- Crop and Done Buttons -->
@@ -104,7 +112,7 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn btn-primary" id="saveChangesButton">Save
+                                        <button type="submit" name="change_profile_btn" class="btn btn-primary" id="saveChangesButton">Save
                                             Changes</button>
                                     </div>
                                 </form>
@@ -115,37 +123,37 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
 
 
                     <div>
-                        <h4 class="profile-name"><?php echo htmlspecialchars($firstname . ' ' . $lastname); ?></h4>
-                        <p class="profile-email"><?php echo htmlspecialchars($username); ?></p>
+                        <h4 class="profile-name"><?= $_SESSION['auth_user']['firstname'] . ' ' . $_SESSION['auth_user']['lastname']; ?></h4>    
+                        <p class="profile-email"><?= $_SESSION['auth_user']['email']; ?></p>
                     </div>
                 </div>
 
-        <ul class="sidebar-nav mt-5">
-          <li class="sidebar-item">
-            <a href="vol_dashboard.php" class="sidebar-link py-3">
-              <i class="fa-solid fa-house-user"></i>Dashboard
-            </a>
-          </li>
+                <ul class="sidebar-nav mt-5">
+                    <li class="sidebar-item">
+                        <a href="vol_dashboard.php" class="sidebar-link py-3">
+                            <i class="fa-solid fa-house-user"></i>Dashboard
+                        </a>
+                    </li>
 
-          <li class="sidebar-item1">
-            <a href="vol_registration_info.php" class="sidebar-link py-3">
-              <i class="fa-solid fa-address-card"></i>Registration Info
-            </a>
-          </li>
+                    <li class="sidebar-item1">
+                        <a href="vol_registration_info.php" class="sidebar-link py-3">
+                            <i class="fa-solid fa-address-card"></i>Registration Info
+                        </a>
+                    </li>
 
-          <li class="sidebar-item">
-            <a href="vol_attachments.php" class="sidebar-link py-3">
-              <i class="fa-solid fa-file"></i>My Attachments
-            </a>
-          </li>
+                    <li class="sidebar-item">
+                        <a href="vol_attachments.php" class="sidebar-link py-3">
+                            <i class="fa-solid fa-file"></i>My Attachments
+                        </a>
+                    </li>
 
-          <li class="sidebar-item">
-            <a href="vol_account_settings.php" class="sidebar-link py-3">
-             <i class="fa-solid fa-gear"></i>Profile Settings
-            </a>
-          </li>
+                    <li class="sidebar-item">
+                        <a href="vol_account_settings.php" class="sidebar-link py-3">
+                            <i class="fa-solid fa-gear"></i>Profile Settings
+                        </a>
+                    </li>
 
-          <li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="javascript:void(0);" class="sidebar-link py-3" onclick="showConfirmModal()">
                             <i class="fa-solid fa-right-from-bracket"></i> Logout
                         </a>
@@ -158,11 +166,18 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                             <div class="animated-character">
                                 <img src="img/logout.gif" alt="Waving Character">
                             </div>
-                            <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
+                            <a href="vol_logout.php" class="confirm-btn btn text-white">Yes, log me out</a>
+
+                            
+                            <!-- 
+                                <button class="confirm-btn" onclick="logout()">Yes, log me out</button>
+                            -->
+
                         </div>
                     </div>
 
                     <style>
+                        /**
                         .modal {
                             display: none; 
                             position: fixed;
@@ -182,6 +197,36 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         .modal-content {
+                            background-color: #fff;
+                            margin: 5% auto;
+                            padding: 20px;
+                            border: 1px solid #888;
+                            width: 70%;
+                            top: 50px;
+                            max-width: 400px;
+                            text-align: center;
+                        }
+                            */
+
+                        #logoutModal {
+                            display: none; 
+                            position: fixed;
+                            z-index: 1; 
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0, 0, 0, 0.5); 
+                            overflow: auto;
+                            padding-top: 60px;
+                        }
+
+                        #logoutModal .message{
+                            font-size: 18px;
+                            font-weight: bold;
+                        }
+
+                        #logoutModal .modal-content {
                             background-color: #fff;
                             margin: 5% auto;
                             padding: 20px;
@@ -249,25 +294,34 @@ $image_path = $profile_image ? "php/profile_picture/$profile_image" : "php/profi
                         }
 
                         function logout() {
-                          window.location.href = "vol_login.php";
+                            window.location.href = "user_login.php";
                         }
                     </script>
-        </ul>
-      </div>
-    </aside>
+
+                </ul>
+            </div>
+        </aside>
 
     <!-- Main Content -->
     <div class="main">
-      <nav class="navbar navbar-expand d-flex flex-row justify-content-between align-items-center pe-lg-5 pe-3 ps-2">
-          <div class="d-flex flex-row justify-content-center align-items-center">
-            <img src="img/user_logo.png" alt="DPPAM Logo" height="50px" width="50px" class="img-fluid">
-                  <h3 class="navbar-title">DPPAM Volunteer Portal</h3>
-          </div>
+        
+    <div class="dashboard-header d-flex justify-content-between align-items-center shadow-sm">
+                <div class="d-flex align-items-center">
+                    <img src="img/user_logo.png" alt="DPPAM Logo" height="60" width="60" class="img-fluid me-3">
+                    <h3 class="dashboard-header-title mb-0">DPPAM Volunteer Portal</h3>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button>
+                </div>
+            </div>
 
-          <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-            <button type="button" class="btn"><i class="fa-solid fa-bell btn-icon"></i></button> 
-          </div>
-      </nav>
+            
+            <nav class="navbar navbar-expand px-3 navbar-light">
+                <!-- Button for sidebar toggle -->
+                <button class="btn toggle-btn" type="button" data-bs-theme="dark">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
 
       <main class="container-fluid p-5" style="max-width: 950px; margin-top: 10px;">
         <div>
