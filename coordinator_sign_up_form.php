@@ -32,18 +32,7 @@ session_start();
     <section class="signInContainer p-5" style="height: 100%;">
         <h1 class="text-center">DPPAM Voting</h1>
 
-        <?php
-        if (isset($_SESSION['status'])) {
-        ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <h6><?= $_SESSION['status']; ?></h6>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        <?php
-            unset($_SESSION['status']);
-        }
-
-        ?>
+        
 
 
         <form action="php/sign_up_process.php" method="POST"
@@ -57,9 +46,21 @@ session_start();
                     <img src="img/PPCRVLOGO.png" alt="" height="80px" width="80px">
                 </div>
             </div>
+            <?php
+        if (isset($_SESSION['status'])) {
+        ?>
+            <div class="alert alert-success alert-dismissible fade show align-items-center" role="alert">
+                <h6 class="text-center"><?= $_SESSION['status']; ?></h6>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php
+            unset($_SESSION['status']);
+        }
+
+        ?>
 
             <!-- Hidden Role Field -->
-            <input type="hidden" class="form-control" name="role" value="Admin">
+            <input type="hidden" class="form-control" name="role" value="Coordinator">
 
             <!-- First Name Input -->
             <div class="mb-3">

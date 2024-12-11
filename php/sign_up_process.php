@@ -177,7 +177,7 @@ if (isset($_POST['sign_up_btn'])) {
         if ($query_run) {
             // Send email verification (ensure the function send_email_verify exists and works)
             send_email_verify("$firstname", "$lastname", "$email", "$verify_token");
-            $_SESSION['status'] = 'Registered Successfully. Check your email address to complete the registration process';
+            
 
             // Clear the temporary session data after successful registration
             unset($_SESSION['temp_firstname']);
@@ -186,10 +186,13 @@ if (isset($_POST['sign_up_btn'])) {
 
             // Redirect based on role
             if ($role === 'Admin') {
+                $_SESSION['status'] = 'Registered Successfully. Check your email address to confirm.';
                 header("Location: ../user_login.php");
             } elseif ($role === 'Coordinator') {
+                $_SESSION['status'] = 'Registered Successfully. Check your email address to confirm.';
                 header("Location: ../user_login.php");
             } elseif ($role === 'Volunteer') {
+                $_SESSION['status'] = 'Registered Successfully. Check your email address to complete the registration process';
                 header("Location: ../vol_signup.php");
             } else {
                 header("Location: ../user_login.php"); // Default fallback
